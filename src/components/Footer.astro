@@ -1,0 +1,90 @@
+---
+import { routes, servicePath, ui, type Lang } from '../i18n/ui';
+import { site, mapsLink } from '../data/site';
+import { services } from '../data/services';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const year = new Date().getFullYear();
+---
+
+<footer class="ftr dark blueprint">
+  <div class="wrap">
+    <div class="ftr__big" aria-hidden="true">GRO<span>/</span>EDM</div>
+
+    <div class="ftr__grid">
+      <div class="ftr__col ftr__about">
+        <p class="ftr__name">{site.name}</p>
+        <p>{t.footerTagline}</p>
+      </div>
+
+      <nav class="ftr__col" aria-label={t.footerServices}>
+        <p class="ftr__h">{t.footerServices}</p>
+        <ul>
+          {services.map((s) => <li><a href={servicePath(lang, s.slug[lang])}>{s.title[lang]}</a></li>)}
+        </ul>
+      </nav>
+
+      <nav class="ftr__col" aria-label={t.footerNav}>
+        <p class="ftr__h">{t.footerNav}</p>
+        <ul>
+          <li><a href={routes.home[lang]}>{t.nav.home}</a></li>
+          <li><a href={routes.services[lang]}>{t.nav.services}</a></li>
+          <li><a href={routes.company[lang]}>{t.nav.company}</a></li>
+          <li><a href={routes.contact[lang]}>{t.nav.contact}</a></li>
+        </ul>
+      </nav>
+
+      <div class="ftr__col">
+        <p class="ftr__h">{t.footerContact}</p>
+        <address>
+          {site.name}<br />
+          {site.street}<br />
+          {site.zip} {site.city}<br />
+          <a href={site.phoneHref}>{site.phone}</a><br />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </address>
+        <p><a class="ftr__route" href={mapsLink} rel="noopener" target="_blank">{t.route} ↗</a></p>
+      </div>
+    </div>
+
+    <div class="ftr__bar">
+      <span>© {year} {site.name}</span>
+      <span class="ftr__legal">
+        <a href={routes.imprint[lang]}>{t.imprint}</a>
+        <a href={routes.privacy[lang]}>{t.privacy}</a>
+      </span>
+      <span class="ftr__coords" aria-hidden="true">N {site.geo.lat.toFixed(4)}° · E {site.geo.lng.toFixed(4)}°</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ftr { padding-top: var(--section); padding-bottom: 2rem; overflow: hidden; }
+  .ftr__big {
+    font-family: var(--font-display); font-weight: 700;
+    font-size: clamp(4rem, 17vw, 15rem); line-height: 0.8; letter-spacing: -0.05em;
+    color: transparent; -webkit-text-stroke: 1px rgb(255 255 255 / 0.16);
+    margin-bottom: clamp(2.5rem, 5vw, 4.5rem); white-space: nowrap;
+  }
+  .ftr__big span { -webkit-text-stroke-color: var(--brass); }
+  .ftr__grid { display: grid; grid-template-columns: 1.4fr 1fr 0.8fr 1fr; gap: 2.5rem; }
+  @media (max-width: 960px) { .ftr__grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .ftr__grid { grid-template-columns: 1fr; } }
+  .ftr__name { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: #fff; }
+  .ftr__about p:last-child { color: var(--muted-dark); max-width: 36ch; }
+  .ftr__h { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brass-2); margin-bottom: 1rem; }
+  .ftr ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; }
+  .ftr a { color: rgb(255 255 255 / 0.78); text-decoration: none; }
+  .ftr a:hover { color: var(--brass-2); }
+  address { font-style: normal; color: rgb(255 255 255 / 0.78); line-height: 1.8; }
+  .ftr__route { font-family: var(--font-mono); font-size: 0.8rem; }
+  .ftr__bar {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;
+    margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--line-dark);
+    font-size: 0.85rem; color: var(--muted-dark);
+  }
+  .ftr__legal { display: flex; gap: 1.5rem; }
+  .ftr__coords { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; }
+</style>

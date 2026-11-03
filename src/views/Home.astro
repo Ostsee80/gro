@@ -1,0 +1,233 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import WireHero from '../components/WireHero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { services } from '../data/services';
+import { industries } from '../data/industries';
+import { routes, ui, type Lang } from '../i18n/ui';
+import bauteil from '../assets/img/bauteil-blau.jpg';
+import pharma from '../assets/img/pharma-bauteil.jpg';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const c = {
+  de: {
+    title: 'Drahterodieren & Präzisionsfertigung bei Lübeck | GRO',
+    description: 'GRO-Erodiertechnik GmbH: Drahterodieren, Senkerodieren, HSC-Fräsen, CNC-Bearbeitung, Formen- & Werkzeugbau. Lohnfertigung seit 2011 in Bad Schwartau bei Lübeck.',
+    introKicker: 'Über uns',
+    introTitle: 'Präzision, Innovation und Service aus einer Hand.',
+    intro: [
+      'Seit 2011 steht die GRO-Erodiertechnik GmbH für höchste Präzision und Zuverlässigkeit in der Metallbearbeitung. An unserem Standort in Bad Schwartau – direkt vor den Toren Lübecks – fertigen wir vom Einzelteil bis zur Serie.',
+      'Unsere besondere Stärke ist das Erodieren. Mit modernster Technik, fundiertem Know-how und über einem Jahrzehnt Erfahrung entwickeln wir maßgeschneiderte Lösungen, die exakt auf Ihre Anforderungen abgestimmt sind – von der Beratung über die Fertigung bis zum Finish.',
+      'Dank unseres digitalisierten Maschinenparks reagieren wir flexibel, schnell und mit größter Präzision. Transparente Kommunikation, dokumentierte Qualität und nachvollziehbare Ergebnisse sind für uns selbstverständlich.',
+    ],
+    servicesKicker: 'Leistungen',
+    servicesTitle: 'Neun Verfahren. Eine Prozesskette.',
+    servicesLead: 'Erodieren, Zerspanen, Veredeln – wir kombinieren die Verfahren, die Ihr Bauteil braucht.',
+    processKicker: 'Ablauf',
+    processTitle: 'Von der Zeichnung zum fertigen Teil.',
+    process: [
+      { t: 'Anfrage & Beratung', d: 'Sie senden Zeichnung, CAD-Modell oder Musterteil. Wir prüfen Machbarkeit und beraten zum optimalen Verfahren.' },
+      { t: 'Angebot & Planung', d: 'Sie erhalten ein transparentes Angebot. Nach Freigabe planen wir Fertigung und Elektroden.' },
+      { t: 'Fertigung', d: 'Erodieren, HSC-Fräsen, Drehen, Schleifen – auf unserem digitalisierten, automatisierten Maschinenpark.' },
+      { t: 'Finish', d: 'Auf Wunsch Pulverbeschichtung und Lasergravur – Ihr Bauteil kommt einbaufertig.' },
+      { t: 'Messen & Liefern', d: 'Wir dokumentieren die Ergebnisse mit moderner Messtechnik und liefern termintreu.' },
+    ],
+    industriesKicker: 'Branchen',
+    industriesTitle: 'Für Branchen, in denen Präzision zählt.',
+    faqTitle: 'Häufige Fragen zum Erodieren',
+    faq: [
+      { q: 'Was ist Erodieren bzw. Funkenerosion?', a: 'Erodieren (Funkenerosion, englisch EDM – Electrical Discharge Machining) ist ein abtragendes Fertigungsverfahren. Elektrische Entladungen zwischen Werkzeug und Werkstück tragen Material berührungslos ab. So lassen sich auch gehärtete Werkstoffe und sehr feine Konturen präzise bearbeiten.' },
+      { q: 'Was ist der Unterschied zwischen Drahterodieren und Senkerodieren?', a: 'Beim Drahterodieren schneidet ein dünner Draht wie eine Laubsäge Durchbrüche und Konturen. Beim Senkerodieren bildet sich eine geformte Elektrode in das Werkstück ab – ideal für Kavitäten, Rippen und Gravuren, etwa im Formenbau.' },
+      { q: 'Wo befindet sich die GRO-Erodiertechnik?', a: 'Unser Betrieb liegt in der Langenfelde 18 in 23611 Bad Schwartau, direkt bei Lübeck. Wir fertigen für Kunden aus Lübeck, Hamburg, Kiel, ganz Schleswig-Holstein und darüber hinaus.' },
+      { q: 'Wie erhalte ich ein Angebot?', a: 'Senden Sie uns Ihre Zeichnung oder Ihr CAD-Modell (z. B. STEP, DXF, PDF) per E-Mail oder über unser Kontaktformular. Wir melden uns schnellstmöglich mit einem Angebot.' },
+      { q: 'Welche Stückzahlen fertigen Sie?', a: 'Vom einzelnen Prototyp über Kleinserien bis zur Serienfertigung. Durch unseren automatisierten Maschinenpark sind auch wiederkehrende Aufträge wirtschaftlich.' },
+    ],
+  },
+  en: {
+    title: 'Wire EDM & Precision Manufacturing in Germany | GRO',
+    description: 'GRO-Erodiertechnik GmbH: wire EDM, sinker EDM, HSC milling, CNC machining, mould & tool making. Contract manufacturing since 2011 near Lübeck, Germany.',
+    introKicker: 'About us',
+    introTitle: 'Precision, innovation and service from a single source.',
+    intro: [
+      'Since 2011, GRO-Erodiertechnik GmbH has stood for the highest precision and reliability in metalworking. At our site in Bad Schwartau – right on the doorstep of Lübeck – we manufacture everything from single parts to series.',
+      'Our particular strength is EDM. With state-of-the-art technology, in-depth expertise and more than a decade of experience, we develop tailor-made solutions precisely aligned with your requirements – from consultation and manufacturing to final finishing.',
+      'Thanks to our digitalised machinery, we respond flexibly, quickly and with the utmost precision. Transparent communication, documented quality and verifiable results are a matter of course for us.',
+    ],
+    servicesKicker: 'Services',
+    servicesTitle: 'Nine processes. One process chain.',
+    servicesLead: 'EDM, machining, finishing – we combine the processes your component needs.',
+    processKicker: 'Process',
+    processTitle: 'From drawing to finished part.',
+    process: [
+      { t: 'Enquiry & advice', d: 'You send a drawing, CAD model or sample part. We check feasibility and advise on the best process.' },
+      { t: 'Quote & planning', d: 'You receive a transparent quotation. Once approved, we plan production and electrodes.' },
+      { t: 'Manufacturing', d: 'EDM, HSC milling, turning, grinding – on our digitalised, automated machinery.' },
+      { t: 'Finishing', d: 'On request, powder coating and laser engraving – your component arrives ready to install.' },
+      { t: 'Measuring & delivery', d: 'We document the results with modern measuring technology and deliver on time.' },
+    ],
+    industriesKicker: 'Industries',
+    industriesTitle: 'For industries where precision matters.',
+    faqTitle: 'Frequently asked questions about EDM',
+    faq: [
+      { q: 'What is EDM (electrical discharge machining)?', a: 'EDM is a material-removing manufacturing process. Electrical discharges between tool and workpiece remove material without contact. This allows even hardened materials and very fine contours to be machined precisely.' },
+      { q: 'What is the difference between wire EDM and sinker EDM?', a: 'In wire EDM, a thin wire cuts openings and contours like a fretsaw. In sinker EDM, a shaped electrode is reproduced in the workpiece – ideal for cavities, ribs and engravings, for example in mould making.' },
+      { q: 'Where is GRO-Erodiertechnik located?', a: 'Our facility is at Langenfelde 18, 23611 Bad Schwartau, right next to Lübeck in northern Germany – about one hour from Hamburg. We serve customers throughout Germany and Europe.' },
+      { q: 'How do I get a quotation?', a: 'Send us your drawing or CAD model (e.g. STEP, DXF, PDF) by email or via our contact form. We will get back to you with a quotation as quickly as possible.' },
+      { q: 'What quantities do you produce?', a: 'From single prototypes and small batches to series production. Thanks to our automated machinery, recurring orders are also cost-effective.' },
+    ],
+  },
+}[lang];
+
+const faqLd = {
+  '@type': 'FAQPage',
+  mainEntity: c.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<Base lang={lang} title={c.title} description={c.description} alternates={routes.home} jsonLd={[faqLd]}>
+  <WireHero lang={lang} />
+
+  <!-- Intro -->
+  <section class="section intro" aria-labelledby="intro-title">
+    <div class="wrap intro__grid">
+      <div class="intro__media reveal">
+        <figure class="intro__fig intro__fig--a">
+          <Image src={bauteil} alt={lang === 'de' ? 'Pulverbeschichtetes Präzisionsbauteil aus eigener Fertigung' : 'Powder-coated precision component from our own production'} widths={[400, 640, 900]} sizes="(max-width: 900px) 80vw, 460px" />
+          <figcaption>FIG. 01</figcaption>
+        </figure>
+        <figure class="intro__fig intro__fig--b">
+          <Image src={pharma} alt={lang === 'de' ? 'Drahterodiertes Bauteil mit Sechskant-Durchbruch' : 'Wire-EDM component with hexagonal cut-out'} widths={[300, 500]} sizes="(max-width: 900px) 45vw, 260px" />
+          <figcaption>FIG. 02</figcaption>
+        </figure>
+      </div>
+      <div class="intro__copy reveal">
+        <p class="label">{c.introKicker}</p>
+        <h2 id="intro-title">{c.introTitle}</h2>
+        {c.intro.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+        <a class="btn btn--ghost" href={routes.company[lang]}>{t.nav.company}</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leistungen -->
+  <section class="section services" aria-labelledby="services-title">
+    <div class="wrap">
+      <header class="shead reveal">
+        <div>
+          <p class="label">{c.servicesKicker}</p>
+          <h2 id="services-title">{c.servicesTitle}</h2>
+        </div>
+        <p class="lead">{c.servicesLead}</p>
+      </header>
+      <ServiceGrid lang={lang} items={services} />
+    </div>
+  </section>
+
+  <!-- Prozesskette -->
+  <section class="section process dark blueprint" aria-labelledby="process-title">
+    <div class="wrap">
+      <header class="shead reveal">
+        <div>
+          <p class="label">{c.processKicker}</p>
+          <h2 id="process-title">{c.processTitle}</h2>
+        </div>
+      </header>
+      <ol class="steps" role="list">
+        {c.process.map((s, i) => (
+          <li class="step reveal" style={`transition-delay:${i * 90}ms`}>
+            <span class="step__node" aria-hidden="true"></span>
+            <span class="step__no">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.t}</h3>
+            <p>{s.d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Branchen -->
+  <section class="section industries" aria-labelledby="ind-title">
+    <div class="wrap">
+      <header class="shead reveal">
+        <div>
+          <p class="label">{c.industriesKicker}</p>
+          <h2 id="ind-title">{c.industriesTitle}</h2>
+        </div>
+      </header>
+      <ul class="ind" role="list">
+        {industries.map((ind, i) => (
+          <li class="ind__item reveal" style={`transition-delay:${(i % 3) * 80}ms`}>
+            <Image src={ind.image} alt={ind.alt[lang]} widths={[360, 560, 800]} sizes="(max-width: 640px) 100vw, (max-width: 1000px) 50vw, 400px" loading="lazy" />
+            <span class="ind__name"><span class="ind__no">{String(i + 1).padStart(2, '0')}</span>{ind[lang]}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faqsec" aria-label={c.faqTitle}>
+    <div class="wrap faqsec__in reveal">
+      <Faq title={c.faqTitle} items={c.faq} />
+    </div>
+  </section>
+
+  <Cta lang={lang} />
+</Base>
+
+<style>
+  .shead { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.5rem 4rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
+  .shead h2 { margin: 0.9rem 0 0; max-width: 18ch; }
+  .shead .lead { margin: 0; max-width: 42ch; }
+  .dark h2 { color: #fff; }
+
+  /* Intro */
+  .intro__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  @media (max-width: 900px) { .intro__grid { grid-template-columns: 1fr; } }
+  .intro__copy h2 { margin-top: 1rem; }
+  .intro__copy p:not(.lead):not(.label) { color: var(--muted); }
+  .intro__copy .btn { margin-top: 1rem; }
+  .intro__media { position: relative; padding: 0 12% 18% 0; }
+  .intro__fig { margin: 0; position: relative; }
+  .intro__fig img { width: 100%; object-fit: cover; border-radius: var(--radius); }
+  .intro__fig--a img { aspect-ratio: 4 / 4.4; }
+  .intro__fig--b { position: absolute; right: 0; bottom: 0; width: 46%; border: 8px solid var(--paper); border-radius: calc(var(--radius) + 4px); }
+  .intro__fig--b img { aspect-ratio: 1; }
+  figcaption { position: absolute; top: 0.8rem; left: 0.8rem; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em; padding: 0.25rem 0.5rem; background: var(--ink); color: var(--brass-2); }
+
+  .services { background: var(--paper-2); }
+
+  /* Prozess */
+  .steps { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; list-style: none; padding: 0; margin: 0; }
+  .steps::before { content: ''; position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: linear-gradient(90deg, var(--brass), var(--brass-2) 60%, rgb(255 255 255 / 0.15)); box-shadow: 0 0 10px rgb(231 191 104 / 0.6); }
+  .step { position: relative; padding-top: 2.4rem; }
+  .step__node { position: absolute; top: 0; left: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--ink); border: 2px solid var(--brass-2); box-shadow: 0 0 0 5px rgb(231 191 104 / 0.12); }
+  .step__no { font-family: var(--font-mono); font-size: 0.75rem; color: var(--brass-2); letter-spacing: 0.1em; }
+  .step h3 { color: #fff; margin: 0.5rem 0; }
+  .step p { color: var(--muted-dark); font-size: 0.95rem; margin: 0; }
+  @media (max-width: 1000px) {
+    .steps { grid-template-columns: 1fr; gap: 0; padding-left: 2.2rem; }
+    .steps::before { left: 7px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; background: linear-gradient(180deg, var(--brass), rgb(255 255 255 / 0.15)); }
+    .step { padding: 0 0 2.2rem; }
+    .step__node { left: -2.2rem; top: 0.2rem; }
+  }
+
+  /* Branchen */
+  .ind { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; list-style: none; padding: 0; margin: 0; }
+  @media (max-width: 900px) { .ind { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .ind { grid-template-columns: 1fr; } }
+  .ind__item { position: relative; overflow: hidden; border-radius: var(--radius); aspect-ratio: 4 / 3; background: var(--ink); }
+  .ind__item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.1) brightness(0.75); transition: transform 0.9s var(--ease), filter 0.6s; }
+  .ind__item:hover img { transform: scale(1.06); filter: grayscale(0.2) brightness(0.8); }
+  .ind__item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgb(7 19 29 / 0.85)); }
+  .ind__name { position: absolute; z-index: 1; left: 1.2rem; right: 1.2rem; bottom: 1.1rem; display: flex; align-items: baseline; gap: 0.7rem; color: #fff; font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); }
+  .ind__no { font-family: var(--font-mono); font-size: 0.7rem; color: var(--brass-2); }
+
+  .faqsec__in { max-width: 900px; }
+</style>

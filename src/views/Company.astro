@@ -1,0 +1,163 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Cta from '../components/Cta.astro';
+import { routes, ui, type Lang } from '../i18n/ui';
+import { site, mapsLink } from '../data/site';
+import ceo from '../assets/img/gregor-prill.jpg';
+import fraesen from '../assets/img/fraesen.jpg';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const c = {
+  de: {
+    title: 'Über uns – Erodiertechnik seit 2011 in Bad Schwartau | GRO',
+    description: 'Die GRO-Erodiertechnik GmbH aus Bad Schwartau bei Lübeck: seit 2011 Ihr Partner für Erodieren, HSC-Fräsen und Präzisionsfertigung. Lernen Sie uns kennen.',
+    kicker: 'Unternehmen',
+    h1: 'Präzision ist bei uns Chefsache.',
+    lead: 'Seit 2011 steht die GRO-Erodiertechnik GmbH für höchste Präzision und Zuverlässigkeit in der Metallbearbeitung.',
+    story: [
+      'An unserem Standort in Bad Schwartau bieten wir Ihnen ein umfassendes Leistungsspektrum – von der Einzelteilfertigung bis zur Serienproduktion.',
+      'Unsere besondere Stärke liegt im Erodieren: Mit modernster Technik, fundiertem Know-how und mehr als einem Jahrzehnt Erfahrung entwickeln wir maßgeschneiderte Lösungen, die exakt auf Ihre Anforderungen abgestimmt sind. Sie profitieren von unserem Komplettservice – von der Beratung über die Fertigung bis zum Finish, alles aus einer Hand.',
+      'Dank unseres digitalisierten Maschinenparks reagieren wir flexibel, schnell und mit größter Präzision auf Ihre Anforderungen. Transparente Kommunikation, dokumentierte Qualität und nachvollziehbare Ergebnisse sind für uns selbstverständlich.',
+    ],
+    quote: 'Ihr Partner für innovative Lösungen, messbare Qualität und persönlichen Service.',
+    role: 'Geschäftsführer',
+    pillarsTitle: 'Das macht uns besonders.',
+    pillars: [
+      { k: 'Alles aus einer Hand', t: 'Langjährige Erfahrung', d: 'Wir setzen auf modernste, digitalisierte und automatisierte Fertigungsverfahren, um Ergebnisse in höchster Qualität und maximaler Präzision zu erzielen.' },
+      { k: 'Alles unter einem Dach', t: 'Nachhaltige Kompetenz', d: 'Wir erodieren im Lohnauftrag, fertigen Ihre Elektroden und Werkstücke auf HSC-Fräsmaschinen und dokumentieren die Ergebnisse auf Wunsch mit modernster Messtechnik.' },
+      { k: 'Ein Team', t: 'Kompetenz, auf die Sie bauen', d: 'Unser moderner, automatisierter Maschinenpark ermöglicht es uns, flexibel und unabhängig auf die Anforderungen unserer Kunden zu reagieren.' },
+    ],
+    locKicker: 'Standort',
+    locTitle: 'Bad Schwartau – direkt bei Lübeck.',
+    locText: 'Unser Betrieb liegt verkehrsgünstig an der A1 zwischen Hamburg und Fehmarn. Kunden aus Lübeck, Hamburg, Kiel und ganz Schleswig-Holstein erreichen uns schnell – und wir liefern deutschlandweit.',
+  },
+  en: {
+    title: 'About Us – EDM Specialists since 2011 | GRO-Erodiertechnik',
+    description: 'GRO-Erodiertechnik GmbH from Bad Schwartau near Lübeck: your partner for EDM, HSC milling and precision manufacturing since 2011. Get to know us.',
+    kicker: 'Company',
+    h1: 'Precision is a top-level priority.',
+    lead: 'Since 2011, GRO-Erodiertechnik GmbH has stood for the highest precision and reliability in metalworking.',
+    story: [
+      'At our site in Bad Schwartau we offer a comprehensive range of services – from single-part manufacturing to series production.',
+      'Our particular strength lies in EDM: with state-of-the-art technology, in-depth expertise and more than a decade of experience, we develop tailor-made solutions precisely aligned with your requirements. You benefit from our complete service – from consultation and manufacturing to final finishing, all from a single source.',
+      'Thanks to our digitalised machinery, we respond to your needs flexibly, quickly and with the utmost precision. Transparent communication, documented quality and verifiable results are a matter of course for us.',
+    ],
+    quote: 'Your partner for innovative solutions, measurable quality and personal service.',
+    role: 'Managing Director',
+    pillarsTitle: 'What makes us special.',
+    pillars: [
+      { k: 'Everything from one source', t: 'Many years of experience', d: 'We rely on state-of-the-art, digitalised and automated manufacturing methods to achieve the highest-quality results with maximum precision.' },
+      { k: 'Everything under one roof', t: 'Sustainable expertise', d: 'We provide contract EDM services, manufacture your electrodes and workpieces on HSC milling machines and, on request, document the results with state-of-the-art measuring technology.' },
+      { k: 'One team', t: 'Competence you can rely on', d: 'Our modern, automated machinery enables us to respond flexibly and independently to our customers’ requirements.' },
+    ],
+    locKicker: 'Location',
+    locTitle: 'Bad Schwartau – right next to Lübeck.',
+    locText: 'Our facility is conveniently located on the A1 motorway between Hamburg and Fehmarn in northern Germany. We serve customers throughout Germany and Europe.',
+  },
+}[lang];
+
+const crumbs = [{ name: t.nav.company, href: routes.company[lang] }];
+const personLd = {
+  '@type': 'Person',
+  name: site.ceo,
+  jobTitle: c.role,
+  worksFor: { '@id': `${site.url}/#organization` },
+};
+---
+
+<Base lang={lang} title={c.title} description={c.description} alternates={routes.company} breadcrumbs={crumbs} jsonLd={[personLd]} pageType="AboutPage">
+  <PageHero lang={lang} kicker={c.kicker} title={c.h1} lead={c.lead} crumbs={crumbs} code="2011" />
+
+  <section class="section">
+    <div class="wrap story">
+      <figure class="story__ceo reveal">
+        <Image src={ceo} alt={lang === 'de' ? `${site.ceo}, Geschäftsführer der ${site.name}` : `${site.ceo}, Managing Director of ${site.name}`} widths={[360, 560, 800]} sizes="(max-width: 900px) 80vw, 420px" />
+        <figcaption>
+          <strong>{site.ceo}</strong>
+          <span>{c.role}</span>
+        </figcaption>
+      </figure>
+      <div class="story__copy reveal">
+        {c.story.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+        <blockquote>
+          <p>„{c.quote}“</p>
+          <cite>— {site.ceo}</cite>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark blueprint" aria-labelledby="pillars-title">
+    <div class="wrap">
+      <h2 id="pillars-title" class="reveal">{c.pillarsTitle}</h2>
+      <ol class="pillars" role="list">
+        {c.pillars.map((p, i) => (
+          <li class="reveal" style={`transition-delay:${i * 100}ms`}>
+            <span class="pillars__no">{String(i + 1).padStart(2, '0')} / 03</span>
+            <p class="pillars__k">{p.k}</p>
+            <h3>{p.t}</h3>
+            <p>{p.d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="loc-title">
+    <div class="wrap loc">
+      <div class="reveal">
+        <p class="label">{c.locKicker}</p>
+        <h2 id="loc-title">{c.locTitle}</h2>
+        <p class="lead">{c.locText}</p>
+        <address>
+          <strong>{site.name}</strong><br />
+          {site.street}<br />
+          {site.zip} {site.city}<br />
+          <a href={site.phoneHref}>{site.phone}</a> · <a href={`mailto:${site.email}`}>{site.email}</a>
+        </address>
+        <a class="btn btn--ghost" href={mapsLink} target="_blank" rel="noopener">{t.route} ↗</a>
+      </div>
+      <figure class="loc__img reveal">
+        <Image src={fraesen} alt={lang === 'de' ? 'Fräsbearbeitung in der Fertigung der GRO-Erodiertechnik' : 'Milling at GRO-Erodiertechnik’s production facility'} widths={[400, 700, 900]} sizes="(max-width: 900px) 100vw, 560px" loading="lazy" />
+        <figcaption>N {site.geo.lat.toFixed(5)}° · E {site.geo.lng.toFixed(5)}°</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <Cta lang={lang} />
+</Base>
+
+<style>
+  .story { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  @media (max-width: 900px) { .story { grid-template-columns: 1fr; } }
+  .story__ceo { margin: 0; position: relative; max-width: 440px; }
+  .story__ceo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: center 20%; border-radius: var(--radius); }
+  .story__ceo figcaption { position: absolute; left: 1rem; bottom: 1rem; display: grid; padding: 0.8rem 1rem; background: var(--ink); color: #fff; border-left: 3px solid var(--brass); }
+  .story__ceo figcaption span { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass-2); }
+  .story__copy p:not(.lead) { color: var(--muted); }
+  blockquote { margin: 2.5rem 0 0; padding: 1.8rem 0 0; border-top: 1px solid var(--line); }
+  blockquote p { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.2; letter-spacing: -0.015em; color: var(--text) !important; }
+  cite { font-style: normal; font-family: var(--font-mono); font-size: 0.8rem; color: var(--brass-ink); }
+
+  .dark h2 { color: #fff; max-width: 16ch; }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line-dark); border: 1px solid var(--line-dark); list-style: none; padding: 0; margin: 2.5rem 0 0; }
+  @media (max-width: 900px) { .pillars { grid-template-columns: 1fr; } }
+  .pillars li { background: var(--ink); padding: 2.2rem 2rem 2.5rem; }
+  .pillars__no { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted-dark); letter-spacing: 0.1em; }
+  .pillars__k { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass-2); margin: 2.5rem 0 0.4rem; }
+  .pillars h3 { color: #fff; font-size: var(--step-2); }
+  .pillars li > p:last-child { color: var(--muted-dark); margin: 0; }
+
+  .loc { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  @media (max-width: 900px) { .loc { grid-template-columns: 1fr; } }
+  .loc h2 { margin-top: 1rem; }
+  address { font-style: normal; margin: 1.5rem 0 2rem; line-height: 1.8; }
+  .loc__img { margin: 0; position: relative; }
+  .loc__img img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: var(--radius); }
+  .loc__img figcaption { position: absolute; right: 0.8rem; bottom: 0.8rem; padding: 0.35rem 0.6rem; background: var(--ink); color: var(--brass-2); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.1em; }
+</style>

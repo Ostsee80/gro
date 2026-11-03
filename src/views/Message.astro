@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { routes, ui, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+  kind: 'thanks' | 'error' | 'notfound';
+}
+const { lang, kind } = Astro.props;
+const t = ui[lang];
+const copy = {
+  thanks: {
+    de: { title: 'Vielen Dank für Ihre Anfrage!', kicker: 'Nachricht gesendet', lead: 'Wir haben Ihre Nachricht erhalten und melden uns schnellstmöglich bei Ihnen.' },
+    en: { title: 'Thank you for your enquiry!', kicker: 'Message sent', lead: 'We have received your message and will get back to you as soon as possible.' },
+  },
+  error: {
+    de: { title: 'Das hat leider nicht geklappt.', kicker: 'Fehler', lead: 'Ihre Nachricht konnte nicht gesendet werden. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt eine E-Mail.' },
+    en: { title: 'Something went wrong.', kicker: 'Error', lead: 'Your message could not be sent. Please try again or email us directly.' },
+  },
+  notfound: {
+    de: { title: 'Diese Seite gibt es nicht (mehr).', kicker: 'Fehler 404', lead: 'Vielleicht finden Sie, was Sie suchen, in unseren Leistungen – oder Sie sprechen uns direkt an.' },
+    en: { title: 'This page does not exist.', kicker: 'Error 404', lead: 'Perhaps you will find what you are looking for in our services – or simply get in touch.' },
+  },
+}[kind][lang];
+const alt = kind === 'thanks' ? routes.thanks : { de: '/404/', en: '/404/' };
+---
+
+<Base lang={lang} title={`${copy.title} | GRO-Erodiertechnik`} description={copy.lead} alternates={alt} noindex>
+  <PageHero lang={lang} kicker={copy.kicker} title={copy.title} lead={copy.lead} code={kind === 'notfound' ? '404' : undefined}>
+    <div style="display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem">
+      <a class="btn" href={routes.home[lang]}>{t.nav.home}</a>
+      <a class="btn btn--ghost" href={kind === 'error' ? routes.contact[lang] : routes.services[lang]}>{kind === 'error' ? t.nav.contact : t.nav.services}</a>
+    </div>
+  </PageHero>
+</Base>

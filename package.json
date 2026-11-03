@@ -1,0 +1,29 @@
+{
+  "name": "gro-erodiertechnik-website",
+  "version": "1.0.0",
+  "description": "Website der GRO-Erodiertechnik GmbH",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ostsee80/gro.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/Ostsee80/gro/issues"
+  },
+  "homepage": "https://github.com/Ostsee80/gro#readme",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "astro": "^5.18.2",
+    "sharp": "^0.35.5"
+  },
+  "private": true,
+  "type": "module"
+}

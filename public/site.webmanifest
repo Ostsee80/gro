@@ -1,0 +1,8 @@
+{
+  "name": "GRO-Erodiertechnik GmbH",
+  "short_name": "GRO",
+  "icons": [{ "src": "/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }],
+  "theme_color": "#07131d",
+  "background_color": "#07131d",
+  "display": "browser"
+}

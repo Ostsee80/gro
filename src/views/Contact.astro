@@ -1,0 +1,161 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { routes, ui, type Lang } from '../i18n/ui';
+import { site, mapsLink } from '../data/site';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const c = {
+  de: {
+    title: 'Kontakt & Anfrage – GRO-Erodiertechnik Bad Schwartau',
+    description: 'Jetzt anfragen: Zeichnung oder CAD-Datei senden und schnell ein Angebot für Erodieren, Fräsen oder CNC-Bearbeitung erhalten. Tel. +49 451 530 954 12.',
+    kicker: 'Kontakt',
+    h1: 'Lassen Sie uns über Ihr Bauteil sprechen.',
+    lead: 'Senden Sie uns Ihre Anfrage mit Zeichnung oder CAD-Modell – wir melden uns schnellstmöglich mit einem Angebot.',
+    formTitle: 'Anfrage senden',
+    name: 'Name', company: 'Firma', email: 'E-Mail', phone: 'Telefon', message: 'Ihre Nachricht',
+    messagePh: 'Werkstoff, Stückzahl, gewünschter Liefertermin …',
+    file: 'Zeichnung / CAD-Datei (optional)',
+    fileHint: 'PDF, STEP, DXF, DWG, IGES, JPG, PNG oder ZIP · max. 10 MB',
+    consent: 'Ich habe die <a href="/datenschutz/">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Beantwortung meiner Anfrage einverstanden.',
+    send: 'Anfrage absenden',
+    required: 'Pflichtfeld',
+    direct: 'Direkter Draht',
+    contactPerson: 'Ansprechpartner',
+  },
+  en: {
+    title: 'Contact & Enquiry – GRO-Erodiertechnik Germany',
+    description: 'Request a quote now: send your drawing or CAD file and quickly receive an offer for EDM, milling or CNC machining. Phone +49 451 530 954 12.',
+    kicker: 'Contact',
+    h1: 'Let’s talk about your component.',
+    lead: 'Send us your enquiry with a drawing or CAD model – we will get back to you with a quotation as quickly as possible.',
+    formTitle: 'Send an enquiry',
+    name: 'Name', company: 'Company', email: 'Email', phone: 'Phone', message: 'Your message',
+    messagePh: 'Material, quantity, desired delivery date …',
+    file: 'Drawing / CAD file (optional)',
+    fileHint: 'PDF, STEP, DXF, DWG, IGES, JPG, PNG or ZIP · max. 10 MB',
+    consent: 'I have read the <a href="/en/privacy/">privacy policy</a> and agree to my details being processed in order to answer my enquiry.',
+    send: 'Send enquiry',
+    required: 'required',
+    direct: 'Direct line',
+    contactPerson: 'Contact person',
+  },
+}[lang];
+
+const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
+---
+
+<Base lang={lang} title={c.title} description={c.description} alternates={routes.contact} breadcrumbs={crumbs} pageType="ContactPage">
+  <PageHero lang={lang} kicker={c.kicker} title={c.h1} lead={c.lead} crumbs={crumbs} />
+
+  <section class="section">
+    <div class="wrap ct">
+      <form class="form" action="/kontakt.php" method="post" enctype="multipart/form-data" data-form>
+        <h2>{c.formTitle}</h2>
+        <input type="hidden" name="lang" value={lang} />
+        <input type="hidden" name="ts" value="" data-ts />
+        <div class="hp" aria-hidden="true">
+          <label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+        </div>
+
+        <div class="form__row">
+          <label class="field">
+            <span>{c.name} <abbr title={c.required}>*</abbr></span>
+            <input type="text" name="name" required autocomplete="name" maxlength="120" />
+          </label>
+          <label class="field">
+            <span>{c.company}</span>
+            <input type="text" name="company" autocomplete="organization" maxlength="160" />
+          </label>
+        </div>
+        <div class="form__row">
+          <label class="field">
+            <span>{c.email} <abbr title={c.required}>*</abbr></span>
+            <input type="email" name="email" required autocomplete="email" maxlength="160" />
+          </label>
+          <label class="field">
+            <span>{c.phone}</span>
+            <input type="tel" name="phone" autocomplete="tel" maxlength="60" />
+          </label>
+        </div>
+        <label class="field">
+          <span>{c.message} <abbr title={c.required}>*</abbr></span>
+          <textarea name="message" rows="6" required maxlength="8000" placeholder={c.messagePh}></textarea>
+        </label>
+        <label class="field file">
+          <span>{c.file}</span>
+          <input type="file" name="attachment" accept=".pdf,.step,.stp,.dxf,.dwg,.igs,.iges,.jpg,.jpeg,.png,.zip" />
+          <small>{c.fileHint}</small>
+        </label>
+        <label class="consent">
+          <input type="checkbox" name="consent" value="1" required />
+          <span set:html={c.consent} />
+        </label>
+        <button class="btn" type="submit">
+          {c.send}
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" /></svg>
+        </button>
+      </form>
+
+      <aside class="ct__side dark blueprint">
+        <p class="label">{c.direct}</p>
+        <a class="ct__big" href={site.phoneHref}>{site.phone}</a>
+        <a class="ct__mail" href={`mailto:${site.email}`}>{site.email}</a>
+        <hr />
+        <dl>
+          <dt>{c.contactPerson}</dt>
+          <dd>{site.ceo}</dd>
+          <dt>{lang === 'de' ? 'Adresse' : 'Address'}</dt>
+          <dd>
+            <address>{site.name}<br />{site.street}<br />{site.zip} {site.city}{lang === 'en' && <><br />Germany</>}</address>
+          </dd>
+        </dl>
+        <a class="btn btn--ghost" href={mapsLink} target="_blank" rel="noopener">{t.route} ↗</a>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<script>
+  const ts = document.querySelector<HTMLInputElement>('[data-ts]');
+  if (ts) ts.value = String(Math.floor(Date.now() / 1000));
+</script>
+
+<style>
+  .ct { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  @media (max-width: 900px) { .ct { grid-template-columns: 1fr; } }
+  .form { display: grid; gap: 1.2rem; }
+  .form h2 { font-size: var(--step-2); margin-bottom: 0.4rem; }
+  .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+  @media (max-width: 600px) { .form__row { grid-template-columns: 1fr; } }
+  .field { display: grid; gap: 0.4rem; }
+  .field > span { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  abbr { text-decoration: none; color: var(--brass-ink); }
+  input[type='text'], input[type='email'], input[type='tel'], textarea {
+    width: 100%; font: inherit; color: var(--text);
+    padding: 0.85rem 1rem; min-height: 50px;
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--radius);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--brass); box-shadow: 0 0 0 3px rgb(199 154 66 / 0.2); }
+  textarea { resize: vertical; }
+  .file input { font: inherit; font-size: 0.95rem; padding: 0.8rem; background: var(--white); border: 1px dashed rgb(7 19 29 / 0.3); border-radius: var(--radius); }
+  .file small { color: var(--muted); font-size: 0.8rem; }
+  .consent { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.92rem; color: var(--muted); }
+  .consent input { margin-top: 0.3rem; width: 18px; height: 18px; accent-color: var(--brass); flex: none; }
+  .form .btn { justify-self: start; }
+  .hp { position: absolute; left: -9999px; }
+
+  .ct__side { padding: clamp(1.8rem, 4vw, 2.8rem); border-radius: var(--radius); position: sticky; top: calc(var(--header-h) + 1.5rem); }
+  .ct__big { display: block; margin-top: 1.2rem; font-family: var(--font-display); font-weight: 600; font-size: var(--step-3); line-height: 1; letter-spacing: -0.02em; color: #fff; text-decoration: none; }
+  .ct__mail { display: block; margin-top: 0.8rem; color: var(--brass-2); text-decoration: none; word-break: break-all; }
+  .ct__big:hover, .ct__mail:hover { color: var(--brass-2); text-decoration: underline; }
+  hr { border: 0; border-top: 1px solid var(--line-dark); margin: 2rem 0; }
+  dl { display: grid; gap: 0.3rem; margin: 0 0 2rem; }
+  dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-dark); margin-top: 0.8rem; }
+  dd { margin: 0; color: #fff; }
+  address { font-style: normal; }
+</style>

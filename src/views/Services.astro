@@ -1,0 +1,52 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import Cta from '../components/Cta.astro';
+import { services } from '../data/services';
+import { routes, servicePath, ui, type Lang } from '../i18n/ui';
+import { site } from '../data/site';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const c = {
+  de: {
+    title: 'Leistungen: Erodieren, Fräsen, CNC & Werkzeugbau | GRO',
+    description: 'Alle Leistungen der GRO-Erodiertechnik: Drahterodieren, Senkerodieren, HSC-Fräsen, CNC-Bearbeitung, Drehen, Formenbau, Pulverbeschichtung und Lasergravur.',
+    kicker: 'Leistungen',
+    h1: 'Fertigung mit Fertigungstiefe.',
+    lead: 'Ausgestattet mit modernstem Maschinenpark bieten wir jedem Kunden einen hochwertigen und effizienten Service – mit kurzen Durchlaufzeiten und gleichbleibend hervorragender Qualität.',
+  },
+  en: {
+    title: 'Services: EDM, Milling, CNC & Tool Making | GRO',
+    description: 'All services of GRO-Erodiertechnik: wire EDM, sinker EDM, HSC milling, CNC machining, turning, mould making, powder coating and laser engraving.',
+    kicker: 'Services',
+    h1: 'Manufacturing with real depth.',
+    lead: 'Equipped with state-of-the-art machinery, we provide every customer with high-quality, efficient service – with short lead times and consistently outstanding quality.',
+  },
+}[lang];
+
+const crumbs = [{ name: t.nav.services, href: routes.services[lang] }];
+const listLd = {
+  '@type': 'ItemList',
+  name: c.kicker,
+  itemListElement: services.map((s, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    url: new URL(servicePath(lang, s.slug[lang]), site.url).href,
+    name: s.title[lang],
+  })),
+};
+---
+
+<Base lang={lang} title={c.title} description={c.description} alternates={routes.services} breadcrumbs={crumbs} jsonLd={[listLd]} pageType="CollectionPage">
+  <PageHero lang={lang} kicker={c.kicker} title={c.h1} lead={c.lead} crumbs={crumbs} code="09" />
+  <section class="section">
+    <div class="wrap">
+      <ServiceGrid lang={lang} items={services} headingLevel="h2" />
+    </div>
+  </section>
+  <Cta lang={lang} />
+</Base>

@@ -1,0 +1,50 @@
+name: Build & Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+
+env:
+  # Testumgebung: new.gro-erodiertechnik.com (für Google gesperrt).
+  # Für den Livegang STAGING auf "0" und FTP_SERVER_DIR auf das Live-Verzeichnis setzen.
+  STAGING: '1'
+  FTP_SERVER: hosting214930.ae939.netcup.net
+  FTP_USERNAME: claude
+  FTP_SERVER_DIR: /new.gro-erodiertechnik.com/
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build
+        run: npm run build
+        env:
+          PUBLIC_STAGING: ${{ env.STAGING }}
+
+      - name: Testumgebung für Suchmaschinen sperren
+        if: env.STAGING == '1'
+        run: printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt
+
+      - name: Upload per FTP zu netcup
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ env.FTP_SERVER }}
+          username: ${{ env.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          local-dir: ./dist/
+          server-dir: ${{ env.FTP_SERVER_DIR }}

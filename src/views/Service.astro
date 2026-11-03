@@ -1,0 +1,120 @@
+---
+import { Image, getImage } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { services, type Service } from '../data/services';
+import { routes, servicePath, ui, type Lang } from '../i18n/ui';
+import { site } from '../data/site';
+
+interface Props { lang: Lang; service: Service }
+const { lang, service: s } = Astro.props;
+const t = ui[lang];
+
+const alternates = { de: servicePath('de', s.slug.de), en: servicePath('en', s.slug.en) };
+const crumbs = [
+  { name: t.nav.services, href: routes.services[lang] },
+  { name: s.title[lang], href: alternates[lang] },
+];
+const og = await getImage({ src: s.image, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
+const related = services.filter((x) => x.id !== s.id).slice(0, 3);
+
+const serviceLd = {
+  '@type': 'Service',
+  '@id': `${new URL(alternates[lang], site.url).href}#service`,
+  name: s.title[lang],
+  serviceType: s.title[lang],
+  description: s.seoDescription[lang],
+  provider: { '@id': `${site.url}/#organization` },
+  areaServed: site.areaServed.map((name) => ({ '@type': 'Place', name })),
+  url: new URL(alternates[lang], site.url).href,
+  image: new URL(og.src, site.url).href,
+};
+const faqLd = {
+  '@type': 'FAQPage',
+  mainEntity: s.faq[lang].map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+
+<Base lang={lang} title={s.seoTitle[lang]} description={s.seoDescription[lang]} alternates={alternates} breadcrumbs={crumbs} image={og.src} jsonLd={[serviceLd, faqLd]}>
+  <PageHero lang={lang} kicker={`${t.nav.services} · ${s.code}`} title={s.title[lang]} lead={s.intro[lang]} crumbs={crumbs} code={s.code} />
+
+  <section class="section">
+    <div class="wrap sv">
+      <div class="sv__copy">
+        {s.body[lang].map((p, i) => <p class={i === 0 ? 'sv__first' : ''}>{p}</p>)}
+
+        <div class="sv__lists">
+          <div>
+            <h2 class="sv__h">{t.benefits}</h2>
+            <ul class="check">
+              {s.benefits[lang].map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h2 class="sv__h">{t.applications}</h2>
+            <ul class="dash">
+              {s.applications[lang].map((b) => <li>{b}</li>)}
+            </ul>
+          </div>
+        </div>
+
+        <div class="sv__faq">
+          <Faq title={t.faq} items={s.faq[lang]} />
+        </div>
+      </div>
+
+      <aside class="sv__side">
+        <figure class="sv__fig">
+          <Image src={s.image} alt={s.imageAlt[lang]} widths={[400, 640, 900]} sizes="(max-width: 900px) 100vw, 440px" loading="eager" />
+          <figcaption><span>{s.code}</span><span>GRO · {site.city}</span></figcaption>
+        </figure>
+        <div class="sv__box dark">
+          <p class="label">{ui[lang].ctaBlock.kicker}</p>
+          <p class="sv__boxtitle">{ui[lang].ctaBlock.title}</p>
+          <a class="btn" href={routes.contact[lang]}>{t.ctaLong}</a>
+          <a class="sv__tel" href={site.phoneHref}>{site.phone}</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section related" aria-labelledby="rel-title">
+    <div class="wrap">
+      <div class="related__head">
+        <h2 id="rel-title">{t.related}</h2>
+        <a href={routes.services[lang]} class="btn btn--ghost">{t.allServices}</a>
+      </div>
+      <ServiceGrid lang={lang} items={related} />
+    </div>
+  </section>
+
+  <Cta lang={lang} />
+</Base>
+
+<style>
+  .sv { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  @media (max-width: 900px) { .sv { grid-template-columns: 1fr; } .sv__side { order: -1; } }
+  .sv__copy p { color: var(--muted); max-width: 64ch; }
+  .sv__copy .sv__first { font-size: var(--step-1); line-height: 1.5; color: var(--text); }
+  .sv__lists { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 3rem 0; padding: 2.2rem 0; border-block: 1px solid var(--line); }
+  @media (max-width: 600px) { .sv__lists { grid-template-columns: 1fr; } }
+  .sv__h { font-size: var(--step-1); }
+  .check, .dash { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+  .check li, .dash li { position: relative; padding-left: 1.9rem; }
+  .check li::before { content: ''; position: absolute; left: 0; top: 0.35em; width: 1.1rem; height: 0.6rem; border-left: 2px solid var(--brass); border-bottom: 2px solid var(--brass); transform: rotate(-45deg) scale(0.75); transform-origin: 30% 60%; }
+  .dash li::before { content: ''; position: absolute; left: 0; top: 0.8em; width: 1.1rem; height: 1px; background: var(--brass); }
+  .sv__side { position: sticky; top: calc(var(--header-h) + 1.5rem); display: grid; gap: 1rem; }
+  .sv__fig { margin: 0; }
+  .sv__fig img { width: 100%; aspect-ratio: 4 / 3.4; object-fit: cover; border-radius: var(--radius) var(--radius) 0 0; }
+  .sv__fig figcaption { display: flex; justify-content: space-between; padding: 0.6rem 0.9rem; background: var(--ink); color: var(--brass-2); font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.14em; border-radius: 0 0 var(--radius) var(--radius); }
+  .sv__box { padding: 1.8rem; border-radius: var(--radius); display: grid; gap: 1rem; justify-items: start; }
+  .sv__boxtitle { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); line-height: 1.1; color: #fff; margin: 0; }
+  .sv__tel { font-family: var(--font-mono); color: var(--muted-dark); text-decoration: none; }
+  .sv__tel:hover { color: var(--brass-2); }
+  .related { background: var(--paper-2); }
+  .related__head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+  .related__head h2 { margin: 0; }
+</style>

@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /kontakt.php
+Disallow: /kontakt/danke/
+Disallow: /kontakt/fehler/
+Disallow: /en/contact/thank-you/
+Disallow: /en/contact/error/
+
+Sitemap: https://gro-erodiertechnik.com/sitemap-index.xml

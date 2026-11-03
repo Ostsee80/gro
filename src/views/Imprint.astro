@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { routes, ui, type Lang } from '../i18n/ui';
+import { site } from '../data/site';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const crumbs = [{ name: t.imprint, href: routes.imprint[lang] }];
+const de = lang === 'de';
+---
+
+<Base
+  lang={lang}
+  title={de ? 'Impressum | GRO-Erodiertechnik GmbH' : 'Legal Notice | GRO-Erodiertechnik GmbH'}
+  description={de ? 'Impressum der GRO-Erodiertechnik GmbH, Langenfelde 18, 23611 Bad Schwartau.' : 'Legal notice of GRO-Erodiertechnik GmbH, Langenfelde 18, 23611 Bad Schwartau, Germany.'}
+  alternates={routes.imprint}
+  breadcrumbs={crumbs}
+>
+  <PageHero lang={lang} kicker={de ? 'Rechtliches' : 'Legal'} title={t.imprint} crumbs={crumbs} />
+  <section class="section">
+    <div class="wrap prose">
+      <h2>{de ? 'Angaben gemäß § 5 DDG' : 'Information pursuant to § 5 DDG (German Digital Services Act)'}</h2>
+      <p>
+        {site.name}<br />
+        {site.street}<br />
+        {site.zip} {site.city}<br />
+        {de ? 'Deutschland' : 'Germany'}
+      </p>
+
+      <dl>
+        <dt>{de ? 'Vertreten durch' : 'Represented by'}</dt>
+        <dd>{site.ceo} ({de ? 'Geschäftsführer' : 'Managing Director'})</dd>
+        <dt>{de ? 'Telefon' : 'Phone'}</dt>
+        <dd><a href={site.phoneHref}>{site.phone}</a></dd>
+        <dt>E-Mail</dt>
+        <dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+        <dt>{de ? 'Registergericht' : 'Register court'}</dt>
+        <dd>{site.register.court}</dd>
+        <dt>{de ? 'Registernummer' : 'Register number'}</dt>
+        <dd>{site.register.number}</dd>
+        <dt>{de ? 'USt-IdNr. gemäß § 27a UStG' : 'VAT ID pursuant to § 27a UStG'}</dt>
+        <dd>{site.vatId}</dd>
+      </dl>
+
+      <h2>{de ? 'Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV' : 'Responsible for content pursuant to § 18 (2) MStV'}</h2>
+      <p>{site.ceo}, {site.street}, {site.zip} {site.city}</p>
+
+      <h2>{de ? 'Verbraucherstreitbeilegung' : 'Consumer dispute resolution'}</h2>
+      <p>
+        {de
+          ? 'Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.'
+          : 'We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.'}
+      </p>
+
+      <h2>{de ? 'Bildnachweise' : 'Image credits'}</h2>
+      <p>Gregor Prill, Shutterstock.com</p>
+
+      <h2>{de ? 'Haftung für Inhalte' : 'Liability for content'}</h2>
+      <p>
+        {de
+          ? 'Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.'
+          : 'The content of this website has been created with the utmost care. However, we cannot guarantee that the content is accurate, complete or up to date. As a service provider, we are responsible for our own content on these pages in accordance with general law.'}
+      </p>
+
+      <h2>{de ? 'Haftung für Links' : 'Liability for links'}</h2>
+      <p>
+        {de
+          ? 'Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.'
+          : 'Our website contains links to external third-party websites over whose content we have no control. The respective provider or operator is always responsible for the content of linked pages. If we become aware of any legal infringements, we will remove such links immediately.'}
+      </p>
+
+      <h2>{de ? 'Urheberrecht' : 'Copyright'}</h2>
+      <p>
+        {de
+          ? 'Alle Inhalte dieser Website einschließlich Gestaltung und Programmierung unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung und Verbreitung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung der GRO-Erodiertechnik GmbH.'
+          : 'All content on this website, including design and programming, is subject to German copyright law. Reproduction, editing and distribution beyond the limits of copyright law require the written consent of GRO-Erodiertechnik GmbH.'}
+      </p>
+    </div>
+  </section>
+</Base>

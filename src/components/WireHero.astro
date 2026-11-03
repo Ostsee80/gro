@@ -1,0 +1,296 @@
+---
+/**
+ * Hero mit „Erodierdraht“-Animation: Ein Funke schneidet die Kontur
+ * eines Zahnrad-Stempels mit Sechskant-Durchbruch aus – wie beim Drahterodieren.
+ */
+import { routes, ui, type Lang } from '../i18n/ui';
+import { site } from '../data/site';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+
+// Zahnradkontur berechnen
+const cx = 300, cy = 300, rOut = 210, rIn = 182, teeth = 14;
+const pts: string[] = [];
+for (let i = 0; i < teeth; i++) {
+  const a0 = (i / teeth) * Math.PI * 2 - Math.PI / 2;
+  const step = (Math.PI * 2) / teeth;
+  const seq = [
+    [rIn, a0],
+    [rIn, a0 + step * 0.18],
+    [rOut, a0 + step * 0.3],
+    [rOut, a0 + step * 0.62],
+    [rIn, a0 + step * 0.74],
+  ];
+  for (const [r, a] of seq) pts.push(`${(cx + r * Math.cos(a)).toFixed(1)} ${(cy + r * Math.sin(a)).toFixed(1)}`);
+}
+// Einfädelpunkt (Startloch) → Kontur → zurück
+const start = `${cx} ${cy - rIn - 60}`;
+const gear = `M${start} L${pts[0]} L${pts.slice(1).join(' L')} Z`;
+
+// Sechskant-Durchbruch
+const hexR = 74;
+const hex = Array.from({ length: 6 }, (_, i) => {
+  const a = (i / 6) * Math.PI * 2;
+  return `${(cx + hexR * Math.cos(a)).toFixed(1)} ${(cy + hexR * Math.sin(a)).toFixed(1)}`;
+});
+const hexPath = `M${cx} ${cy} L${hex[0]} L${hex.slice(1).join(' L')} Z`;
+
+const copy = {
+  de: {
+    kicker: 'Lohnfertigung seit 2011 · Bad Schwartau bei Lübeck',
+    h1a: 'Präzision, die Funken schlägt.',
+    h1b: 'Drahterodieren, Senkerodieren, HSC-Fräsen und Werkzeugbau aus einer Hand.',
+    text: 'Wir fertigen, was mit klassischer Zerspanung nicht mehr geht: komplexe Konturen in gehärteten Werkstoffen – vom Prototyp bis zur Serie, dokumentiert und termintreu.',
+    secondary: 'Leistungen ansehen',
+  },
+  en: {
+    kicker: 'Contract manufacturing since 2011 · near Lübeck, Germany',
+    h1a: 'Precision that strikes sparks.',
+    h1b: 'Wire EDM, sinker EDM, HSC milling and tool making from a single source.',
+    text: 'We manufacture what conventional machining can no longer achieve: complex contours in hardened materials – from prototype to series, documented and on time.',
+    secondary: 'View services',
+  },
+}[lang];
+---
+
+<section class="hero dark blueprint" aria-labelledby="hero-title">
+  <div class="hero__glow" aria-hidden="true"></div>
+  <div class="hero__in wrap">
+    <div class="hero__copy">
+      <p class="label">{copy.kicker}</p>
+      <h1 id="hero-title">
+        <span class="hero__h1a">{copy.h1a}</span>
+        <span class="hero__h1b">{copy.h1b}</span>
+      </h1>
+      <p class="lead">{copy.text}</p>
+      <div class="hero__ctas">
+        <a class="btn" href={routes.contact[lang]}>
+          {t.ctaLong}
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" /></svg>
+        </a>
+        <a class="btn btn--ghost" href={routes.services[lang]}>{copy.secondary}</a>
+      </div>
+      <p class="hero__phone">
+        <span class="hero__dot" aria-hidden="true"></span>
+        <a href={site.phoneHref}>{site.phone}</a>
+      </p>
+    </div>
+
+    <div class="hero__art" aria-hidden="true">
+      <svg viewBox="0 0 600 600" class="wire" data-wire>
+        <defs>
+          <radialGradient id="spark-g">
+            <stop offset="0" stop-color="#fff" />
+            <stop offset="0.25" stop-color="#bfefff" />
+            <stop offset="0.6" stop-color="#e7bf68" stop-opacity="0.55" />
+            <stop offset="1" stop-color="#e7bf68" stop-opacity="0" />
+          </radialGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="b" />
+            <feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
+
+        <!-- Mittellinien -->
+        <g class="wire__axes">
+          <line x1="300" y1="40" x2="300" y2="560" />
+          <line x1="40" y1="300" x2="560" y2="300" />
+          <circle cx="300" cy="300" r="196" />
+        </g>
+
+        <!-- Bemaßung -->
+        <g class="wire__dims">
+          <line x1="90" y1="572" x2="510" y2="572" />
+          <line x1="90" y1="562" x2="90" y2="582" />
+          <line x1="510" y1="562" x2="510" y2="582" />
+          <text x="300" y="594" text-anchor="middle">Ø 84.00</text>
+          <line x1="586" y1="90" x2="586" y2="510" />
+          <line x1="576" y1="90" x2="596" y2="90" />
+          <line x1="576" y1="510" x2="596" y2="510" />
+          <text x="0" y="0" transform="translate(578 300) rotate(-90)" text-anchor="middle">Z = 14</text>
+          <line x1="300" y1="300" x2="374" y2="300" class="wire__leader" />
+          <text x="392" y="268">SW 25.6</text>
+          <text x="392" y="284" class="wire__tol">6 × 60°</text>
+          <text x="18" y="30">EDM-W / 01</text>
+          <text x="18" y="46" class="wire__tol">GRO · BAD SCHWARTAU</text>
+        </g>
+
+        <!-- Schnittbahn (Vorschau) -->
+        <path d={gear} class="wire__ghost" />
+        <path d={hexPath} class="wire__ghost" />
+
+        <!-- Geschnittene Bahn -->
+        <path d={gear} class="wire__cut" data-path />
+        <path d={hexPath} class="wire__cut" data-path />
+
+        <!-- Startloch -->
+        <circle cx={cx} cy={cy - rIn - 60} r="5" class="wire__hole" />
+        <circle cx={cx} cy={cy} r="5" class="wire__hole" />
+
+        <!-- Funke -->
+        <g data-spark class="wire__spark">
+          <circle r="22" fill="url(#spark-g)" />
+          <circle r="3.2" fill="#fff" filter="url(#glow)" />
+        </g>
+      </svg>
+      <div class="hero__readout" data-readout>
+        <span>X <b data-x>000.000</b></span>
+        <span>Y <b data-y>000.000</b></span>
+        <span class="hero__status"><i></i> EDM</span>
+      </div>
+    </div>
+  </div>
+
+  <ul class="hero__facts wrap" role="list">
+    <li><b>2011</b><span>{lang === 'de' ? 'gegründet' : 'founded'}</span></li>
+    <li><b>9</b><span>{lang === 'de' ? 'Fertigungsverfahren' : 'manufacturing processes'}</span></li>
+    <li><b>1</b><span>{lang === 'de' ? 'Ansprechpartner' : 'point of contact'}</span></li>
+    <li><b>1 → ∞</b><span>{lang === 'de' ? 'vom Einzelteil bis zur Serie' : 'from single part to series'}</span></li>
+  </ul>
+</section>
+
+<script>
+  const svg = document.querySelector<SVGSVGElement>('[data-wire]');
+  if (svg) {
+    const paths = [...svg.querySelectorAll<SVGPathElement>('[data-path]')];
+    const spark = svg.querySelector<SVGGElement>('[data-spark]')!;
+    const xEl = document.querySelector('[data-x]')!;
+    const yEl = document.querySelector('[data-y]')!;
+    const lens = paths.map((p) => p.getTotalLength());
+    const total = lens.reduce((a, b) => a + b, 0);
+    paths.forEach((p, i) => {
+      p.style.strokeDasharray = `${lens[i]}`;
+      p.style.strokeDashoffset = `${lens[i]}`;
+    });
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const DURATION = 9000;
+    const PAUSE = 2200;
+
+    const render = (progress: number) => {
+      let d = progress * total;
+      let point: DOMPoint | null = null;
+      paths.forEach((p, i) => {
+        const l = lens[i];
+        const local = Math.max(0, Math.min(l, d));
+        p.style.strokeDashoffset = `${l - local}`;
+        if (d > 0 && d <= l) point = p.getPointAtLength(local);
+        d -= l;
+      });
+      if (point) {
+        const pt = point as DOMPoint;
+        spark.setAttribute('transform', `translate(${pt.x} ${pt.y})`);
+        spark.style.opacity = '1';
+        xEl.textContent = ((pt.x - 300) / 5).toFixed(3).padStart(7, '0');
+        yEl.textContent = ((300 - pt.y) / 5).toFixed(3).padStart(7, '0');
+      } else {
+        spark.style.opacity = '0';
+      }
+    };
+
+    if (reduce) {
+      render(1);
+    } else {
+      let t0: number | null = null;
+      let visible = true;
+      new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(svg);
+      const loop = (now: number) => {
+        if (t0 === null) t0 = now;
+        if (visible) {
+          const cycle = (now - t0) % (DURATION + PAUSE);
+          render(Math.min(1, cycle / DURATION));
+        }
+        requestAnimationFrame(loop);
+      };
+      requestAnimationFrame(loop);
+    }
+  }
+</script>
+
+<style>
+  .hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding-top: clamp(3rem, 2rem + 5vw, 6.5rem);
+    padding-bottom: 0;
+    margin-top: calc(-1 * var(--header-h));
+    padding-top: calc(var(--header-h) + clamp(2.5rem, 1.5rem + 5vw, 6rem));
+  }
+  .hero__glow {
+    position: absolute; inset: auto -20% -40% auto; z-index: -1;
+    width: 70vw; height: 70vw; max-width: 900px; max-height: 900px;
+    background: radial-gradient(closest-side, rgb(199 154 66 / 0.22), transparent 70%);
+    filter: blur(20px);
+  }
+  .hero__in {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    gap: clamp(2rem, 4vw, 5rem);
+    align-items: center;
+  }
+  @media (max-width: 900px) { .hero__in { grid-template-columns: 1fr; } }
+
+  h1 { margin: 1.2rem 0 1.4rem; }
+  .hero__h1a { display: block; font-size: var(--step-5); line-height: 0.95; letter-spacing: -0.035em; color: #fff; }
+  .hero__h1b {
+    display: block; margin-top: 1.2rem;
+    font-size: var(--step-1); font-weight: 500; line-height: 1.35; letter-spacing: -0.005em;
+    color: var(--brass-2); max-width: 34ch;
+  }
+  .hero__ctas { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 2rem; }
+  .hero__phone {
+    display: flex; align-items: center; gap: 0.6rem; margin-top: 1.6rem;
+    font-family: var(--font-mono); font-size: 0.9rem; letter-spacing: 0.04em;
+  }
+  .hero__phone a { color: rgb(255 255 255 / 0.85); text-decoration: none; }
+  .hero__phone a:hover { color: var(--brass-2); }
+  .hero__dot { width: 8px; height: 8px; border-radius: 50%; background: #5bd68a; box-shadow: 0 0 0 4px rgb(91 214 138 / 0.18); }
+
+  .hero__art { position: relative; }
+  .wire { width: 100%; max-width: 620px; margin-inline: auto; overflow: visible; }
+  .wire__axes line, .wire__axes circle { stroke: rgb(255 255 255 / 0.16); stroke-width: 1; fill: none; stroke-dasharray: 14 5 2 5; }
+  .wire__dims line { stroke: rgb(255 255 255 / 0.35); stroke-width: 1; }
+  .wire__dims .wire__leader { stroke: var(--brass); }
+  .wire__dims text { fill: rgb(255 255 255 / 0.62); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; }
+  .wire__dims .wire__tol { fill: var(--brass-2); font-size: 10.5px; }
+  .wire__ghost { fill: none; stroke: rgb(255 255 255 / 0.13); stroke-width: 1; stroke-dasharray: 3 5; }
+  .wire__cut { fill: none; stroke: var(--brass-2); stroke-width: 2; stroke-linejoin: round; filter: drop-shadow(0 0 6px rgb(231 191 104 / 0.55)); }
+  .wire__hole { fill: none; stroke: var(--brass-2); stroke-width: 1.5; }
+  .wire__spark { transition: opacity 0.3s; }
+  .wire__spark circle:first-child { animation: flicker 0.12s infinite alternate; transform-origin: center; }
+  @keyframes flicker { from { opacity: 0.75; transform: scale(0.85); } to { opacity: 1; transform: scale(1.12); } }
+
+  .hero__readout {
+    position: absolute; left: 0; bottom: 4%;
+    display: flex; gap: 1rem;
+    padding: 0.55rem 0.8rem;
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
+    color: var(--muted-dark);
+    background: rgb(7 19 29 / 0.75); border: 1px solid var(--line-dark); border-radius: var(--radius);
+    backdrop-filter: blur(6px);
+  }
+  .hero__readout b { color: #fff; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .hero__status { display: flex; align-items: center; gap: 0.4rem; color: var(--brass-2); }
+  .hero__status i { width: 6px; height: 6px; border-radius: 50%; background: var(--spark); box-shadow: 0 0 8px var(--spark); animation: blink 1.2s infinite; }
+  @keyframes blink { 50% { opacity: 0.25; } }
+  @media (max-width: 900px) { .hero__art { max-width: 480px; margin-inline: auto; width: 100%; } }
+
+  .hero__facts {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    list-style: none; padding: 0; margin-top: clamp(3rem, 6vw, 5rem);
+    border-top: 1px solid var(--line-dark);
+  }
+  .hero__facts li { padding: 1.6rem 1.2rem 2rem 0; border-right: 1px solid var(--line-dark); }
+  .hero__facts li + li { padding-left: 1.2rem; }
+  .hero__facts li:last-child { border-right: 0; }
+  .hero__facts b { display: block; font-family: var(--font-display); font-size: var(--step-3); font-weight: 600; color: #fff; line-height: 1; letter-spacing: -0.03em; }
+  .hero__facts span { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted-dark); }
+  @media (max-width: 720px) {
+    .hero__facts { grid-template-columns: 1fr 1fr; }
+    .hero__facts li { border-bottom: 1px solid var(--line-dark); }
+    .hero__facts li:nth-child(2) { border-right: 0; }
+    .hero__facts li:nth-child(odd) { padding-left: 0; }
+  }
+</style>
