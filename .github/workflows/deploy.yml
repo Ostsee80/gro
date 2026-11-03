@@ -13,7 +13,7 @@ env:
   # Testumgebung: new.gro-erodiertechnik.com (für Google gesperrt).
   # Für den Livegang STAGING auf "0" und FTP_SERVER_DIR auf das Live-Verzeichnis setzen.
   STAGING: '1'
-  FTP_SERVER: hosting214930.ae939.netcup.net
+  FTP_SERVER: ae939.netcup.net   # Name aus dem TLS-Zertifikat des netcup-Servers
   FTP_USERNAME: claude
   FTP_SERVER_DIR: /httpdocs/   # relativ zum Startordner des FTP-Kontos
 
