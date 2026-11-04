@@ -5,7 +5,7 @@ import '@fontsource/jetbrains-mono/latin-500.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { site } from '../data/site';
+import { site, mapsPlace } from '../data/site';
 import { services } from '../data/services';
 import { ui, type Lang } from '../i18n/ui';
 
@@ -72,7 +72,7 @@ const organization = {
     addressCountry: site.country,
   },
   geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
-  hasMap: `https://www.openstreetmap.org/?mlat=${site.geo.lat}&mlon=${site.geo.lng}`,
+  hasMap: mapsPlace,
   areaServed: site.areaServed.map((name) => ({ '@type': 'Place', name })),
   knowsAbout: ['Drahterodieren', 'Senkerodieren', 'Funkenerosion', 'Wire EDM', 'Sinker EDM', 'HSC-Fräsen', 'CNC-Bearbeitung', 'Formenbau', 'Werkzeugbau', 'Pulverbeschichtung', 'Lasergravur'],
   makesOffer: services.map((s) => ({

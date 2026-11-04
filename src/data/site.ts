@@ -19,4 +19,8 @@ export const site = {
   areaServed: ['Bad Schwartau', 'Lübeck', 'Hamburg', 'Kiel', 'Schleswig-Holstein', 'Norddeutschland', 'Deutschland', 'Europa'],
 };
 
-export const mapsLink = `https://www.openstreetmap.org/?mlat=${site.geo.lat}&mlon=${site.geo.lng}#map=16/${site.geo.lat}/${site.geo.lng}`;
+const mapsAddress = encodeURIComponent(`${site.name}, ${site.street}, ${site.zip} ${site.city}`);
+/** Google-Maps-Routenplaner mit der Firma als Ziel (reiner Link, keine Einbettung) */
+export const mapsLink = `https://www.google.com/maps/dir/?api=1&destination=${mapsAddress}`;
+/** Google-Maps-Ortsansicht (für strukturierte Daten) */
+export const mapsPlace = `https://www.google.com/maps/search/?api=1&query=${mapsAddress}`;
