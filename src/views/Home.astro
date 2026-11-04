@@ -17,8 +17,8 @@ const t = ui[lang];
 
 const c = {
   de: {
-    title: 'Drahterodieren & Präzisionsfertigung bei Lübeck | GRO',
-    description: 'GRO-Erodiertechnik GmbH: Drahterodieren, Senkerodieren, HSC-Fräsen, CNC-Bearbeitung, Formen- & Werkzeugbau. Lohnfertigung seit 2011 in Bad Schwartau bei Lübeck.',
+    title: 'Lohnerodieren & Drahterodieren für Deutschland & Europa | GRO',
+    description: 'Lohnerodieren seit 2011: Drahterodieren, Senkerodieren, HSC-Fräsen, CNC und Werkzeugbau aus einer Hand – für Kunden in ganz Deutschland und Europa.',
     introKicker: 'Über uns',
     introTitle: 'Präzision, Innovation und Service aus einer Hand.',
     intro: [
@@ -44,14 +44,15 @@ const c = {
     faq: [
       { q: 'Was ist Erodieren bzw. Funkenerosion?', a: 'Erodieren (Funkenerosion, englisch EDM – Electrical Discharge Machining) ist ein abtragendes Fertigungsverfahren. Elektrische Entladungen zwischen Werkzeug und Werkstück tragen Material berührungslos ab. So lassen sich auch gehärtete Werkstoffe und sehr feine Konturen präzise bearbeiten.' },
       { q: 'Was ist der Unterschied zwischen Drahterodieren und Senkerodieren?', a: 'Beim Drahterodieren schneidet ein dünner Draht wie eine Laubsäge Durchbrüche und Konturen. Beim Senkerodieren bildet sich eine geformte Elektrode in das Werkstück ab – ideal für Kavitäten, Rippen und Gravuren, etwa im Formenbau.' },
-      { q: 'Wo befindet sich die GRO-Erodiertechnik?', a: 'Unser Betrieb liegt in der Langenfelde 18 in 23611 Bad Schwartau, direkt bei Lübeck. Wir fertigen für Kunden aus Lübeck, Hamburg, Kiel, ganz Schleswig-Holstein und darüber hinaus.' },
+      { q: 'Wo befindet sich die GRO-Erodiertechnik?', a: 'Unser Betrieb liegt in der Langenfelde 18 in 23611 Bad Schwartau, direkt bei Lübeck. Von hier aus fertigen wir für Kunden in der Region Lübeck, Hamburg und Kiel ebenso wie in ganz Deutschland und Europa.' },
+      { q: 'Fertigen Sie auch für Kunden in ganz Deutschland und im Ausland?', a: 'Ja. Neben Kunden aus Norddeutschland fertigen wir für Unternehmen in ganz Deutschland und im europäischen Ausland. Anfrage und Abstimmung laufen digital, die fertigen Teile versenden wir zu Ihnen.' },
       { q: 'Wie erhalte ich ein Angebot?', a: 'Senden Sie uns Ihre Zeichnung oder Ihr CAD-Modell (z. B. STEP, DXF, PDF) per E-Mail oder über unser Kontaktformular. Wir melden uns schnellstmöglich mit einem Angebot.' },
       { q: 'Welche Stückzahlen fertigen Sie?', a: 'Vom einzelnen Prototyp über Kleinserien bis zur Serienfertigung. Durch unseren automatisierten Maschinenpark sind auch wiederkehrende Aufträge wirtschaftlich.' },
     ],
   },
   en: {
-    title: 'Wire EDM & Precision Manufacturing in Germany | GRO',
-    description: 'GRO-Erodiertechnik GmbH: wire EDM, sinker EDM, HSC milling, CNC machining, mould & tool making. Contract manufacturing since 2011 near Lübeck, Germany.',
+    title: 'Contract EDM & Wire EDM Services – Germany & Europe | GRO',
+    description: 'Contract EDM supplier in Germany since 2011: wire EDM, sinker EDM, HSC milling, CNC machining and tool making – serving customers across Europe.',
     introKicker: 'About us',
     introTitle: 'Precision, innovation and service from a single source.',
     intro: [
@@ -78,6 +79,7 @@ const c = {
       { q: 'What is EDM (electrical discharge machining)?', a: 'EDM is a material-removing manufacturing process. Electrical discharges between tool and workpiece remove material without contact. This allows even hardened materials and very fine contours to be machined precisely.' },
       { q: 'What is the difference between wire EDM and sinker EDM?', a: 'In wire EDM, a thin wire cuts openings and contours like a fretsaw. In sinker EDM, a shaped electrode is reproduced in the workpiece – ideal for cavities, ribs and engravings, for example in mould making.' },
       { q: 'Where is GRO-Erodiertechnik located?', a: 'Our facility is at Langenfelde 18, 23611 Bad Schwartau, right next to Lübeck in northern Germany – about one hour from Hamburg. We serve customers throughout Germany and Europe.' },
+      { q: 'Do you supply customers outside Germany?', a: 'Yes. We manufacture for companies throughout Germany and across Europe. Enquiries and coordination are handled digitally in English or German, and we ship the finished parts to you.' },
       { q: 'How do I get a quotation?', a: 'Send us your drawing or CAD model (e.g. STEP, DXF, PDF) by email or via our contact form. We will get back to you with a quotation as quickly as possible.' },
       { q: 'What quantities do you produce?', a: 'From single prototypes and small batches to series production. Thanks to our automated machinery, recurring orders are also cost-effective.' },
     ],
@@ -110,7 +112,10 @@ const faqLd = {
         <p class="label">{c.introKicker}</p>
         <h2 id="intro-title">{c.introTitle}</h2>
         {c.intro.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
-        <a class="btn btn--ghost" href={routes.company[lang]}>{t.nav.company}</a>
+        <div class="intro__btns">
+          <a class="btn" href={routes.contract[lang]}>{lang === 'de' ? 'Lohnerodieren für Deutschland & Europa' : 'Contract EDM for Europe'}</a>
+          <a class="btn btn--ghost" href={routes.company[lang]}>{t.nav.company}</a>
+        </div>
       </div>
     </div>
   </section>
@@ -192,7 +197,7 @@ const faqLd = {
   @media (max-width: 900px) { .intro__grid { grid-template-columns: 1fr; } }
   .intro__copy h2 { margin-top: 1rem; }
   .intro__copy p:not(.lead):not(.label) { color: var(--muted); }
-  .intro__copy .btn { margin-top: 1rem; }
+  .intro__btns { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1.5rem; }
   .intro__media { position: relative; padding: 0 12% 18% 0; }
   .intro__fig { margin: 0; position: relative; }
   .intro__fig img { width: 100%; object-fit: cover; border-radius: var(--radius); }

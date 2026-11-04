@@ -8,7 +8,7 @@ const { lang, items, headingLevel = 'h3' } = Astro.props;
 const H = headingLevel;
 ---
 
-<ul class="sg" role="list">
+<ul class:list={["sg", { "sg--2": items.length % 3 !== 0 && items.length % 2 === 0 }]} role="list">
   {items.map((s, i) => (
     <li class="sg__item reveal" style={`transition-delay:${(i % 3) * 80}ms`}>
       <a href={servicePath(lang, s.slug[lang])} class="sg__card">
@@ -32,6 +32,7 @@ const H = headingLevel;
 
 <style>
   .sg { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: 1px; list-style: none; margin: 0; padding: 0; background: var(--line); border: 1px solid var(--line); }
+  .sg--2 { grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); }
   .sg__item { background: var(--paper); }
   .sg__card { display: flex; flex-direction: column; height: 100%; text-decoration: none; color: inherit; position: relative; }
   .sg__card:hover { color: inherit; }

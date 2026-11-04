@@ -74,7 +74,7 @@ const organization = {
   geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
   hasMap: mapsPlace,
   areaServed: site.areaServed.map((name) => ({ '@type': 'Place', name })),
-  knowsAbout: ['Drahterodieren', 'Senkerodieren', 'Funkenerosion', 'Wire EDM', 'Sinker EDM', 'HSC-Fräsen', 'CNC-Bearbeitung', 'Formenbau', 'Werkzeugbau', 'Pulverbeschichtung', 'Lasergravur'],
+  knowsAbout: ['Lohnerodieren', 'Lohnfertigung', 'Contract EDM', 'Drahterodieren', 'Senkerodieren', 'Funkenerosion', 'Wire EDM', 'Sinker EDM', 'HSC-Fräsen', 'CNC-Bearbeitung', 'Formenbau', 'Werkzeugbau', 'Pulverbeschichtung', 'Lasergravur'],
   makesOffer: services.map((s) => ({
     '@type': 'Offer',
     itemOffered: { '@type': 'Service', name: s.title[lang], url: `${site.url}${lang === 'de' ? '/leistungen/' : '/en/services/'}${s.slug[lang]}/` },

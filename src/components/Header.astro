@@ -12,6 +12,7 @@ const current = Astro.url.pathname;
 
 const nav = [
   { href: routes.services[lang], label: t.nav.services },
+  { href: routes.contract[lang], label: t.nav.contract },
   { href: routes.company[lang], label: t.nav.company },
   { href: routes.contact[lang], label: t.nav.contact },
 ];
@@ -124,7 +125,7 @@ const isActive = (href: string) => current.startsWith(href);
   .nav__lang-long, .nav__phone { display: none; }
   .nav__toggle { display: none; }
 
-  @media (max-width: 900px) {
+  @media (max-width: 1080px) {
     .hdr__cta { display: none; }
     .nav__toggle {
       display: grid; place-items: center;

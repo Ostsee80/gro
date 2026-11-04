@@ -40,12 +40,12 @@ export const services: Service[] = [
     slug: { de: 'drahterodieren', en: 'wire-edm' },
     title: { de: 'Drahterodieren', en: 'Wire EDM' },
     seoTitle: {
-      de: 'Drahterodieren in Bad Schwartau & Lübeck | GRO',
-      en: 'Wire EDM Services in Northern Germany | GRO',
+      de: 'Drahterodieren – Lohnfertigung deutschlandweit | GRO',
+      en: 'Wire EDM Services – Germany & Europe | GRO',
     },
     seoDescription: {
-      de: 'Drahterodieren im Lohnauftrag: komplexe Konturen in gehärteten Werkstoffen, gratfrei und maßhaltig. Vom Einzelteil bis zur Serie – aus Bad Schwartau bei Lübeck.',
-      en: 'Contract wire EDM: complex contours in hardened materials, burr-free and accurate. From single parts to series – from Bad Schwartau near Lübeck, Germany.',
+      de: 'Drahterodieren im Lohnauftrag: komplexe Konturen in gehärteten Werkstoffen, gratfrei und maßhaltig. Einzelteil bis Serie – für ganz Deutschland & Europa.',
+      en: 'Contract wire EDM: complex contours in hardened materials, burr-free and accurate. Single parts to series for customers across Germany and Europe.',
     },
     teaser: {
       de: 'Feinste Konturen in gehärtetem Stahl, Hartmetall und Sonderwerkstoffen – gratfrei und maßhaltig.',
@@ -118,12 +118,12 @@ export const services: Service[] = [
     slug: { de: 'senkerodieren', en: 'sinker-edm' },
     title: { de: 'Senkerodieren & Elektroden', en: 'Sinker EDM & Electrodes' },
     seoTitle: {
-      de: 'Senkerodieren & Elektrodenfertigung | GRO-Erodiertechnik',
-      en: 'Sinker EDM & Electrode Manufacturing | GRO',
+      de: 'Senkerodieren & Elektroden – Lohnfertigung | GRO',
+      en: 'Sinker EDM & Electrodes – Contract EDM Germany | GRO',
     },
     seoDescription: {
-      de: 'Senkerodieren im Lohnauftrag inklusive eigener Elektrodenfertigung auf HSC-Fräsmaschinen. Kavitäten, Rippen und Gravuren für Formen- und Werkzeugbau.',
-      en: 'Contract sinker EDM including in-house electrode manufacturing on HSC milling machines. Cavities, ribs and engravings for mould and tool making.',
+      de: 'Senkerodieren im Lohnauftrag inklusive eigener Elektrodenfertigung auf HSC-Fräsmaschinen. Für Formen- und Werkzeugbau in ganz Deutschland & Europa.',
+      en: 'Contract sinker EDM including in-house electrode manufacturing on HSC milling machines. For mould and tool makers across Germany and Europe.',
     },
     teaser: {
       de: 'Kavitäten, Rippen und Gravuren – inklusive Elektroden aus der eigenen HSC-Fertigung.',
@@ -182,8 +182,8 @@ export const services: Service[] = [
       en: 'HSC & CNC Milling – Contract Manufacturing | GRO',
     },
     seoDescription: {
-      de: 'HSC-Fräsen für Elektroden, Formeinsätze und Präzisionsbauteile. Hohe Oberflächengüte und Maßhaltigkeit – Lohnfertigung in Bad Schwartau bei Lübeck.',
-      en: 'HSC milling for electrodes, mould inserts and precision components. High surface quality and accuracy – contract manufacturing near Lübeck, Germany.',
+      de: 'HSC-Fräsen für Elektroden, Formeinsätze und Präzisionsbauteile. Hohe Oberflächengüte – Lohnfertigung für Kunden deutschlandweit.',
+      en: 'HSC milling for electrodes, mould inserts and precision components. High surface quality – contract manufacturing for customers across Europe.',
     },
     teaser: {
       de: 'Hochgeschwindigkeitsfräsen für Elektroden, Formeinsätze und Präzisionsbauteile.',
@@ -237,12 +237,12 @@ export const services: Service[] = [
     slug: { de: 'cnc-bearbeitung', en: 'cnc-machining' },
     title: { de: 'CNC-Bearbeitung', en: 'CNC Machining' },
     seoTitle: {
-      de: 'CNC-Bearbeitung & Lohnfertigung bei Lübeck | GRO',
+      de: 'CNC-Bearbeitung – Lohnfertigung deutschlandweit | GRO',
       en: 'CNC Machining & Contract Manufacturing | GRO',
     },
     seoDescription: {
-      de: 'CNC-Bearbeitung von Metall und Kunststoff: präzise, wiederholgenau und automatisiert. Prototypen, Einzelteile und Serien aus Bad Schwartau.',
-      en: 'CNC machining of metal and plastics: precise, repeatable and automated. Prototypes, single parts and series from Bad Schwartau, Germany.',
+      de: 'CNC-Bearbeitung von Metall und Kunststoff: präzise, wiederholgenau und automatisiert. Prototypen, Einzelteile und Serien für ganz Deutschland.',
+      en: 'CNC machining of metal and plastics: precise, repeatable and automated. Prototypes, single parts and series from Germany.',
     },
     teaser: {
       de: 'Computergesteuerte Fertigung – präzise, wiederholgenau und automatisiert.',
@@ -300,8 +300,8 @@ export const services: Service[] = [
       en: 'Turning, Grinding & Drilling Services | GRO',
     },
     seoDescription: {
-      de: 'Drehen, Schleifen und Bohren nach Zeichnung: präzise Oberflächen und enge Toleranzen für Prototypen und Serien. Lohnfertigung bei Lübeck.',
-      en: 'Turning, grinding and drilling to drawing: precise surfaces and tight tolerances for prototypes and series. Contract manufacturing near Lübeck.',
+      de: 'Drehen, Schleifen und Bohren nach Zeichnung: präzise Oberflächen und enge Toleranzen für Prototypen und Serien. Lohnfertigung deutschlandweit.',
+      en: 'Turning, grinding and drilling to drawing: precise surfaces and tight tolerances for prototypes and series. Contract manufacturing in Germany.',
     },
     teaser: {
       de: 'Rotationsteile, Passungen und Bohrungen – präzise nach Ihrer Zeichnung.',
@@ -356,12 +356,12 @@ export const services: Service[] = [
     slug: { de: 'formenbau-werkzeugbau', en: 'mould-tool-making' },
     title: { de: 'Formenbau & Werkzeugbau', en: 'Mould & Tool Making' },
     seoTitle: {
-      de: 'Formenbau & Werkzeugbau in Schleswig-Holstein | GRO',
-      en: 'Mould & Tool Making in Northern Germany | GRO',
+      de: 'Formenbau & Werkzeugbau – Präzision aus Norddeutschland | GRO',
+      en: 'Mould & Tool Making – Precision from Germany | GRO',
     },
     seoDescription: {
-      de: 'Formenbau, Werkzeugbau und Schalungsbau: Präzisionsformen und Werkzeuge aus einer Hand – von der Konstruktion bis zum Finish. Bad Schwartau bei Lübeck.',
-      en: 'Mould making, tool making and formwork construction: precision moulds and tools from a single source – from design to finish. Near Lübeck, Germany.',
+      de: 'Formenbau, Werkzeugbau und Schalungsbau: Präzisionsformen und Werkzeuge aus einer Hand – von der Konstruktion bis zum Finish. Deutschlandweit.',
+      en: 'Mould making, tool making and formwork construction: precision moulds and tools from a single source – from design to finish. Made in Germany.',
     },
     teaser: {
       de: 'Präzisionsformen, Werkzeuge und Schalungsbau – von der Konstruktion bis zum Finish.',
@@ -419,8 +419,8 @@ export const services: Service[] = [
       en: 'Powder Coating for Metal Components | GRO',
     },
     seoDescription: {
-      de: 'Pulverbeschichtung für Ihre Bauteile: robust, korrosionsbeständig und in vielen Farben. Als Abschluss Ihrer Fertigung direkt bei uns in Bad Schwartau.',
-      en: 'Powder coating for your components: durable, corrosion-resistant and available in many colours. As the final step of your production, right here near Lübeck.',
+      de: 'Pulverbeschichtung für Ihre Bauteile: robust, korrosionsbeständig und in vielen Farben. Als Abschluss Ihrer Fertigung – alles aus einer Hand.',
+      en: 'Powder coating for your components: durable, corrosion-resistant and available in many colours. The final step of your production – all from one source.',
     },
     teaser: {
       de: 'Robuste, korrosionsbeständige Oberflächen in vielen Farben – als Abschluss Ihrer Fertigung.',
@@ -478,8 +478,8 @@ export const services: Service[] = [
       en: 'Laser Engraving & Marking of Metal | GRO',
     },
     seoDescription: {
-      de: 'Lasergravur und Laserbeschriftung: dauerhafte Kennzeichnung von Bauteilen mit Seriennummern, Logos und DataMatrix-Codes. Bad Schwartau bei Lübeck.',
-      en: 'Laser engraving and marking: permanent marking of components with serial numbers, logos and DataMatrix codes. Near Lübeck, Germany.',
+      de: 'Lasergravur und Laserbeschriftung: dauerhafte Kennzeichnung von Bauteilen mit Seriennummern, Logos und DataMatrix-Codes – für Kunden deutschlandweit.',
+      en: 'Laser engraving and marking: permanent marking of components with serial numbers, logos and DataMatrix codes – for customers across Europe.',
     },
     teaser: {
       de: 'Dauerhafte Kennzeichnung mit Seriennummern, Logos und Codes – gestochen scharf.',

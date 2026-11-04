@@ -4,6 +4,7 @@ export type Lang = 'de' | 'en';
 export const routes = {
   home: { de: '/', en: '/en/' },
   services: { de: '/leistungen/', en: '/en/services/' },
+  contract: { de: '/lohnerodieren/', en: '/en/contract-edm/' },
   company: { de: '/unternehmen/', en: '/en/company/' },
   contact: { de: '/kontakt/', en: '/en/contact/' },
   imprint: { de: '/impressum/', en: '/en/legal-notice/' },
@@ -17,7 +18,7 @@ export const servicePath = (lang: Lang, slug: string) => `${routes.services[lang
 export const ui = {
   de: {
     skip: 'Zum Inhalt springen',
-    nav: { home: 'Start', services: 'Leistungen', company: 'Unternehmen', contact: 'Kontakt' },
+    nav: { home: 'Start', contract: 'Lohnerodieren', services: 'Leistungen', company: 'Unternehmen', contact: 'Kontakt' },
     cta: 'Anfrage senden',
     ctaLong: 'Projekt anfragen',
     call: 'Anrufen',
@@ -47,7 +48,7 @@ export const ui = {
   },
   en: {
     skip: 'Skip to content',
-    nav: { home: 'Home', services: 'Services', company: 'Company', contact: 'Contact' },
+    nav: { home: 'Home', contract: 'Contract EDM', services: 'Services', company: 'Company', contact: 'Contact' },
     cta: 'Send enquiry',
     ctaLong: 'Request a quote',
     call: 'Call',

@@ -1,0 +1,229 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { services } from '../data/services';
+import { routes, ui, type Lang } from '../i18n/ui';
+import { site } from '../data/site';
+import teile from '../assets/img/pharma-bauteil.jpg';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const c = {
+  de: {
+    title: 'Lohnerodieren für Deutschland & Europa | GRO-Erodiertechnik',
+    description: 'Lohnerodieren vom Spezialisten: Drahterodieren, Senkerodieren und Weiterbearbeitung im Lohnauftrag – für Kunden in ganz Deutschland und Europa. Jetzt anfragen.',
+    kicker: 'Lohnerodieren · Erodierdienstleister',
+    h1: 'Lohnerodieren für Deutschland und Europa.',
+    lead: 'Sie haben das Bauteil, wir die Maschinen: Als spezialisierter Erodierdienstleister übernehmen wir Drahterodieren, Senkerodieren und die komplette Weiterbearbeitung im Lohnauftrag – für Kunden in ganz Deutschland und im europäischen Ausland.',
+    whyTitle: 'Warum Lohnerodieren bei GRO?',
+    why: [
+      { t: 'Spezialisiert seit 2011', d: 'Erodieren ist unser Kerngeschäft. Mehr als ein Jahrzehnt Erfahrung steckt in jedem Auftrag – vom filigranen Einzelteil bis zur Serie.' },
+      { t: 'Alles aus einer Hand', d: 'Elektroden aus eigener HSC-Fertigung, Fräsen, Drehen, Schleifen, Pulverbeschichtung und Lasergravur: Sie erhalten einbaufertige Teile statt Zwischenschritte.' },
+      { t: 'Kurze Durchlaufzeiten', d: 'Unser digitalisierter, automatisierter Maschinenpark erlaubt flexible Planung und schnelle Reaktion – auch bei wiederkehrenden Aufträgen.' },
+      { t: 'Dokumentierte Qualität', d: 'Auf Wunsch messen und dokumentieren wir die Ergebnisse mit moderner Messtechnik. Transparente Kommunikation ist für uns selbstverständlich.' },
+    ],
+    remoteTitle: 'So einfach geht’s – egal, wo Sie sitzen.',
+    remote: [
+      { t: 'Daten senden', d: 'Zeichnung oder CAD-Modell per E-Mail oder Kontaktformular – z. B. STEP, DXF, DWG, IGES oder PDF.' },
+      { t: 'Angebot erhalten', d: 'Wir prüfen Machbarkeit und Verfahren und senden Ihnen ein transparentes Angebot.' },
+      { t: 'Fertigung', d: 'Nach Freigabe fertigen wir Ihr Bauteil – auf Wunsch inklusive Finish und Messprotokoll.' },
+      { t: 'Lieferung', d: 'Wir versenden die fertigen Teile zu Ihnen – deutschlandweit und ins europäische Ausland.' },
+    ],
+    matTitle: 'Werkstoffe, die wir erodieren',
+    matText: 'Erodieren funktioniert mit allen elektrisch leitfähigen Werkstoffen – unabhängig von ihrer Härte. Typisch sind:',
+    materials: ['Werkzeugstahl, auch gehärtet', 'Edelstahl', 'Hartmetall', 'Titan', 'Kupfer & Messing', 'Aluminium', 'Graphit', 'Sonderlegierungen'],
+    areaTitle: 'Unser Liefergebiet: Deutschland und Europa',
+    area: [
+      'Unser Betrieb liegt in Bad Schwartau bei Lübeck – verkehrsgünstig an der A1 zwischen Hamburg und Skandinavien. Von hier aus fertigen wir für Kunden in ganz Deutschland und im europäischen Ausland.',
+      'Ob Hamburg, Berlin, Hannover, das Ruhrgebiet, Stuttgart oder München, ob Skandinavien, die Benelux-Staaten oder Polen: Für die Zusammenarbeit spielt die Entfernung keine Rolle. Anfrage, Abstimmung und Freigabe laufen unkompliziert digital – die fertigen Teile kommen zu Ihnen.',
+    ],
+    servicesTitle: 'Unsere Verfahren im Lohnauftrag',
+    faqTitle: 'Häufige Fragen zum Lohnerodieren',
+    faq: [
+      { q: 'Was bedeutet Lohnerodieren?', a: 'Beim Lohnerodieren beauftragen Sie einen spezialisierten Dienstleister mit dem Erodieren Ihrer Bauteile. Sie liefern Zeichnung oder Rohteil, wir übernehmen Drahterodieren oder Senkerodieren auf unseren Maschinen – ohne dass Sie selbst in Erodiermaschinen und Know-how investieren müssen.' },
+      { q: 'Arbeiten Sie auch für Kunden außerhalb Norddeutschlands und im Ausland?', a: 'Ja. Wir fertigen für Kunden in ganz Deutschland und im europäischen Ausland. Die Abstimmung erfolgt per E-Mail und Telefon, die fertigen Teile versenden wir zu Ihnen. Gerne kommunizieren wir auch auf Englisch.' },
+      { q: 'Welche Daten benötigen Sie für ein Angebot?', a: 'Idealerweise ein 3D-Modell (z. B. STEP oder IGES) und eine Zeichnung mit Toleranzen (z. B. PDF oder DXF). Dazu Werkstoff, Stückzahl und gewünschten Liefertermin. Fehlen Angaben, fragen wir gezielt nach.' },
+      { q: 'Werden meine Zeichnungen vertraulich behandelt?', a: 'Selbstverständlich. Zeichnungen, CAD-Daten und technische Unterlagen behandeln wir vertraulich und nutzen sie ausschließlich für Ihr Angebot und Ihren Auftrag.' },
+      { q: 'Wie schnell können Sie liefern?', a: 'Die Durchlaufzeit hängt von Bauteil, Werkstoff und Stückzahl ab. Dank unseres automatisierten Maschinenparks sind kurze Lieferzeiten möglich – nennen Sie uns Ihren Wunschtermin, wir sagen Ihnen ehrlich, was machbar ist.' },
+    ],
+  },
+  en: {
+    title: 'Contract EDM Services in Germany for Europe | GRO',
+    description: 'Contract EDM from a specialist in Germany: wire EDM, sinker EDM and finishing for customers across Europe. Send your drawing and get a quotation.',
+    kicker: 'Contract EDM · EDM supplier',
+    h1: 'Contract EDM services from Germany – for all of Europe.',
+    lead: 'You have the component, we have the machines: as a specialised EDM supplier, we provide wire EDM, sinker EDM and complete secondary machining on a contract basis – for customers throughout Germany and Europe.',
+    whyTitle: 'Why choose GRO as your EDM supplier?',
+    why: [
+      { t: 'EDM specialists since 2011', d: 'EDM is our core business. More than a decade of experience goes into every order – from delicate single parts to series production.' },
+      { t: 'Everything from one source', d: 'In-house HSC electrode production, milling, turning, grinding, powder coating and laser engraving: you receive ready-to-install parts, not intermediate steps.' },
+      { t: 'Short lead times', d: 'Our digitalised, automated machinery enables flexible scheduling and fast response – including for recurring orders.' },
+      { t: 'Documented quality', d: 'On request, we measure and document results with modern measuring technology. Transparent communication is a matter of course.' },
+    ],
+    remoteTitle: 'Simple – wherever you are.',
+    remote: [
+      { t: 'Send your data', d: 'Drawing or CAD model by email or contact form – e.g. STEP, DXF, DWG, IGES or PDF.' },
+      { t: 'Get a quotation', d: 'We check feasibility and process and send you a transparent quotation.' },
+      { t: 'Manufacturing', d: 'Once approved, we manufacture your part – on request including finishing and inspection report.' },
+      { t: 'Delivery', d: 'We ship the finished parts to you – throughout Germany and across Europe.' },
+    ],
+    matTitle: 'Materials we machine',
+    matText: 'EDM works with all electrically conductive materials – regardless of hardness. Typical materials:',
+    materials: ['Tool steel, including hardened', 'Stainless steel', 'Carbide', 'Titanium', 'Copper & brass', 'Aluminium', 'Graphite', 'Special alloys'],
+    areaTitle: 'Serving Germany and Europe',
+    area: [
+      'Our facility is located in Bad Schwartau near Lübeck in northern Germany – conveniently located on the A1 motorway between Hamburg and Scandinavia. From here we manufacture for customers throughout Germany and Europe.',
+      'Whether Scandinavia, the Benelux countries, Poland, Austria or Switzerland – distance is no obstacle. Enquiries, coordination and approval are handled digitally, and the finished parts are shipped to you. We are happy to communicate in English.',
+    ],
+    servicesTitle: 'Our contract manufacturing processes',
+    faqTitle: 'Frequently asked questions about contract EDM',
+    faq: [
+      { q: 'What is contract EDM?', a: 'With contract EDM you commission a specialised supplier to machine your components by electrical discharge machining. You provide the drawing or blank, we carry out wire or sinker EDM on our machines – without you having to invest in EDM machines and expertise.' },
+      { q: 'Do you work for customers outside Germany?', a: 'Yes. We manufacture for customers throughout Germany and Europe. Coordination takes place by email and phone in English or German, and we ship the finished parts to you.' },
+      { q: 'What data do you need for a quotation?', a: 'Ideally a 3D model (e.g. STEP or IGES) and a drawing with tolerances (e.g. PDF or DXF), plus material, quantity and desired delivery date. If anything is missing, we will ask.' },
+      { q: 'Will my drawings be kept confidential?', a: 'Of course. We treat drawings, CAD data and technical documents confidentially and use them exclusively for your quotation and order.' },
+      { q: 'How quickly can you deliver?', a: 'Lead time depends on the component, material and quantity. Our automated machinery allows short lead times – tell us your target date and we will give you an honest answer.' },
+    ],
+  },
+}[lang];
+
+const crumbs = [{ name: lang === 'de' ? 'Lohnerodieren' : 'Contract EDM', href: routes.contract[lang] }];
+const serviceLd = {
+  '@type': 'Service',
+  name: lang === 'de' ? 'Lohnerodieren' : 'Contract EDM services',
+  serviceType: lang === 'de' ? 'Lohnerodieren (Drahterodieren, Senkerodieren)' : 'Contract EDM (wire EDM, sinker EDM)',
+  description: c.description,
+  provider: { '@id': `${site.url}/#organization` },
+  areaServed: [{ '@type': 'Country', name: 'Germany' }, { '@type': 'Place', name: 'Europe' }],
+  url: new URL(routes.contract[lang], site.url).href,
+};
+const faqLd = {
+  '@type': 'FAQPage',
+  mainEntity: c.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+const edm = services.filter((s) => ['wire-edm', 'sinker-edm', 'milling', 'toolmaking'].includes(s.id));
+---
+
+<Base lang={lang} title={c.title} description={c.description} alternates={routes.contract} breadcrumbs={crumbs} jsonLd={[serviceLd, faqLd]}>
+  <PageHero lang={lang} kicker={c.kicker} title={c.h1} lead={c.lead} crumbs={crumbs} code="EU">
+    <div class="ce__ctas">
+      <a class="btn" href={routes.contact[lang]}>{t.ctaLong}</a>
+      <a class="btn btn--ghost" href={site.phoneHref}>{site.phone}</a>
+    </div>
+  </PageHero>
+
+  <section class="section" aria-labelledby="why-title">
+    <div class="wrap">
+      <h2 id="why-title" class="reveal">{c.whyTitle}</h2>
+      <ul class="why" role="list">
+        {c.why.map((w, i) => (
+          <li class="reveal" style={`transition-delay:${i * 80}ms`}>
+            <span class="why__no">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{w.t}</h3>
+            <p>{w.d}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section dark blueprint" aria-labelledby="remote-title">
+    <div class="wrap">
+      <h2 id="remote-title" class="reveal">{c.remoteTitle}</h2>
+      <ol class="steps" role="list">
+        {c.remote.map((s, i) => (
+          <li class="reveal" style={`transition-delay:${i * 90}ms`}>
+            <span class="steps__node" aria-hidden="true"></span>
+            <span class="steps__no">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{s.t}</h3>
+            <p>{s.d}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="area-title">
+    <div class="wrap area">
+      <div class="reveal">
+        <p class="label">{lang === 'de' ? 'Liefergebiet' : 'Service area'}</p>
+        <h2 id="area-title">{c.areaTitle}</h2>
+        {c.area.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
+        <h3 class="mat__h">{c.matTitle}</h3>
+        <p>{c.matText}</p>
+        <ul class="mat" role="list">{c.materials.map((m) => <li>{m}</li>)}</ul>
+      </div>
+      <figure class="area__fig reveal">
+        <Image src={teile} alt={lang === 'de' ? 'Drahterodiertes Präzisionsbauteil mit Sechskant-Durchbruch' : 'Wire-EDM precision part with hexagonal cut-out'} widths={[400, 640, 900]} sizes="(max-width: 900px) 100vw, 500px" loading="lazy" />
+        <figcaption>DE · EU</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section alt" aria-labelledby="svc-title">
+    <div class="wrap">
+      <div class="alt__head">
+        <h2 id="svc-title">{c.servicesTitle}</h2>
+        <a class="btn btn--ghost" href={routes.services[lang]}>{t.allServices}</a>
+      </div>
+      <ServiceGrid lang={lang} items={edm} />
+    </div>
+  </section>
+
+  <section class="section" aria-label={c.faqTitle}>
+    <div class="wrap faqw reveal">
+      <Faq title={c.faqTitle} items={c.faq} />
+    </div>
+  </section>
+
+  <Cta lang={lang} />
+</Base>
+
+<style>
+  .ce__ctas { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2rem; }
+  .ce__ctas .btn--ghost { color: #fff; }
+  h2 { max-width: 20ch; }
+  .dark h2 { color: #fff; }
+  .why { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); list-style: none; padding: 0; margin: 2.5rem 0 0; }
+  @media (max-width: 1000px) { .why { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 600px) { .why { grid-template-columns: 1fr; } }
+  .why li { background: var(--paper); padding: 2rem 1.6rem; }
+  .why__no { font-family: var(--font-mono); font-size: 0.72rem; color: var(--brass-ink); letter-spacing: 0.1em; }
+  .why h3 { margin: 1.4rem 0 0.6rem; }
+  .why p { color: var(--muted); margin: 0; font-size: 0.97rem; }
+
+  .steps { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; list-style: none; padding: 0; margin: 2.5rem 0 0; }
+  .steps::before { content: ''; position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: linear-gradient(90deg, var(--brass), var(--brass-2) 70%, rgb(255 255 255 / 0.15)); box-shadow: 0 0 10px rgb(231 191 104 / 0.6); }
+  .steps li { position: relative; padding-top: 2.4rem; }
+  .steps__node { position: absolute; top: 0; left: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--ink); border: 2px solid var(--brass-2); }
+  .steps__no { font-family: var(--font-mono); font-size: 0.75rem; color: var(--brass-2); }
+  .steps h3 { color: #fff; margin: 0.5rem 0; }
+  .steps p { color: var(--muted-dark); margin: 0; font-size: 0.95rem; }
+  @media (max-width: 900px) {
+    .steps { grid-template-columns: 1fr; gap: 0; padding-left: 2.2rem; }
+    .steps::before { left: 7px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; }
+    .steps li { padding: 0 0 2rem; }
+    .steps__node { left: -2.2rem; top: 0.2rem; }
+  }
+
+  .area { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
+  @media (max-width: 900px) { .area { grid-template-columns: 1fr; } }
+  .area h2 { margin-top: 1rem; }
+  .area p:not(.lead):not(.label) { color: var(--muted); }
+  .mat__h { margin-top: 2.5rem; }
+  .mat { display: flex; flex-wrap: wrap; gap: 0.5rem; list-style: none; padding: 0; margin: 0; }
+  .mat li { font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.04em; padding: 0.45rem 0.8rem; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
+  .area__fig { margin: 0; position: relative; }
+  .area__fig img { width: 100%; aspect-ratio: 4 / 4.4; object-fit: cover; border-radius: var(--radius); }
+  .area__fig figcaption { position: absolute; top: 0.8rem; left: 0.8rem; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em; padding: 0.25rem 0.5rem; background: var(--ink); color: var(--brass-2); }
+  .alt { background: var(--paper-2); }
+  .alt__head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+  .alt__head h2 { margin: 0; }
+  .faqw { max-width: 900px; }
+</style>
