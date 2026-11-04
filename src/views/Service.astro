@@ -7,6 +7,7 @@ import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
 import MachineList from '../components/MachineList.astro';
 import { machinesForService } from '../data/machines';
+import { linkify, relatedServices } from '../data/links';
 import { services, type Service } from '../data/services';
 import { routes, servicePath, ui, type Lang } from '../i18n/ui';
 import { site } from '../data/site';
@@ -22,7 +23,8 @@ const crumbs = [
 ];
 const og = await getImage({ src: s.image, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
 const machineGroup = machinesForService(s.id);
-const related = services.filter((x) => x.id !== s.id).slice(0, 3);
+const related = relatedServices(s.id);
+const bodyHtml = linkify(s.body[lang], lang, s.id);
 
 const serviceLd = {
   '@type': 'Service',
@@ -55,7 +57,7 @@ const faqLd = {
   <section class="section">
     <div class="wrap sv">
       <div class="sv__copy">
-        {s.body[lang].map((p, i) => <p class={i === 0 ? 'sv__first' : ''}>{p}</p>)}
+        {bodyHtml.map((p, i) => <p class={i === 0 ? 'sv__first' : ''} set:html={p} />)}
 
         <div class="sv__lists">
           <div>
@@ -152,4 +154,6 @@ const faqLd = {
   .sv__machines { margin: 0 0 3rem; }
   .sv__mlink { margin-top: 1rem; font-size: 0.95rem; }
   .sv__mlink a { color: var(--brass-ink); font-weight: 600; }
+  .sv__copy p :global(a) { color: inherit; text-decoration-color: var(--brass); text-decoration-thickness: 2px; text-underline-offset: 0.18em; }
+  .sv__copy p :global(a:hover) { color: var(--brass-ink); }
 </style>
