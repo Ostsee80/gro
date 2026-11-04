@@ -18,8 +18,8 @@ const t = ui[lang];
 
 const c = {
   de: {
-    title: 'Lohnerodieren & Drahterodieren für Deutschland & Europa | GRO',
-    description: 'Drahterodieren bis 500 mm Höhe, 5-Achs-CNC-Fräsen, Mikrobohren ab Ø 0,1 mm, Schleifen & Oberflächen aus einer Hand – für ganz Deutschland & Europa.',
+    title: 'Lohnerodieren & Drahterodieren – weltweit aus Deutschland | GRO',
+    description: 'Drahterodieren bis 500 mm Höhe, 5-Achs-CNC-Fräsen, Mikrobohren ab Ø 0,1 mm, Schleifen & Oberflächen aus einer Hand – für Deutschland, Europa & weltweit.',
     introKicker: 'Über uns',
     introTitle: 'Präzision, Innovation und Service aus einer Hand.',
     intro: [
@@ -45,15 +45,15 @@ const c = {
     faq: [
       { q: 'Was ist Erodieren bzw. Funkenerosion?', a: 'Erodieren (Funkenerosion, englisch EDM – Electrical Discharge Machining) ist ein abtragendes Fertigungsverfahren. Elektrische Entladungen zwischen Werkzeug und Werkstück tragen Material berührungslos ab. So lassen sich auch gehärtete Werkstoffe und sehr feine Konturen präzise bearbeiten.' },
       { q: 'Wie hoch dürfen Werkstücke beim Drahterodieren sein?', a: 'Wir drahterodieren Werkstücke mit einer Höhe von bis zu 500 mm in der Z-Achse. Damit bearbeiten wir auch hohe Stempel, Matrizen, Formplatten und massive Bauteile, die viele Lohnfertiger ablehnen müssen.' },
-      { q: 'Wo befindet sich die GRO-Erodiertechnik?', a: 'Unser Betrieb liegt in der Langenfelde 18 in 23611 Bad Schwartau, direkt bei Lübeck. Von hier aus fertigen wir für Kunden in der Region Lübeck, Hamburg und Kiel ebenso wie in ganz Deutschland und Europa.' },
-      { q: 'Fertigen Sie auch für Kunden in ganz Deutschland und im Ausland?', a: 'Ja. Neben Kunden aus Norddeutschland fertigen wir für Unternehmen in ganz Deutschland und im europäischen Ausland. Anfrage und Abstimmung laufen digital, die fertigen Teile versenden wir zu Ihnen.' },
+      { q: 'Wo befindet sich die GRO-Erodiertechnik?', a: 'Unser Betrieb liegt in der Langenfelde 18 in 23611 Bad Schwartau, direkt bei Lübeck. Von hier aus fertigen wir für Kunden in der Region Lübeck, Hamburg und Kiel ebenso wie in ganz Deutschland, Europa und weltweit.' },
+      { q: 'Fertigen Sie auch für Kunden in ganz Deutschland und im Ausland?', a: 'Ja. Neben Kunden aus Norddeutschland fertigen wir für Unternehmen in ganz Deutschland, Europa und weltweit. Anfrage und Abstimmung laufen digital, die fertigen Teile versenden wir zu Ihnen.' },
       { q: 'Wie erhalte ich ein Angebot?', a: 'Senden Sie uns Ihre Zeichnung oder Ihr CAD-Modell (z. B. STEP, DXF, PDF) per E-Mail oder über unser Kontaktformular. Wir melden uns schnellstmöglich mit einem Angebot.' },
       { q: 'Welche Stückzahlen fertigen Sie?', a: 'Vom einzelnen Prototyp über Kleinserien bis zur Serienfertigung. Durch unseren automatisierten Maschinenpark sind auch wiederkehrende Aufträge wirtschaftlich.' },
     ],
   },
   en: {
-    title: 'Contract EDM & Wire EDM Services – Germany & Europe | GRO',
-    description: 'Wire EDM up to 500 mm height, 5-axis CNC milling, micro-hole EDM from Ø 0.1 mm, grinding & finishing – one source, from Germany for Europe.',
+    title: 'Contract EDM & Wire EDM – Germany, Europe, Worldwide | GRO',
+    description: 'Wire EDM up to 500 mm height, 5-axis CNC milling, micro-hole EDM from Ø 0.1 mm, grinding & finishing – one source, from Germany, worldwide.',
     introKicker: 'About us',
     introTitle: 'Precision, innovation and service from a single source.',
     intro: [
@@ -79,8 +79,8 @@ const c = {
     faq: [
       { q: 'What is EDM (electrical discharge machining)?', a: 'EDM is a material-removing manufacturing process. Electrical discharges between tool and workpiece remove material without contact. This allows even hardened materials and very fine contours to be machined precisely.' },
       { q: 'How tall can workpieces be for wire EDM?', a: 'We wire-cut workpieces up to 500 mm in height on the Z axis – including tall punches, dies, mould plates and massive components that many contract shops have to turn down.' },
-      { q: 'Where is GRO-Erodiertechnik located?', a: 'Our facility is at Langenfelde 18, 23611 Bad Schwartau, right next to Lübeck in northern Germany – about one hour from Hamburg. We serve customers throughout Germany and Europe.' },
-      { q: 'Do you supply customers outside Germany?', a: 'Yes. We manufacture for companies throughout Germany and across Europe. Enquiries and coordination are handled digitally in English or German, and we ship the finished parts to you.' },
+      { q: 'Where is GRO-Erodiertechnik located?', a: 'Our facility is at Langenfelde 18, 23611 Bad Schwartau, right next to Lübeck in northern Germany – about one hour from Hamburg. We serve customers throughout Germany, Europe and worldwide.' },
+      { q: 'Do you supply customers outside Germany?', a: 'Yes. We manufacture for companies in Germany, Europe and worldwide. Enquiries and coordination are handled digitally in English or German, and we ship the finished parts to you.' },
       { q: 'How do I get a quotation?', a: 'Send us your drawing or CAD model (e.g. STEP, DXF, PDF) by email or via our contact form. We will get back to you with a quotation as quickly as possible.' },
       { q: 'What quantities do you produce?', a: 'From single prototypes and small batches to series production. Thanks to our automated machinery, recurring orders are also cost-effective.' },
     ],
@@ -114,7 +114,7 @@ const faqLd = {
         <h2 id="intro-title">{c.introTitle}</h2>
         {c.intro.map((p, i) => <p class={i === 0 ? 'lead' : ''}>{p}</p>)}
         <div class="intro__btns">
-          <a class="btn" href={routes.contract[lang]}>{lang === 'de' ? 'Lohnerodieren für Deutschland & Europa' : 'Contract EDM for Europe'}</a>
+          <a class="btn" href={routes.contract[lang]}>{lang === 'de' ? 'Lohnerodieren für Deutschland, Europa & weltweit' : 'Contract EDM – worldwide'}</a>
           <a class="btn btn--ghost" href={routes.company[lang]}>{t.nav.company}</a>
         </div>
       </div>

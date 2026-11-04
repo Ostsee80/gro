@@ -48,11 +48,11 @@ export const services: Service[] = [
     spec: { label: travel, value: { de: 'ca. 800 × 600 × 500 mm', en: 'approx. 800 × 600 × 500 mm' } },
     seoTitle: {
       de: 'Drahterodieren bis 500 mm Höhe – Lohnfertigung | GRO',
-      en: 'Wire EDM up to 500 mm Height – Germany & Europe | GRO',
+      en: 'Wire EDM up to 500 mm Height – Worldwide | GRO',
     },
     seoDescription: {
-      de: 'Drahterodieren im Lohnauftrag: Verfahrweg ca. 800 × 600 × 500 mm, enge Toleranzen, schwer zerspanbare Werkstoffe – für ganz Deutschland & Europa.',
-      en: 'Contract wire EDM: travel approx. 800 × 600 × 500 mm, tight tolerances, hard-to-machine materials – for customers across Germany and Europe.',
+      de: 'Drahterodieren im Lohnauftrag: Verfahrweg ca. 800 × 600 × 500 mm, enge Toleranzen, schwer zerspanbare Werkstoffe – für Deutschland, Europa & weltweit.',
+      en: 'Contract wire EDM: travel approx. 800 × 600 × 500 mm, tight tolerances, hard-to-machine materials – for customers across Germany, Europe and worldwide.',
     },
     teaser: {
       de: 'Verfahrweg ca. 800 × 600 × 500 mm – präzise Konturen, enge Toleranzen, schwer zerspanbare Werkstoffe.',
@@ -164,7 +164,7 @@ export const services: Service[] = [
     },
     seoDescription: {
       de: 'Mikrobohr-Erodieren ab Ø 0,1 mm: feinste Bohrungen und Startlöcher in gehärteten und schwer zerspanbaren Werkstoffen – Lohnfertigung für ganz Deutschland.',
-      en: 'Micro-hole EDM drilling from Ø 0.1 mm: the finest holes and start holes in hardened and hard-to-machine materials – contract work for customers across Europe.',
+      en: 'Micro-hole EDM drilling from Ø 0.1 mm: fine holes and start holes in hardened and hard-to-machine materials – contract work for customers worldwide.',
     },
     teaser: {
       de: 'Bohrungen ab Ø 0,1 mm – für feinste Bohrungen, Startlöcher und anspruchsvolle Detailarbeit.',
@@ -217,7 +217,7 @@ export const services: Service[] = [
     },
     seoDescription: {
       de: 'Flachschleifen mit Verfahrweg ca. 300 × 500 × 300 mm für höchste Ebenheit, Parallelität und Oberflächengüte – Lohnfertigung für Kunden deutschlandweit.',
-      en: 'Surface grinding with approx. 300 × 500 × 300 mm travel for maximum flatness, parallelism and surface quality – contract work for customers in Europe.',
+      en: 'Surface grinding with approx. 300 × 500 × 300 mm travel for maximum flatness, parallelism and surface quality – contract work for customers worldwide.',
     },
     teaser: {
       de: 'Verfahrweg ca. 300 × 500 × 300 mm – für höchste Ebenheit und Oberflächengüte.',
@@ -269,7 +269,7 @@ export const services: Service[] = [
     },
     seoDescription: {
       de: 'Laserbeschriftung und Gravieren: dauerhafte Markierungen, Seriennummern, Logos und technische Angaben auf Ihren Bauteilen – für Kunden deutschlandweit.',
-      en: 'Laser marking and engraving: permanent markings, serial numbers, logos and technical data on your components – for customers across Europe.',
+      en: 'Laser marking and engraving: permanent markings, serial numbers, logos and technical data on your components – for customers worldwide.',
     },
     teaser: {
       de: 'Dauerhafte Markierungen, Seriennummern, Logos und technische Angaben – gestochen scharf.',
@@ -317,7 +317,7 @@ export const services: Service[] = [
     },
     seoDescription: {
       de: 'Sandstrahlen zur Reinigung, Entzunderung und Vorbereitung von Bauteilen für Beschichtungen – als Teil unserer Prozesskette aus einer Hand, deutschlandweit.',
-      en: 'Sandblasting for cleaning, descaling and preparing components for coating – as part of our single-source process chain, for customers across Europe.',
+      en: 'Sandblasting for cleaning, descaling and preparing components for coating – part of our single-source process chain, for customers worldwide.',
     },
     teaser: {
       de: 'Reinigen, entzundern und Oberflächen gezielt vorbereiten – z. B. für die Pulverbeschichtung.',
@@ -366,7 +366,7 @@ export const services: Service[] = [
     },
     seoDescription: {
       de: 'Strömungspolieren (Strömungsschleifen): Entgraten, Kantenverrunden und Polieren von Innenkonturen, Bohrungen und Kanälen – Lohnfertigung deutschlandweit.',
-      en: 'Abrasive flow polishing: deburring, edge rounding and polishing of internal contours, bores and channels – contract work for customers across Europe.',
+      en: 'Abrasive flow polishing: deburring, edge rounding and polishing of internal contours, bores and channels – contract work for customers worldwide.',
     },
     teaser: {
       de: 'Entgraten, Verrunden und Polieren dort, wo kein Werkzeug hinkommt – auch in Bohrungen und Kanälen.',

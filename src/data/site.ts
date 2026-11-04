@@ -16,7 +16,7 @@ export const site = {
   register: { court: 'Amtsgericht Lübeck', number: 'HRB 11389' },
   vatId: 'DE 279228632',
   /** Regionen, die für lokale Suchanfragen relevant sind */
-  areaServed: ['Deutschland', 'Europa', 'Schleswig-Holstein', 'Hamburg', 'Lübeck', 'Kiel', 'Bad Schwartau'],
+  areaServed: ['Deutschland', 'Europa', 'Weltweit', 'Schleswig-Holstein', 'Hamburg', 'Lübeck', 'Kiel', 'Bad Schwartau'],
 };
 
 const mapsAddress = encodeURIComponent(`${site.name}, ${site.street}, ${site.zip} ${site.city}`);

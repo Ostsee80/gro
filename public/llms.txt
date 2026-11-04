@@ -1,6 +1,6 @@
 # GRO-Erodiertechnik GmbH
 
-> Lohnfertiger aus Bad Schwartau bei Lübeck (Schleswig-Holstein, Deutschland), gegründet 2011. Schwerpunkt Drahterodieren; Prozesse von der mechanischen Bearbeitung bis zur Oberflächenveredelung aus einer Hand. Einzelteile, Prototypen und Serien für Kunden in ganz Deutschland und Europa.
+> Lohnfertiger aus Bad Schwartau bei Lübeck (Schleswig-Holstein, Deutschland), gegründet 2011. Schwerpunkt Drahterodieren; Prozesse von der mechanischen Bearbeitung bis zur Oberflächenveredelung aus einer Hand. Einzelteile, Prototypen und Serien für Kunden in ganz Deutschland, Europa und weltweit.
 
 - Adresse: Langenfelde 18, 23611 Bad Schwartau, Deutschland
 - Telefon: +49 451 530 954 12
@@ -35,5 +35,5 @@
 ## Anfrage
 Zeichnungen oder CAD-Daten (z. B. PDF, DXF, STEP, IGES) und – soweit vorhanden – Material, Stückzahl, Toleranzen, Oberflächenbehandlung. Angebot mit Machbarkeitsprüfung und Liefertermin. Auch Skizzen oder Fotos genügen für den Anfang.
 - [Kontakt & Anfrage](https://gro-erodiertechnik.com/kontakt/)
-- [Lohnerodieren für Deutschland & Europa](https://gro-erodiertechnik.com/lohnerodieren/)
+- [Lohnerodieren für Deutschland, Europa & weltweit](https://gro-erodiertechnik.com/lohnerodieren/)
 - [English: Contract EDM services](https://gro-erodiertechnik.com/en/contract-edm/)
