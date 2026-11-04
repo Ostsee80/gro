@@ -3,6 +3,11 @@
 # ==========================================================================
 
 Options -Indexes
+
+# Interne Konfigurationsdateien nicht ausliefern
+<FilesMatch "^\.(user\.ini|htaccess)$">
+  Require all denied
+</FilesMatch>
 DirectoryIndex index.html
 ErrorDocument 404 /404.html
 AddDefaultCharset utf-8
