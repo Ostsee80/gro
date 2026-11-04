@@ -179,6 +179,26 @@ export const machineGroups: MachineGroup[] = [
     ],
   },
   {
+    id: 'sink',
+    serviceId: 'sinker-edm',
+    title: { de: 'Senkerodieren', en: 'Sinker EDM' },
+    intro: {
+      de: 'Ergänzend zum Drahterodieren – für Kavitäten, Gravuren und Detailarbeiten.',
+      en: 'Complementing wire EDM – for cavities, engravings and detail work.',
+    },
+    machines: [
+      {
+        maker: 'bes Erodiermaschinen',
+        model: '320 K ZNC',
+        type: { de: 'ZNC-Senkerodiermaschine', en: 'ZNC sinker EDM machine' },
+        facts: {
+          de: ['Numerisch gesteuerte Z-Achse für präzise Senktiefen', 'Für Kavitäten, Gravuren und Beschriftungen'],
+          en: ['Numerically controlled Z axis for precise sinking depths', 'For cavities, engravings and lettering'],
+        },
+      },
+    ],
+  },
+  {
     id: 'print',
     serviceId: '3d-printing',
     title: { de: '3D-Druck', en: '3D printing' },
