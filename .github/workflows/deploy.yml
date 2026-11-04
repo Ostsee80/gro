@@ -45,6 +45,16 @@ jobs:
           PUBLIC_THEME: light
           BASE_PATH: /entwurf-hell
 
+      - name: Entwurf „Barth“ bauen (Unterordner /barth/)
+        if: env.STAGING == '1'
+        run: |
+          npx astro build --outDir dist/barth
+          rm -f dist/barth/robots.txt dist/barth/sitemap-*.xml dist/barth/llms.txt
+        env:
+          PUBLIC_STAGING: '1'
+          PUBLIC_THEME: barth
+          BASE_PATH: /barth
+
       - name: Testumgebung für Suchmaschinen sperren
         if: env.STAGING == '1'
         run: |

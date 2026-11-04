@@ -1,13 +1,16 @@
 ---
 import { routes, ui, type Lang } from '../i18n/ui';
 import { site } from '../data/site';
+import { getImage } from 'astro:assets';
+import ctaPhoto from '../assets/img/cnc.jpeg';
+const ctaImg = await getImage({ src: ctaPhoto, width: 1600, format: 'webp', quality: 70 });
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang].ctaBlock;
 ---
 
-<section class="cta dark blueprint" aria-labelledby="cta-title">
+<section class="cta dark blueprint" aria-labelledby="cta-title" style={`--cta-img:url(${ctaImg.src})`}>
   <div class="wrap cta__in reveal">
     <div>
       <p class="label">{t.kicker}</p>

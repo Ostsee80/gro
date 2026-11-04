@@ -5,6 +5,9 @@
  */
 import { routes, ui, type Lang } from '../i18n/ui';
 import { site } from '../data/site';
+import { getImage } from 'astro:assets';
+import heroPhoto from '../assets/img/maschinenbau.jpeg';
+const heroImg = await getImage({ src: heroPhoto, width: 1920, format: 'webp', quality: 72 });
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -55,7 +58,7 @@ const copy = {
 }[lang];
 ---
 
-<section class="hero dark blueprint" aria-labelledby="hero-title">
+<section class="hero dark blueprint" aria-labelledby="hero-title" style={`--hero-img:url(${heroImg.src})`}>
   <div class="hero__glow" aria-hidden="true"></div>
   <div class="hero__in wrap">
     <div class="hero__copy">

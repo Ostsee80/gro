@@ -43,7 +43,7 @@ mit `BASE_PATH=/ordner` lässt sich eine Variante in einem Unterordner bauen:
 BASE_PATH=/entwurf-hell PUBLIC_THEME=light npx astro build --outDir dist/entwurf-hell
 ```
 
-Auf der Testumgebung liegt die helle Variante unter `/entwurf-hell/`.
+Auf der Testumgebung liegen die helle Variante unter `/entwurf-hell/` und der Corporate-Entwurf unter `/barth/` (`PUBLIC_THEME=barth`).
 
 ## SEO auf einen Blick
 
