@@ -463,12 +463,12 @@ export const services: Service[] = [
       en: '3D Printing for Prototypes & Fixtures | GRO',
     },
     seoDescription: {
-      de: '3D-Druck (FDM) mit Bauraum bis ca. 325 × 320 × 325 mm: Prototypen, Vorrichtungen, Lehren und Kunststoffteile – ergänzend zur Metallbearbeitung aus einer Hand.',
-      en: '3D printing (FDM) with build volume up to approx. 325 × 320 × 325 mm: prototypes, fixtures, gauges and plastic parts – alongside metalworking from one source.',
+      de: '3D-Druck bis ca. 325 × 320 × 325 mm: Prototypen, Vorrichtungen und Kunststoffteile – viele Farben, auch UV-beständige Filamente. Aus einer Hand.',
+      en: '3D printing up to approx. 325 × 320 × 325 mm: prototypes, fixtures and plastic parts – many colours, UV-resistant filaments too. All from one source.',
     },
     teaser: {
-      de: 'Prototypen, Vorrichtungen und Kunststoffteile – schnell gedruckt, Bauraum bis ca. 325 × 320 × 325 mm.',
-      en: 'Prototypes, fixtures and plastic parts – printed fast, build volume up to approx. 325 × 320 × 325 mm.',
+      de: 'Prototypen, Vorrichtungen und Kunststoffteile – viele Farben, auch UV-beständige Filamente.',
+      en: 'Prototypes, fixtures and plastic parts – many colours, UV-resistant filaments too.',
     },
     intro: {
       de: 'Mit dem 3D-Druck (FDM-Verfahren) entstehen Bauteile Schicht für Schicht direkt aus Ihren CAD-Daten – ohne Werkzeug und ohne lange Rüstzeiten. Ideal, wenn es schnell gehen muss oder Geometrien gefragt sind, die sich spanend nur aufwendig herstellen lassen.',
@@ -476,25 +476,29 @@ export const services: Service[] = [
     },
     body: {
       de: [
-        'Wir drucken Funktionsprototypen, Vorrichtungen, Prüflehren, Montagehilfen, Abdeckungen und Ersatzteile aus Kunststoff. Dank zwei Düsen sind auch Mehrmaterial-Bauteile und lösliche Stützstrukturen möglich.',
+        'Wir drucken Funktionsprototypen, Vorrichtungen, Prüflehren, Montagehilfen, Abdeckungen und Ersatzteile aus Kunststoff. Dank zwei Düsen sind auch Mehrmaterial-Bauteile, mehrfarbige Teile und lösliche Stützstrukturen möglich.',
+        'Uns steht eine große Auswahl an Filamenten zur Verfügung – in vielen Farben und für unterschiedlichste Anforderungen, zum Beispiel UV- und witterungsbeständige Materialien für den Außeneinsatz, schlagzähe oder temperaturbeständige Kunststoffe. Wir beraten Sie, welches Material zu Ihrem Einsatz passt.',
         'Der Vorteil bei uns: Gedruckte Vorrichtungen und Lehren passen exakt zu den Metallteilen, die wir für Sie fertigen – alles aus einer Hand.',
       ],
       en: [
-        'We print functional prototypes, fixtures, inspection gauges, assembly aids, covers and plastic spare parts. With two nozzles, multi-material parts and soluble supports are also possible.',
+        'We print functional prototypes, fixtures, inspection gauges, assembly aids, covers and plastic spare parts. With two nozzles, multi-material parts, multi-colour parts and soluble supports are also possible.',
+        'We have a wide range of filaments available – in many colours and for all kinds of requirements, such as UV- and weather-resistant materials for outdoor use, impact-resistant or heat-resistant plastics. We will advise you on the right material for your application.',
         'The advantage with us: printed fixtures and gauges match the metal parts we manufacture for you exactly – all from one source.',
       ],
     },
     benefits: {
-      de: ['Schnell vom CAD-Modell zum Bauteil', 'Ohne Werkzeugkosten – ideal für Einzelteile', 'Komplexe Geometrien und Mehrmaterial-Druck', 'Passend zu Ihren Metallteilen aus unserer Fertigung'],
-      en: ['Fast from CAD model to part', 'No tooling costs – ideal for single parts', 'Complex geometries and multi-material printing', 'Matched to your metal parts from our production'],
+      de: ['Große Filament-Auswahl in vielen Farben', 'Auch UV- und witterungsbeständige Materialien', 'Ohne Werkzeugkosten – ideal für Einzelteile', 'Komplexe Geometrien und Mehrmaterial-Druck', 'Passend zu Ihren Metallteilen aus unserer Fertigung'],
+      en: ['Wide choice of filaments in many colours', 'UV- and weather-resistant materials too', 'No tooling costs – ideal for single parts', 'Complex geometries and multi-material printing', 'Matched to your metal parts from our production'],
     },
     applications: {
       de: ['Funktionsprototypen', 'Vorrichtungen und Montagehilfen', 'Prüf- und Einstelllehren', 'Ersatz- und Kleinteile aus Kunststoff'],
       en: ['Functional prototypes', 'Fixtures and assembly aids', 'Inspection and setting gauges', 'Plastic spare and small parts'],
     },
     faq: {
-      de: [{ q: 'Welche Daten brauchen Sie für den 3D-Druck?', a: 'Am besten ein 3D-Modell, z. B. als STEP, STL oder 3MF. Wenn Sie nur eine Zeichnung oder ein Musterteil haben, sprechen Sie uns an.' }],
-      en: [{ q: 'What data do you need for 3D printing?', a: 'Ideally a 3D model, e.g. as STEP, STL or 3MF. If you only have a drawing or a sample part, get in touch.' }],
+      de: [{ q: 'Welche Materialien und Farben stehen zur Verfügung?', a: 'Wir haben unterschiedlichste Filamente vorrätig – in vielen Farben, darunter auch UV- und witterungsbeständige Materialien für den Außeneinsatz. Nennen Sie uns Einsatzzweck und Wunschfarbe, wir empfehlen das passende Material.' },
+        { q: 'Welche Daten brauchen Sie für den 3D-Druck?', a: 'Am besten ein 3D-Modell, z. B. als STEP, STL oder 3MF. Wenn Sie nur eine Zeichnung oder ein Musterteil haben, sprechen Sie uns an.' }],
+      en: [{ q: 'Which materials and colours are available?', a: 'We stock a wide range of filaments – in many colours, including UV- and weather-resistant materials for outdoor use. Tell us the application and desired colour and we will recommend the right material.' },
+        { q: 'What data do you need for 3D printing?', a: 'Ideally a 3D model, e.g. as STEP, STL or 3MF. If you only have a drawing or a sample part, get in touch.' }],
     },
     image: druck,
     imageAlt: { de: 'Illustration: Bauteil entsteht Schicht für Schicht im 3D-Drucker', en: 'Illustration: part being built layer by layer in a 3D printer' },

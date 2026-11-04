@@ -192,8 +192,8 @@ export const machineGroups: MachineGroup[] = [
         model: 'H2D',
         type: { de: '3D-Drucker mit zwei Düsen (FDM)', en: 'Dual-nozzle 3D printer (FDM)' },
         facts: {
-          de: ['Bauraum bis ca. 325 × 320 × 325 mm', 'Zwei Düsen für Mehrmaterial- und Stützmaterialdruck', 'Beheizter Bauraum für technische Kunststoffe'],
-          en: ['Build volume up to approx. 325 × 320 × 325 mm', 'Two nozzles for multi-material and support printing', 'Heated chamber for engineering plastics'],
+          de: ['Bauraum bis ca. 325 × 320 × 325 mm', 'Zwei Düsen für Mehrmaterial- und Stützmaterialdruck', 'Große Filament-Auswahl – viele Farben, auch UV-beständig'],
+          en: ['Build volume up to approx. 325 × 320 × 325 mm', 'Two nozzles for multi-material and support printing', 'Wide choice of filaments – many colours, UV-resistant too'],
         },
       },
     ],
