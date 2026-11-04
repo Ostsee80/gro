@@ -22,5 +22,9 @@ export const site = {
 const mapsAddress = encodeURIComponent(`${site.name}, ${site.street}, ${site.zip} ${site.city}`);
 /** Google-Maps-Routenplaner mit der Firma als Ziel (reiner Link, keine Einbettung) */
 export const mapsLink = `https://www.google.com/maps/dir/?api=1&destination=${mapsAddress}`;
+/** Startet auf dem Smartphone direkt die Navigation in Google Maps */
+export const mapsNavigate = `${mapsLink}&travelmode=driving&dir_action=navigate`;
+/** Eingebettete Karte (wird erst nach Klick geladen – Zwei-Klick-Lösung) */
+export const mapsEmbed = (lang: 'de' | 'en') => `https://maps.google.com/maps?q=${mapsAddress}&hl=${lang}&z=15&output=embed`;
 /** Google-Maps-Ortsansicht (für strukturierte Daten) */
 export const mapsPlace = `https://www.google.com/maps/search/?api=1&query=${mapsAddress}`;

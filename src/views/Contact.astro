@@ -1,8 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import MapEmbed from '../components/MapEmbed.astro';
 import { routes, ui, type Lang } from '../i18n/ui';
-import { site, mapsLink } from '../data/site';
+import { site, mapsNavigate } from '../data/site';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -113,8 +114,16 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
             <address>{site.name}<br />{site.street}<br />{site.zip} {site.city}{lang === 'en' && <><br />Germany</>}</address>
           </dd>
         </dl>
-        <a class="btn btn--ghost" href={mapsLink} target="_blank" rel="noopener">{t.route} ↗</a>
+        <a class="btn btn--ghost" href={mapsNavigate} target="_blank" rel="noopener">{lang === 'de' ? 'Navigation starten' : 'Start navigation'} ↗</a>
       </aside>
+    </div>
+  </section>
+
+  <section class="section mapsec" aria-labelledby="map-title">
+    <div class="wrap">
+      <p class="label">{lang === 'de' ? 'Anfahrt' : 'Directions'}</p>
+      <h2 id="map-title">{lang === 'de' ? 'So finden Sie zu uns.' : 'How to find us.'}</h2>
+      <MapEmbed lang={lang} />
     </div>
   </section>
 </Base>
@@ -125,6 +134,8 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
 </script>
 
 <style>
+  .mapsec { padding-top: 0; }
+  .mapsec h2 { margin: 0.8rem 0 1.5rem; font-size: var(--step-3); }
   .ct { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
   @media (max-width: 900px) { .ct { grid-template-columns: 1fr; } }
   .form { display: grid; gap: 1.2rem; }

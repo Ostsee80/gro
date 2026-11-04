@@ -1,0 +1,133 @@
+---
+/**
+ * Google-Maps-Karte als Zwei-Klick-Lösung (DSGVO):
+ * Google wird erst nach Klick auf „Karte laden“ kontaktiert.
+ */
+import { routes, type Lang } from '../i18n/ui';
+import { site, mapsEmbed, mapsLink, mapsNavigate } from '../data/site';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const de = lang === 'de';
+const t = {
+  load: de ? 'Karte laden' : 'Load map',
+  note: de
+    ? 'Mit dem Laden der Karte werden Daten an Google übertragen. Mehr in der'
+    : 'Loading the map transfers data to Google. More in our',
+  privacy: de ? 'Datenschutzerklärung' : 'privacy policy',
+  navigate: de ? 'Navigation starten' : 'Start navigation',
+  route: de ? 'Route planen' : 'Plan route',
+  title: de ? `Karte: ${site.name}, ${site.street}, ${site.zip} ${site.city}` : `Map: ${site.name}, ${site.street}, ${site.zip} ${site.city}, Germany`,
+};
+---
+
+<div class="map" data-map>
+  <div class="map__frame" data-map-frame>
+    <!-- Platzhalter im Blaupausen-Stil -->
+    <div class="map__ph blueprint" data-map-ph>
+      <svg class="map__svg" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <g class="map__roads">
+          <path d="M-20 330 C 160 300, 260 250, 400 225 S 640 160, 820 120" />
+          <path d="M120 -20 C 170 120, 260 190, 400 225 S 560 330, 600 470" />
+          <path d="M-20 120 C 120 140, 220 170, 300 210" class="thin" />
+          <path d="M470 -20 C 455 80, 430 160, 400 225" class="thin" />
+          <path d="M400 225 C 500 260, 650 270, 820 300" class="thin" />
+        </g>
+        <g class="map__ring">
+          <circle cx="400" cy="225" r="70" />
+          <circle cx="400" cy="225" r="130" />
+        </g>
+        <line x1="400" y1="0" x2="400" y2="450" class="map__axis" />
+        <line x1="0" y1="225" x2="800" y2="225" class="map__axis" />
+      </svg>
+      <div class="map__pin" aria-hidden="true"><span></span></div>
+      <div class="map__card">
+        <p class="map__name">{site.name}</p>
+        <p class="map__addr">{site.street} · {site.zip} {site.city}</p>
+        <p class="map__geo">N {site.geo.lat.toFixed(5)}° · E {site.geo.lng.toFixed(5)}°</p>
+        <button type="button" class="btn" data-map-load>
+          <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 18s6-5.2 6-10A6 6 0 0 0 4 8c0 4.8 6 10 6 10Z" stroke="currentColor" stroke-width="1.7" /><circle cx="10" cy="8" r="2.2" stroke="currentColor" stroke-width="1.7" /></svg>
+          {t.load}
+        </button>
+        <p class="map__note">{t.note} <a href={routes.privacy[lang]}>{t.privacy}</a>.</p>
+      </div>
+    </div>
+    <template data-map-tpl>
+      <iframe
+        src={mapsEmbed(lang)}
+        title={t.title}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      ></iframe>
+    </template>
+  </div>
+
+  <div class="map__actions">
+    <a class="btn" href={mapsNavigate} target="_blank" rel="noopener">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 9.5 17 3l-6.5 14-1.8-5.7L3 9.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" /></svg>
+      {t.navigate}
+    </a>
+    <a class="btn btn--ghost" href={mapsLink} target="_blank" rel="noopener">{t.route} ↗</a>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-map]').forEach((map) => {
+    const btn = map.querySelector<HTMLButtonElement>('[data-map-load]');
+    btn?.addEventListener('click', () => {
+      const frame = map.querySelector('[data-map-frame]')!;
+      const tpl = map.querySelector<HTMLTemplateElement>('[data-map-tpl]')!;
+      frame.appendChild(tpl.content.cloneNode(true));
+      map.querySelector('[data-map-ph]')?.remove();
+      frame.querySelector('iframe')?.focus();
+    });
+  });
+</script>
+
+<style>
+  .map { display: grid; gap: 1rem; }
+  .map__frame {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    min-height: 340px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: var(--ink);
+    border: 1px solid var(--line);
+  }
+  .map__frame :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .map__ph { position: absolute; inset: 0; background-color: var(--ink); }
+  .map__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .map__roads path { fill: none; stroke: rgb(255 255 255 / 0.22); stroke-width: 7; stroke-linecap: round; }
+  .map__roads path.thin { stroke-width: 3; stroke: rgb(255 255 255 / 0.14); }
+  .map__ring circle { fill: none; stroke: rgb(231 191 104 / 0.35); stroke-dasharray: 4 6; }
+  .map__axis { stroke: rgb(255 255 255 / 0.08); stroke-dasharray: 14 5 2 5; }
+  .map__pin { position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--brass-2); box-shadow: 0 0 0 6px rgb(231 191 104 / 0.25), 0 0 24px var(--brass-2); }
+  .map__pin span { position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--brass-2); animation: ping 2s var(--ease) infinite; }
+  @keyframes ping { from { transform: scale(1); opacity: 0.8; } to { transform: scale(3.2); opacity: 0; } }
+  .map__card {
+    position: relative; z-index: 1;
+    max-width: 340px;
+    padding: 1.4rem 1.5rem;
+    background: rgb(7 19 29 / 0.86);
+    border: 1px solid var(--line-dark);
+    border-radius: var(--radius);
+    backdrop-filter: blur(6px);
+    color: #fff;
+    position: absolute; left: 1.2rem; top: 1.2rem;
+    text-align: left;
+  }
+  @media (max-width: 640px) {
+    .map__frame { aspect-ratio: auto; min-height: 460px; }
+    .map__card { left: 0.8rem; right: 0.8rem; top: auto; bottom: 0.8rem; max-width: none; }
+    .map__pin { top: 24%; }
+  }
+  .map__card p { margin: 0; }
+  .map__name { font-family: var(--font-display); font-weight: 600; font-size: 1.15rem; }
+  .map__addr { color: var(--muted-dark); margin-top: 0.2rem !important; }
+  .map__geo { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--brass-2); margin: 0.6rem 0 1rem !important; }
+  .map__note { font-size: 0.78rem; color: var(--muted-dark); margin-top: 0.9rem !important; line-height: 1.45; }
+  .map__note a { color: #fff; }
+  .map__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+</style>

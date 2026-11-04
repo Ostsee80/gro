@@ -3,10 +3,10 @@ import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Cta from '../components/Cta.astro';
+import MapEmbed from '../components/MapEmbed.astro';
 import { routes, ui, type Lang } from '../i18n/ui';
-import { site, mapsLink } from '../data/site';
+import { site, mapsNavigate } from '../data/site';
 import ceo from '../assets/img/gregor-prill.jpg';
-import fraesen from '../assets/img/fraesen.jpg';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -120,12 +120,8 @@ const personLd = {
           {site.zip} {site.city}<br />
           <a href={site.phoneHref}>{site.phone}</a> · <a href={`mailto:${site.email}`}>{site.email}</a>
         </address>
-        <a class="btn btn--ghost" href={mapsLink} target="_blank" rel="noopener">{t.route} ↗</a>
       </div>
-      <figure class="loc__img reveal">
-        <Image src={fraesen} alt={lang === 'de' ? 'Fräsbearbeitung in der Fertigung der GRO-Erodiertechnik' : 'Milling at GRO-Erodiertechnik’s production facility'} widths={[400, 700, 900]} sizes="(max-width: 900px) 100vw, 560px" loading="lazy" />
-        <figcaption>N {site.geo.lat.toFixed(5)}° · E {site.geo.lng.toFixed(5)}°</figcaption>
-      </figure>
+      <div class="reveal"><MapEmbed lang={lang} /></div>
     </div>
   </section>
 
@@ -153,7 +149,7 @@ const personLd = {
   .pillars h3 { color: #fff; font-size: var(--step-2); }
   .pillars li > p:last-child { color: var(--muted-dark); margin: 0; }
 
-  .loc { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
+  .loc { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
   @media (max-width: 900px) { .loc { grid-template-columns: 1fr; } }
   .loc h2 { margin-top: 1rem; }
   address { font-style: normal; margin: 1.5rem 0 2rem; line-height: 1.8; }

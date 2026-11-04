@@ -23,7 +23,7 @@ const de = lang === 'de';
     <div class="wrap prose">
       {de ? (
         <>
-          <p class="lead">Der Schutz Ihrer Daten ist uns wichtig. Diese Website verwendet <strong>keine Cookies, keine Analyse- oder Tracking-Dienste</strong> und lädt <strong>keine Schriften oder Skripte von Drittanbietern</strong>.</p>
+          <p class="lead">Der Schutz Ihrer Daten ist uns wichtig. Diese Website verwendet <strong>keine Cookies, keine Analyse- oder Tracking-Dienste</strong> und lädt <strong>keine Schriften oder Skripte von Drittanbietern</strong>. Inhalte von Google Maps werden nur geladen, wenn Sie dies ausdrücklich per Klick wünschen.</p>
 
           <h2>1. Verantwortlicher</h2>
           <p>{site.name}<br />{site.street}, {site.zip} {site.city}<br />Telefon: {site.phone}<br />E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a></p>
@@ -48,8 +48,12 @@ const de = lang === 'de';
           <h2>4. Schriftarten</h2>
           <p>Die auf dieser Website verwendeten Schriftarten werden lokal von unserem eigenen Server geladen. Es findet keine Verbindung zu Servern von Google oder anderen Drittanbietern statt.</p>
 
-          <h2>5. Externe Links</h2>
-          <p>Für die Routenplanung verlinken wir auf Google Maps (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland). Es handelt sich um einen einfachen Link – auf unserer Website wird keine Karte eingebettet. Erst wenn Sie den Link anklicken, verlassen Sie unsere Website und es werden Daten an Google übertragen. Es gilt dann die <a href="https://policies.google.com/privacy" rel="noopener">Datenschutzerklärung von Google</a>.</p>
+          <h2>5. Google Maps (Karte und Routenplanung)</h2>
+          <p>Auf unseren Seiten „Kontakt“ und „Unternehmen“ können Sie eine Karte von Google Maps anzeigen lassen. Anbieter ist die Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Irland.</p>
+          <p>Wir nutzen dafür eine <strong>Zwei-Klick-Lösung</strong>: Zunächst sehen Sie nur einen Platzhalter, und es werden keine Daten an Google übertragen. Erst wenn Sie auf „Karte laden“ klicken, wird die Karte von Google-Servern geladen. Dabei werden insbesondere Ihre IP-Adresse sowie technische Informationen zu Ihrem Browser an Google übermittelt; Google kann zudem Cookies setzen. Eine Übermittlung in die USA ist möglich. Google ist unter dem EU-US Data Privacy Framework zertifiziert.</p>
+          <p>Rechtsgrundlage ist Ihre Einwilligung (Art. 6 Abs. 1 lit. a DSGVO, § 25 Abs. 1 TDDDG), die Sie durch den Klick erteilen. Die Einwilligung gilt nur für den aktuellen Seitenaufruf; beim nächsten Besuch wird die Karte nicht automatisch geladen.</p>
+          <p>Die Schaltflächen „Navigation starten“ und „Route planen“ sind einfache Links. Daten werden erst an Google übertragen, wenn Sie einen dieser Links anklicken und damit unsere Website verlassen.</p>
+          <p>Weitere Informationen: <a href="https://policies.google.com/privacy" rel="noopener">Datenschutzerklärung von Google</a>.</p>
 
           <h2>6. SSL-/TLS-Verschlüsselung</h2>
           <p>Diese Website nutzt aus Sicherheitsgründen eine SSL- bzw. TLS-Verschlüsselung. Eine verschlüsselte Verbindung erkennen Sie an „https://“ in der Adresszeile Ihres Browsers.</p>
@@ -72,7 +76,7 @@ const de = lang === 'de';
         </>
       ) : (
         <>
-          <p class="lead">Protecting your data matters to us. This website uses <strong>no cookies, no analytics or tracking services</strong> and loads <strong>no fonts or scripts from third parties</strong>.</p>
+          <p class="lead">Protecting your data matters to us. This website uses <strong>no cookies, no analytics or tracking services</strong> and loads <strong>no fonts or scripts from third parties</strong>. Google Maps content is only loaded if you explicitly request it by clicking.</p>
 
           <h2>1. Controller</h2>
           <p>{site.name}<br />{site.street}, {site.zip} {site.city}, Germany<br />Phone: {site.phone}<br />Email: <a href={`mailto:${site.email}`}>{site.email}</a></p>
@@ -89,8 +93,9 @@ const de = lang === 'de';
           <h2>4. Fonts</h2>
           <p>The fonts used on this website are served locally from our own server. No connection is made to Google or any other third-party servers.</p>
 
-          <h2>5. External links</h2>
-          <p>For directions we link to Google Maps (Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland). This is a plain link – no map is embedded on our website. Data is only transmitted to Google once you click the link and leave our website; <a href="https://policies.google.com/privacy" rel="noopener">Google’s privacy policy</a> then applies.</p>
+          <h2>5. Google Maps (map and directions)</h2>
+          <p>On our “Contact” and “Company” pages you can display a Google Maps map, provided by Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland. We use a <strong>two-click solution</strong>: initially only a placeholder is shown and no data is sent to Google. Only when you click “Load map” is the map loaded from Google’s servers, which transmits in particular your IP address and technical browser information to Google; Google may also set cookies, and data may be transferred to the USA (Google is certified under the EU-US Data Privacy Framework).</p>
+          <p>The legal basis is your consent (Art. 6 (1) (a) GDPR, § 25 (1) TDDDG), given by clicking. It applies only to the current page view. The “Start navigation” and “Plan route” buttons are plain links; data is only sent to Google once you click them and leave our website. See <a href="https://policies.google.com/privacy" rel="noopener">Google’s privacy policy</a>.</p>
 
           <h2>6. Your rights</h2>
           <p>You have the right of access (Art. 15 GDPR), rectification (Art. 16), erasure (Art. 17), restriction of processing (Art. 18), data portability (Art. 20), objection (Art. 21) and to withdraw consent at any time with effect for the future (Art. 7 (3) GDPR). Please contact us using the details above.</p>
