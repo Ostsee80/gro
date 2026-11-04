@@ -16,8 +16,20 @@
 - [Sandstrahlen](https://gro-erodiertechnik.com/leistungen/sandstrahlen/)
 - [Strömungspolieren](https://gro-erodiertechnik.com/leistungen/stroemungspolieren/)
 - [Pulverbeschichten](https://gro-erodiertechnik.com/leistungen/pulverbeschichtung/)
+- [3D-Druck](https://gro-erodiertechnik.com/leistungen/3d-druck/) – Bauraum bis ca. 325 × 320 × 325 mm (Bambu Lab H2D)
 - [Senkerodieren (ergänzend)](https://gro-erodiertechnik.com/leistungen/senkerodieren/)
 - [Alle Leistungen & Kapazitäten](https://gro-erodiertechnik.com/leistungen/)
+
+## Maschinenpark
+- Drahterodieren: Sodick ALC 800 G, Sodick SLC 600 G, Sodick AG 600 L
+- Mikrobohr-Erodieren: AgieCharmilles DRILL 20
+- CNC-Fräsen: VF-MILL ECO 1100, DMG (Deckel Maho) DMC 63 V
+- Flachschleifen: Kuroda GS-DH
+- Strömungspolieren: Extrude Hone 77B
+- Pulverbeschichten: Romer AP-300 Exclusive, Romer SLS-150
+- 3D-Druck: Bambu Lab H2D
+- Messtechnik: Keyence IM-8000, Keyence XM-P1000, Mitutoyo LH-600E, Mitutoyo Surftest SJ-210
+- [Maschinenpark](https://gro-erodiertechnik.com/maschinenpark/)
 
 ## Anfrage
 Zeichnungen oder CAD-Daten (z. B. PDF, DXF, STEP, IGES) und – soweit vorhanden – Material, Stückzahl, Toleranzen, Oberflächenbehandlung. Angebot mit Machbarkeitsprüfung und Liefertermin. Auch Skizzen oder Fotos genügen für den Anfang.

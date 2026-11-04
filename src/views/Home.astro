@@ -7,6 +7,7 @@ import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
 import { services } from '../data/services';
 import { industries } from '../data/industries';
+import { machineGroups, machineCount } from '../data/machines';
 import { routes, ui, type Lang } from '../i18n/ui';
 import bauteil from '../assets/img/bauteil-blau.jpg';
 import pharma from '../assets/img/pharma-bauteil.jpg';
@@ -36,7 +37,7 @@ const c = {
       { t: 'Angebot & Planung', d: 'Sie erhalten ein transparentes Angebot. Nach Freigabe planen wir die Fertigung.' },
       { t: 'Fertigung', d: 'Drahterodieren, 5-Achs-CNC-Fräsen, Mikrobohr-Erodieren und Flachschleifen – auf unserem digitalisierten Maschinenpark.' },
       { t: 'Oberfläche & Finish', d: 'Sandstrahlen, Strömungspolieren, Pulverbeschichten und Laserbeschriftung – Ihr Bauteil kommt einbaufertig.' },
-      { t: 'Messen & Liefern', d: 'Wir dokumentieren die Ergebnisse mit moderner Messtechnik und liefern termintreu.' },
+      { t: 'Messen & Liefern', d: 'Wir prüfen mit Messtechnik von Keyence und Mitutoyo, dokumentieren auf Wunsch und liefern termintreu.' },
     ],
     industriesKicker: 'Branchen',
     industriesTitle: 'Für Branchen, in denen Präzision zählt.',
@@ -70,7 +71,7 @@ const c = {
       { t: 'Quote & planning', d: 'You receive a transparent quotation. Once approved, we plan production.' },
       { t: 'Manufacturing', d: 'Wire EDM, 5-axis CNC milling, micro-hole EDM and surface grinding – on our digitalised machinery.' },
       { t: 'Surface & finish', d: 'Sandblasting, abrasive flow polishing, powder coating and laser marking – your component arrives ready to install.' },
-      { t: 'Measuring & delivery', d: 'We document the results with modern measuring technology and deliver on time.' },
+      { t: 'Measuring & delivery', d: 'We inspect with Keyence and Mitutoyo metrology, document on request and deliver on time.' },
     ],
     industriesKicker: 'Industries',
     industriesTitle: 'For industries where precision matters.',
@@ -156,6 +157,25 @@ const faqLd = {
     </div>
   </section>
 
+  <!-- Maschinenpark -->
+  <section class="section mp" aria-labelledby="mp-title">
+    <div class="wrap mp__grid">
+      <div class="reveal">
+        <p class="label">{lang === 'de' ? 'Maschinenpark' : 'Machinery'}</p>
+        <h2 id="mp-title">{lang === 'de' ? `${machineCount} Anlagen. Namhafte Hersteller.` : `${machineCount} systems. Renowned manufacturers.`}</h2>
+        <p class="lead">{lang === 'de'
+          ? 'Drahterodieren auf Sodick, Fräsen auf DMG, Mikrobohren auf AgieCharmilles, Strömungspolieren mit Extrude Hone – und Messtechnik von Keyence und Mitutoyo für dokumentierte Qualität.'
+          : 'Wire EDM on Sodick, milling on DMG, micro-hole drilling on AgieCharmilles, flow polishing with Extrude Hone – and metrology from Keyence and Mitutoyo for documented quality.'}</p>
+        <a class="btn" href={routes.machines[lang]}>{lang === 'de' ? 'Maschinenpark ansehen' : 'View machinery'}</a>
+      </div>
+      <ul class="mp__list reveal" role="list">
+        {machineGroups.flatMap((g) => g.machines.map((m) => ({ g, m }))).map(({ g, m }) => (
+          <li><span class="mp__area">{g.title[lang]}</span><span class="mp__name">{`${m.maker} ${m.model}`.trim()}</span></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
   <!-- Branchen -->
   <section class="section industries" aria-labelledby="ind-title">
     <div class="wrap">
@@ -235,4 +255,13 @@ const faqLd = {
   .ind__no { font-family: var(--font-mono); font-size: 0.7rem; color: var(--brass-glow); }
 
   .faqsec__in { max-width: 900px; }
+  .mp__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  @media (max-width: 900px) { .mp__grid { grid-template-columns: 1fr; } }
+  .mp h2 { margin-top: 1rem; }
+  .mp .btn { margin-top: 1.5rem; }
+  .mp__list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+  @media (max-width: 520px) { .mp__list { grid-template-columns: 1fr; } }
+  .mp__list li { display: grid; gap: 0.1rem; padding: 0.75rem 0.5rem 0.75rem 0; border-bottom: 1px solid var(--line); }
+  .mp__area { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass-ink); }
+  .mp__name { font-family: var(--font-display); font-weight: 600; }
 </style>

@@ -5,6 +5,8 @@ import PageHero from '../components/PageHero.astro';
 import ServiceGrid from '../components/ServiceGrid.astro';
 import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
+import MachineList from '../components/MachineList.astro';
+import { machinesForService } from '../data/machines';
 import { services, type Service } from '../data/services';
 import { routes, servicePath, ui, type Lang } from '../i18n/ui';
 import { site } from '../data/site';
@@ -19,6 +21,7 @@ const crumbs = [
   { name: s.title[lang], href: alternates[lang] },
 ];
 const og = await getImage({ src: s.image, width: 1200, height: 630, fit: 'cover', format: 'jpg' });
+const machineGroup = machinesForService(s.id);
 const related = services.filter((x) => x.id !== s.id).slice(0, 3);
 
 const serviceLd = {
@@ -68,6 +71,14 @@ const faqLd = {
             </ul>
           </div>
         </div>
+
+        {machineGroup && (
+          <div class="sv__machines">
+            <h2 class="sv__h">{lang === 'de' ? 'Eingesetzte Maschinen' : 'Machines we use'}</h2>
+            <MachineList lang={lang} group={machineGroup} />
+            <p class="sv__mlink"><a href={routes.machines[lang]}>{lang === 'de' ? 'Gesamten Maschinenpark ansehen →' : 'View all machinery →'}</a></p>
+          </div>
+        )}
 
         <div class="sv__faq">
           <Faq title={t.faq} items={s.faq[lang]} />
@@ -138,4 +149,7 @@ const faqLd = {
   .spec__lbl { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass-2); }
   .spec__val { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); color: var(--on-dark); letter-spacing: -0.01em; }
   .spec__note { font-size: 0.85rem; color: var(--muted-dark); }
+  .sv__machines { margin: 0 0 3rem; }
+  .sv__mlink { margin-top: 1rem; font-size: 0.95rem; }
+  .sv__mlink a { color: var(--brass-ink); font-weight: 600; }
 </style>

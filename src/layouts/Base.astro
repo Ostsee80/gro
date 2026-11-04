@@ -76,7 +76,7 @@ const organization = {
   geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
   hasMap: mapsPlace,
   areaServed: site.areaServed.map((name) => ({ '@type': 'Place', name })),
-  knowsAbout: ['Lohnerodieren', 'Lohnfertigung', 'Contract EDM', 'Drahterodieren', 'Wire EDM', 'Funkenerosion', 'CNC-Fräsen', '5-Achs-Bearbeitung', 'Mikrobohr-Erodieren', 'Startlochbohren', 'Flachschleifen', 'Laserbeschriftung', 'Gravieren', 'Sandstrahlen', 'Strömungspolieren', 'Strömungsschleifen', 'Pulverbeschichten', 'Senkerodieren'],
+  knowsAbout: ['Lohnerodieren', 'Lohnfertigung', 'Contract EDM', 'Drahterodieren', 'Wire EDM', 'Funkenerosion', 'CNC-Fräsen', '5-Achs-Bearbeitung', 'Mikrobohr-Erodieren', 'Startlochbohren', 'Flachschleifen', 'Laserbeschriftung', 'Gravieren', 'Sandstrahlen', 'Strömungspolieren', 'Strömungsschleifen', 'Pulverbeschichten', '3D-Druck', 'Messtechnik', 'Senkerodieren'],
   makesOffer: services.map((s) => ({
     '@type': 'Offer',
     itemOffered: { '@type': 'Service', name: s.title[lang], url: `${site.url}${lang === 'de' ? '/leistungen/' : '/en/services/'}${s.slug[lang]}/` },

@@ -8,6 +8,7 @@ import bohren from '../assets/img/cnc.jpeg';
 import werkstatt from '../assets/img/sonderloesungen.jpg';
 import pulver from '../assets/img/bauteil-blau.jpg';
 import laser from '../assets/img/lasergravur.jpeg';
+import druck from '../assets/img/3d-druck.jpg';
 
 type L<T = string> = { de: T; en: T };
 export type Faq = { q: string; a: string };
@@ -448,6 +449,55 @@ export const services: Service[] = [
     },
     image: pulver,
     imageAlt: { de: 'Blau pulverbeschichtetes Metallbauteil mit Flansch', en: 'Blue powder-coated metal component with flange' },
+  },
+
+  // ------------------------------------------------------------------ 3D-Druck
+  {
+    id: '3d-printing',
+    code: '3D',
+    slug: { de: '3d-druck', en: '3d-printing' },
+    title: { de: '3D-Druck', en: '3D Printing' },
+    spec: { label: { de: 'Bauraum', en: 'Build volume' }, value: { de: 'bis ca. 325 × 320 × 325 mm', en: 'up to approx. 325 × 320 × 325 mm' } },
+    seoTitle: {
+      de: '3D-Druck für Prototypen & Vorrichtungen | GRO',
+      en: '3D Printing for Prototypes & Fixtures | GRO',
+    },
+    seoDescription: {
+      de: '3D-Druck (FDM) mit Bauraum bis ca. 325 × 320 × 325 mm: Prototypen, Vorrichtungen, Lehren und Kunststoffteile – ergänzend zur Metallbearbeitung aus einer Hand.',
+      en: '3D printing (FDM) with build volume up to approx. 325 × 320 × 325 mm: prototypes, fixtures, gauges and plastic parts – alongside metalworking from one source.',
+    },
+    teaser: {
+      de: 'Prototypen, Vorrichtungen und Kunststoffteile – schnell gedruckt, Bauraum bis ca. 325 × 320 × 325 mm.',
+      en: 'Prototypes, fixtures and plastic parts – printed fast, build volume up to approx. 325 × 320 × 325 mm.',
+    },
+    intro: {
+      de: 'Mit dem 3D-Druck (FDM-Verfahren) entstehen Bauteile Schicht für Schicht direkt aus Ihren CAD-Daten – ohne Werkzeug und ohne lange Rüstzeiten. Ideal, wenn es schnell gehen muss oder Geometrien gefragt sind, die sich spanend nur aufwendig herstellen lassen.',
+      en: 'With 3D printing (FDM), components are built layer by layer directly from your CAD data – with no tooling and no long set-up times. Ideal when speed matters or geometries are needed that would be costly to machine.',
+    },
+    body: {
+      de: [
+        'Wir drucken Funktionsprototypen, Vorrichtungen, Prüflehren, Montagehilfen, Abdeckungen und Ersatzteile aus Kunststoff. Dank zwei Düsen sind auch Mehrmaterial-Bauteile und lösliche Stützstrukturen möglich.',
+        'Der Vorteil bei uns: Gedruckte Vorrichtungen und Lehren passen exakt zu den Metallteilen, die wir für Sie fertigen – alles aus einer Hand.',
+      ],
+      en: [
+        'We print functional prototypes, fixtures, inspection gauges, assembly aids, covers and plastic spare parts. With two nozzles, multi-material parts and soluble supports are also possible.',
+        'The advantage with us: printed fixtures and gauges match the metal parts we manufacture for you exactly – all from one source.',
+      ],
+    },
+    benefits: {
+      de: ['Schnell vom CAD-Modell zum Bauteil', 'Ohne Werkzeugkosten – ideal für Einzelteile', 'Komplexe Geometrien und Mehrmaterial-Druck', 'Passend zu Ihren Metallteilen aus unserer Fertigung'],
+      en: ['Fast from CAD model to part', 'No tooling costs – ideal for single parts', 'Complex geometries and multi-material printing', 'Matched to your metal parts from our production'],
+    },
+    applications: {
+      de: ['Funktionsprototypen', 'Vorrichtungen und Montagehilfen', 'Prüf- und Einstelllehren', 'Ersatz- und Kleinteile aus Kunststoff'],
+      en: ['Functional prototypes', 'Fixtures and assembly aids', 'Inspection and setting gauges', 'Plastic spare and small parts'],
+    },
+    faq: {
+      de: [{ q: 'Welche Daten brauchen Sie für den 3D-Druck?', a: 'Am besten ein 3D-Modell, z. B. als STEP, STL oder 3MF. Wenn Sie nur eine Zeichnung oder ein Musterteil haben, sprechen Sie uns an.' }],
+      en: [{ q: 'What data do you need for 3D printing?', a: 'Ideally a 3D model, e.g. as STEP, STL or 3MF. If you only have a drawing or a sample part, get in touch.' }],
+    },
+    image: druck,
+    imageAlt: { de: 'Illustration: Bauteil entsteht Schicht für Schicht im 3D-Drucker', en: 'Illustration: part being built layer by layer in a 3D printer' },
   },
 
   // ------------------------------------------------------------------ Senk (ergänzend)

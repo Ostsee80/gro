@@ -422,4 +422,4 @@ a:hover { color: var(--brass-ink); }
 :root[data-theme='barth'] .ftr a:hover { color: var(--blue); }
 :root[data-theme='barth'] .ftr__name { color: var(--indigo); }
 :root[data-theme='barth'] .nav__list { background-image: none; }
-@media (max-width: 1080px) { :root[data-theme='barth'] .nav__list { background-color: #fff; } }
+@media (max-width: 1200px) { :root[data-theme='barth'] .nav__list { background-color: #fff; } }

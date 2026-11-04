@@ -1,0 +1,102 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import MachineList from '../components/MachineList.astro';
+import Cta from '../components/Cta.astro';
+import { machineGroups, machineCount } from '../data/machines';
+import { services } from '../data/services';
+import { routes, servicePath, ui, type Lang } from '../i18n/ui';
+import { site } from '../data/site';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+
+const c = {
+  de: {
+    title: 'Maschinenpark: Sodick, DMG, AgieCharmilles, Keyence | GRO',
+    description: `Unser Maschinenpark: ${machineCount} Anlagen für Drahterodieren (Sodick), CNC-Fräsen (DMG), Mikrobohren (AgieCharmilles), Schleifen, Oberflächen, 3D-Druck und Messtechnik.`,
+    kicker: 'Maschinenpark',
+    h1: 'Die Technik hinter jedem Bauteil.',
+    lead: 'Von der Drahterodiermaschine bis zum Messsystem: Unser Maschinenpark deckt die komplette Prozesskette ab – von der mechanischen Bearbeitung über die Oberflächenveredelung bis zur dokumentierten Qualitätsprüfung.',
+    toService: 'Zur Leistung',
+    jump: 'Bereiche',
+    note: 'Kenndaten gerundet bzw. laut Hersteller. Ihr Bauteil passt nicht ganz in diese Werte? Sprechen Sie uns an – vieles ist auf Anfrage möglich.',
+  },
+  en: {
+    title: 'Machinery: Sodick, DMG, AgieCharmilles, Keyence | GRO',
+    description: `Our machinery: ${machineCount} systems for wire EDM (Sodick), CNC milling (DMG), micro-hole EDM (AgieCharmilles), grinding, finishing, 3D printing and metrology.`,
+    kicker: 'Machinery',
+    h1: 'The technology behind every component.',
+    lead: 'From wire EDM machines to measuring systems: our machinery covers the entire process chain – from machining and surface finishing to documented quality inspection.',
+    toService: 'View service',
+    jump: 'Areas',
+    note: 'Figures rounded or as stated by the manufacturer. Your part does not quite fit these values? Get in touch – much is possible on request.',
+  },
+}[lang];
+
+const crumbs = [{ name: t.nav.machines, href: routes.machines[lang] }];
+const serviceOf = (id?: string) => services.find((s) => s.id === id);
+const listLd = {
+  '@type': 'ItemList',
+  name: c.kicker,
+  itemListElement: machineGroups.flatMap((g) => g.machines).map((m, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: { '@type': 'Product', name: `${m.maker} ${m.model}`.trim(), ...(m.maker ? { brand: { '@type': 'Brand', name: m.maker } } : {}), category: m.type[lang] },
+  })),
+};
+---
+
+<Base lang={lang} title={c.title} description={c.description} alternates={routes.machines} breadcrumbs={crumbs} jsonLd={[listLd]} pageType="CollectionPage">
+  <PageHero lang={lang} kicker={c.kicker} title={c.h1} lead={c.lead} crumbs={crumbs} code={String(machineCount)}>
+    <nav class="jump" aria-label={c.jump}>
+      {machineGroups.map((g) => <a href={`#${g.id}`}>{g.title[lang]}</a>)}
+    </nav>
+  </PageHero>
+
+  {machineGroups.map((g, i) => {
+    const svc = serviceOf(g.serviceId);
+    return (
+      <section class:list={['section', 'mg', { 'mg--alt': i % 2 === 1 }]} id={g.id} aria-labelledby={`mg-${g.id}`}>
+        <div class="wrap">
+          <header class="mg__head reveal">
+            <div>
+              <p class="label">{String(i + 1).padStart(2, '0')} · {g.machines.length} {g.machines.length === 1 ? (lang === 'de' ? 'Anlage' : 'system') : (lang === 'de' ? 'Anlagen' : 'systems')}</p>
+              <h2 id={`mg-${g.id}`}>{g.title[lang]}</h2>
+              <p class="mg__intro">{g.intro[lang]}</p>
+            </div>
+            {svc && (
+              <div class="mg__svc">
+                {svc.spec && <p class="mg__spec"><span>{svc.spec.label[lang]}</span>{svc.spec.value[lang]}</p>}
+                <a class="btn btn--ghost" href={servicePath(lang, svc.slug[lang])}>{c.toService}: {svc.title[lang]}</a>
+              </div>
+            )}
+          </header>
+          <div class="reveal"><MachineList lang={lang} group={g} /></div>
+        </div>
+      </section>
+    );
+  })}
+
+  <section class="section">
+    <div class="wrap"><p class="mg__note">{c.note} <a href={routes.contact[lang]}>{t.nav.contact} →</a></p></div>
+  </section>
+
+  <Cta lang={lang} />
+</Base>
+
+<style>
+  .jump { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+  .jump a { padding: 0.45rem 0.85rem; border: 1px solid var(--line-dark); border-radius: 999px; font-size: 0.85rem; text-decoration: none; color: var(--on-dark); }
+  .jump a:hover { border-color: var(--brass-2); color: var(--brass-2); }
+  .mg { padding-block: clamp(3rem, 6vw, 5.5rem); }
+  .mg--alt { background: var(--paper-2); }
+  .mg__head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.5rem 3rem; margin-bottom: 1.8rem; }
+  .mg__head h2 { margin: 0.8rem 0 0.4rem; }
+  .mg__intro { margin: 0; color: var(--muted); max-width: 56ch; }
+  .mg__svc { display: grid; gap: 0.8rem; justify-items: start; }
+  .mg__spec { margin: 0; font-family: var(--font-mono); font-size: 0.95rem; display: grid; }
+  .mg__spec span { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass-ink); }
+  .mg__note { margin: 0; color: var(--muted); max-width: 70ch; }
+</style>
