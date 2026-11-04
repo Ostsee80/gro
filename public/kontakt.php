@@ -8,6 +8,7 @@
  * Sperrliste (ausführbare Dateien) statt über eine enge Erlaubt-Liste geprüft.
  */
 declare(strict_types=1);
+require __DIR__ . '/_altcha.php';
 
 // ---- Konfiguration -------------------------------------------------------
 const MAIL_TO     = 'info@gro-erodiertechnik.de';
@@ -47,6 +48,16 @@ $ts = (int)($_POST['ts'] ?? 0);
 if ($ts > 0 && (time() - $ts) < MIN_SECONDS) {
     done($okUrl);
 }
+if (altcha_rate_limited()) {
+    done($okUrl); // mehr als 5 Anfragen in 15 Minuten von derselben IP
+}
+// ALTCHA: gefälschte oder wiederverwendete Lösungen verwerfen;
+// fehlende/abgelaufene (z. B. JavaScript aus) trotzdem zustellen, aber markieren.
+$captcha = altcha_verify(isset($_POST['altcha']) ? (string)$_POST['altcha'] : null);
+if ($captcha === 'invalid' || $captcha === 'replay') {
+    done($okUrl);
+}
+$suspicious = $captcha !== 'ok';
 
 // ---- Felder ------------------------------------------------------------
 $name    = oneLine(clean('name', 120));
@@ -92,7 +103,7 @@ if (!empty($_FILES['attachment']) && is_array($_FILES['attachment']['name'])) {
 }
 
 // ---- Mail zusammenbauen ------------------------------------------------
-$subject = 'Website-Anfrage: ' . $name . ($company !== '' ? ' (' . $company . ')' : '');
+$subject = ($suspicious ? '[Bitte prüfen] ' : '') . 'Website-Anfrage: ' . $name . ($company !== '' ? ' (' . $company . ')' : '');
 $line = str_repeat('-', 48) . "\n";
 $body  = "Neue Anfrage über die Website (" . strtoupper($lang) . ")\n" . $line;
 $body .= "Name:    $name\n";
@@ -110,6 +121,9 @@ if ($skipped) {
 }
 $body .= $line . "\n" . ($message !== '' ? $message : '(keine Nachricht)') . "\n\n" . $line;
 $body .= "Gesendet am " . date('d.m.Y H:i') . "\n";
+if ($suspicious) {
+    $body .= "Hinweis: Spamschutz nicht bestätigt (" . $captcha . ") – z. B. JavaScript deaktiviert. Bitte Anfrage kurz prüfen.\n";
+}
 
 $encodedSubject = '=?UTF-8?B?' . base64_encode($subject) . '?=';
 $headers = [

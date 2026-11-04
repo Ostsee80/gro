@@ -57,6 +57,7 @@ const year = new Date().getFullYear();
         <a href={routes.imprint[lang]}>{t.imprint}</a>
         <a href={routes.privacy[lang]}>{t.privacy}</a>
       </span>
+      <span class="ftr__nocookie">{lang === 'de' ? 'Keine Cookies · kein Tracking' : 'No cookies · no tracking'}</span>
       <span class="ftr__coords" aria-hidden="true">N {site.geo.lat.toFixed(4)}° · E {site.geo.lng.toFixed(4)}°</span>
     </div>
   </div>
@@ -89,4 +90,5 @@ const year = new Date().getFullYear();
   }
   .ftr__legal { display: flex; gap: 1.5rem; }
   .ftr__coords { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; }
+  .ftr__nocookie { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.08em; }
 </style>

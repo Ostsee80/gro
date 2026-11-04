@@ -124,6 +124,19 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
           <small class="file__err" data-file-err hidden>{lang === 'de' ? 'Die Dateien sind zusammen größer als 25 MB. Bitte senden Sie große Daten per E-Mail oder als Download-Link.' : 'The files exceed 25 MB in total. Please send large data by email or as a download link.'}</small>
         </label>
         <p class="nodraw">{c.noDrawing}</p>
+        <div class="captcha">
+          <altcha-widget
+            challengeurl={u('/altcha-challenge.php')}
+            name="altcha"
+            auto="onsubmit"
+            hidefooter
+            hidelogo
+            strings={JSON.stringify(lang === 'de'
+              ? { label: 'Ich bin kein Roboter', verifying: 'Wird geprüft …', verified: 'Bestätigt', error: 'Prüfung fehlgeschlagen – bitte erneut versuchen.', expired: 'Abgelaufen – bitte erneut bestätigen.', waitAlert: 'Prüfung läuft … bitte einen Moment.', ariaLinkLabel: 'Spamschutz', footer: '' }
+              : { label: 'I am not a robot', verifying: 'Verifying …', verified: 'Verified', error: 'Verification failed – please try again.', expired: 'Expired – please verify again.', waitAlert: 'Verifying … please wait a moment.', ariaLinkLabel: 'Spam protection', footer: '' })}
+          ></altcha-widget>
+          <small>{lang === 'de' ? 'Spamschutz ohne Cookies und ohne Drittanbieter – die Prüfung läuft automatisch beim Absenden.' : 'Spam protection without cookies or third parties – the check runs automatically when you submit.'}</small>
+        </div>
         <p class="consent" set:html={c.consent} />
         <button class="btn" type="submit">
           {c.send}
@@ -159,6 +172,7 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
 </Base>
 
 <script>
+  import 'altcha';
   const ts = document.querySelector<HTMLInputElement>('[data-ts]');
   if (ts) ts.value = String(Math.floor(Date.now() / 1000));
   // Hinweis statt Blockade, wenn Dateien zu groß sind
@@ -213,4 +227,16 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
   .details__hint { margin: -0.4rem 0 0; font-size: 0.88rem; color: var(--muted); }
   .file__err { color: #b3261e !important; font-weight: 600; }
   .nodraw { margin: -0.4rem 0 0; font-size: 0.92rem; font-weight: 600; }
+  .captcha { display: grid; gap: 0.4rem; }
+  .captcha small { font-size: 0.8rem; color: var(--muted); }
+  .captcha :global(altcha-widget) {
+    --altcha-border-width: 1px;
+    --altcha-border-radius: var(--radius);
+    --altcha-color-base: var(--white);
+    --altcha-color-border: var(--line);
+    --altcha-color-text: var(--text);
+    --altcha-color-border-focus: var(--brass);
+    --altcha-color-error-text: #b3261e;
+    --altcha-max-width: 320px;
+  }
 </style>
