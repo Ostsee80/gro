@@ -96,7 +96,10 @@ const faqLd = {
 
 <style>
   .sv { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: clamp(2.5rem, 6vw, 6rem); align-items: start; }
-  @media (max-width: 900px) { .sv { grid-template-columns: 1fr; } .sv__side { order: -1; } }
+  @media (max-width: 900px) {
+    .sv { grid-template-columns: 1fr; }
+    .sv__side { order: -1; }
+  }
   .sv__copy p { color: var(--muted); max-width: 64ch; }
   .sv__copy .sv__first { font-size: var(--step-1); line-height: 1.5; color: var(--text); }
   .sv__lists { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; margin: 3rem 0; padding: 2.2rem 0; border-block: 1px solid var(--line); }
@@ -117,4 +120,10 @@ const faqLd = {
   .related { background: var(--paper-2); }
   .related__head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
   .related__head h2 { margin: 0; }
+  @media (max-width: 900px) {
+    /* Auf dem Handy nicht mitscrollen – sonst verdeckt die Spalte den Text */
+    .sv__side { position: static; }
+    /* Kontaktkasten entfällt hier – der Anfrage-Block folgt am Seitenende */
+    .sv__box { display: none; }
+  }
 </style>
