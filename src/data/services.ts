@@ -32,7 +32,7 @@ export interface Service {
   featured?: boolean;
 }
 
-export const services: Service[] = [
+const all: Service[] = [
   {
     id: 'wire-edm',
     code: 'EDM-W',
@@ -40,16 +40,16 @@ export const services: Service[] = [
     slug: { de: 'drahterodieren', en: 'wire-edm' },
     title: { de: 'Drahterodieren', en: 'Wire EDM' },
     seoTitle: {
-      de: 'Drahterodieren – Lohnfertigung deutschlandweit | GRO',
-      en: 'Wire EDM Services – Germany & Europe | GRO',
+      de: 'Drahterodieren bis 500 mm Höhe – Lohnfertigung | GRO',
+      en: 'Wire EDM up to 500 mm Height – Germany & Europe | GRO',
     },
     seoDescription: {
-      de: 'Drahterodieren im Lohnauftrag: komplexe Konturen in gehärteten Werkstoffen, gratfrei und maßhaltig. Einzelteil bis Serie – für ganz Deutschland & Europa.',
-      en: 'Contract wire EDM: complex contours in hardened materials, burr-free and accurate. Single parts to series for customers across Germany and Europe.',
+      de: 'Drahterodieren im Lohnauftrag mit bis zu 500 mm Schnitthöhe (Z): komplexe Konturen in gehärteten Werkstoffen, gratfrei – für ganz Deutschland & Europa.',
+      en: 'Contract wire EDM with up to 500 mm cutting height (Z): complex contours in hardened materials, burr-free – for customers across Germany and Europe.',
     },
     teaser: {
-      de: 'Feinste Konturen in gehärtetem Stahl, Hartmetall und Sonderwerkstoffen – gratfrei und maßhaltig.',
-      en: 'The finest contours in hardened steel, carbide and special alloys – burr-free and dimensionally accurate.',
+      de: 'Schnitthöhen bis 500 mm (Z) – feinste Konturen in gehärtetem Stahl, Hartmetall und Sonderwerkstoffen.',
+      en: 'Cutting heights up to 500 mm (Z) – the finest contours in hardened steel, carbide and special alloys.',
     },
     intro: {
       de: 'Beim Drahterodieren schneidet ein dünner, elektrisch geladener Draht berührungslos durch leitfähige Werkstoffe. Funkenentladungen tragen das Material ab – ohne mechanische Kräfte, ohne Verzug und unabhängig von der Härte des Werkstücks.',
@@ -57,22 +57,24 @@ export const services: Service[] = [
     },
     body: {
       de: [
-        'Das macht das Drahterodieren zum Verfahren der Wahl, wenn andere Fertigungsmethoden an ihre Grenzen stoßen: bei filigranen Geometrien, engen Innenradien, scharfkantigen Durchbrüchen und Werkstücken, die bereits gehärtet sind.',
+        'Unsere Drahterodiertechnik schneidet Werkstücke mit einer Höhe von bis zu 500 mm in der Z-Achse – ideal für hohe Stempel, Matrizen, Formplatten und massive Bauteile, die viele Lohnfertiger nicht mehr bearbeiten können. Das Drahterodieren ist außerdem das Verfahren der Wahl bei filigranen Geometrien, engen Innenradien, scharfkantigen Durchbrüchen und bereits gehärteten Werkstücken.',
         'Mit unserem digitalisierten Maschinenpark fertigen wir Stempel, Matrizen, Schnittwerkzeuge, Profile und Präzisionsbauteile im Lohnauftrag – als Einzelteil, Prototyp oder Serie. Auf Wunsch dokumentieren wir die Ergebnisse mit moderner Messtechnik.',
       ],
       en: [
-        'This makes wire EDM the method of choice when other processes reach their limits: for delicate geometries, tight inner radii, sharp-edged cut-outs and workpieces that have already been hardened.',
+        'Our wire EDM capacity handles workpieces up to 500 mm in height on the Z axis – ideal for tall punches, dies, mould plates and massive components that many contract shops can no longer machine. Wire EDM is also the method of choice for delicate geometries, tight inner radii, sharp-edged cut-outs and pre-hardened workpieces.',
         'With our digitalised machinery we manufacture punches, dies, cutting tools, profiles and precision components on a contract basis – as single parts, prototypes or series. On request, we document the results with state-of-the-art measuring technology.',
       ],
     },
     benefits: {
       de: [
+        'Schnitthöhen bis 500 mm in der Z-Achse',
         'Bearbeitung gehärteter Werkstoffe ohne Verzug',
         'Gratfreie Schnittkanten und hohe Oberflächengüte',
         'Komplexe 2D- und Konik-Konturen',
         'Wirtschaftlich vom Einzelteil bis zur Serie',
       ],
       en: [
+        'Cutting heights up to 500 mm on the Z axis',
         'Machining of hardened materials without distortion',
         'Burr-free cutting edges and high surface quality',
         'Complex 2D and taper contours',
@@ -86,6 +88,10 @@ export const services: Service[] = [
     faq: {
       de: [
         {
+          q: 'Wie hoch dürfen Werkstücke beim Drahterodieren sein?',
+          a: 'Wir schneiden Werkstücke mit einer Höhe von bis zu 500 mm in der Z-Achse. Damit lassen sich auch hohe Stempel, Matrizen, Formplatten und massive Bauteile in einem Durchgang drahterodieren.',
+        },
+        {
           q: 'Welche Werkstoffe können drahterodiert werden?',
           a: 'Grundsätzlich alle elektrisch leitfähigen Werkstoffe – zum Beispiel gehärteter Werkzeugstahl, Edelstahl, Hartmetall, Titan, Kupfer, Aluminium und Graphit. Die Härte des Materials spielt dabei keine Rolle.',
         },
@@ -95,6 +101,10 @@ export const services: Service[] = [
         },
       ],
       en: [
+        {
+          q: 'How tall can workpieces be for wire EDM?',
+          a: 'We cut workpieces up to 500 mm in height on the Z axis. This means even tall punches, dies, mould plates and massive components can be wire-cut in a single pass.',
+        },
         {
           q: 'Which materials can be machined by wire EDM?',
           a: 'In principle, all electrically conductive materials – for example hardened tool steel, stainless steel, carbide, titanium, copper, aluminium and graphite. The hardness of the material is irrelevant.',
@@ -114,9 +124,8 @@ export const services: Service[] = [
   {
     id: 'sinker-edm',
     code: 'EDM-S',
-    featured: true,
     slug: { de: 'senkerodieren', en: 'sinker-edm' },
-    title: { de: 'Senkerodieren & Elektroden', en: 'Sinker EDM & Electrodes' },
+    title: { de: 'Senkerodieren', en: 'Sinker EDM' },
     seoTitle: {
       de: 'Senkerodieren & Elektroden – Lohnfertigung | GRO',
       en: 'Sinker EDM & Electrodes – Contract EDM Germany | GRO',
@@ -126,8 +135,8 @@ export const services: Service[] = [
       en: 'Contract sinker EDM including in-house electrode manufacturing on HSC milling machines. For mould and tool makers across Germany and Europe.',
     },
     teaser: {
-      de: 'Kavitäten, Rippen und Gravuren – inklusive Elektroden aus der eigenen HSC-Fertigung.',
-      en: 'Cavities, ribs and engravings – including electrodes from our in-house HSC production.',
+      de: 'Ergänzend zum Drahterodieren: Kavitäten, Rippen und Gravuren im Senkverfahren.',
+      en: 'Complementing wire EDM: cavities, ribs and engravings by sinker EDM.',
     },
     intro: {
       de: 'Beim Senkerodieren bildet sich eine formgebende Elektrode durch Funkenerosion in das Werkstück ab. So entstehen tiefe Kavitäten, schmale Rippen und feine Strukturen, die sich spanend kaum oder gar nicht herstellen lassen.',
@@ -352,7 +361,6 @@ export const services: Service[] = [
   {
     id: 'toolmaking',
     code: 'TOOL',
-    featured: true,
     slug: { de: 'formenbau-werkzeugbau', en: 'mould-tool-making' },
     title: { de: 'Formenbau & Werkzeugbau', en: 'Mould & Tool Making' },
     seoTitle: {
@@ -412,6 +420,7 @@ export const services: Service[] = [
   {
     id: 'powder-coating',
     code: 'COAT',
+    featured: true,
     slug: { de: 'pulverbeschichtung', en: 'powder-coating' },
     title: { de: 'Pulverbeschichtung', en: 'Powder Coating' },
     seoTitle: {
@@ -586,6 +595,69 @@ export const services: Service[] = [
       en: 'Measuring a component on a machine tool',
     },
   },
+  {
+    id: 'flow-grinding',
+    code: 'FLOW',
+    featured: true,
+    slug: { de: 'stroemungsschleifen', en: 'abrasive-flow-machining' },
+    title: { de: 'Strömungsschleifen', en: 'Abrasive Flow Machining' },
+    seoTitle: {
+      de: 'Strömungsschleifen – Entgraten & Polieren | GRO',
+      en: 'Abrasive Flow Machining – Deburring & Polishing | GRO',
+    },
+    seoDescription: {
+      de: 'Strömungsschleifen im Lohnauftrag: Entgraten, Kantenverrunden und Polieren von Innenkonturen, Bohrungen und Kanälen – für Kunden deutschlandweit.',
+      en: 'Contract abrasive flow machining: deburring, edge rounding and polishing of internal contours, bores and channels – for customers across Europe.',
+    },
+    teaser: {
+      de: 'Entgraten, Verrunden und Polieren dort, wo kein Werkzeug hinkommt – auch in Bohrungen und Kanälen.',
+      en: 'Deburring, rounding and polishing where no tool can reach – including bores and channels.',
+    },
+    intro: {
+      de: 'Beim Strömungsschleifen wird ein abrasives Medium unter Druck durch oder entlang des Werkstücks bewegt. Es trägt dabei gezielt Material ab – und erreicht auch Innenkonturen, Bohrungen und Kanäle, an die kein Schleifwerkzeug herankommt.',
+      en: 'In abrasive flow machining, an abrasive medium is forced through or along the workpiece under pressure. It removes material in a controlled way – reaching internal contours, bores and channels that no grinding tool can access.',
+    },
+    body: {
+      de: [
+        'So entfernen wir Grate an Bohrungsverschneidungen, verrunden Kanten definiert und polieren Oberflächen – etwa nach dem Drahterodieren, um die Erodierschicht zu glätten.',
+        'In Kombination mit unseren übrigen Verfahren erhalten Sie Bauteile, die nicht nur maßhaltig, sondern auch funktionsfertig sind.',
+      ],
+      en: [
+        'This allows us to remove burrs at intersecting bores, round edges in a defined way and polish surfaces – for example after wire EDM, to smooth the recast layer.',
+        'Combined with our other processes, you receive components that are not only dimensionally accurate but ready to function.',
+      ],
+    },
+    benefits: {
+      de: ['Bearbeitung unzugänglicher Innenkonturen', 'Gleichmäßiges Entgraten und Kantenverrunden', 'Verbesserte Oberflächengüte', 'Ideal als Finish nach dem Drahterodieren'],
+      en: ['Machining of inaccessible internal contours', 'Uniform deburring and edge rounding', 'Improved surface quality', 'Ideal finish after wire EDM'],
+    },
+    applications: {
+      de: ['Bohrungen und Bohrungsverschneidungen', 'Kanäle und Düsen', 'Matrizen und Formwerkzeuge', 'Hydraulik- und Präzisionsbauteile'],
+      en: ['Bores and intersecting bores', 'Channels and nozzles', 'Dies and moulding tools', 'Hydraulic and precision components'],
+    },
+    faq: {
+      de: [
+        {
+          q: 'Wofür eignet sich das Strömungsschleifen besonders?',
+          a: 'Überall dort, wo Innenkonturen, Bohrungen oder Kanäle entgratet, verrundet oder poliert werden müssen und herkömmliche Werkzeuge nicht hinkommen. Sprechen Sie uns zu Ihrem Bauteil an.',
+        },
+      ],
+      en: [
+        {
+          q: 'What is abrasive flow machining particularly suited for?',
+          a: 'Wherever internal contours, bores or channels need deburring, rounding or polishing and conventional tools cannot reach. Get in touch about your component.',
+        },
+      ],
+    },
+    image: werkzeugbau,
+    imageAlt: {
+      de: 'Präzisionswerkzeug mit polierter Oberfläche',
+      en: 'Precision tool with polished surface',
+    },
+  },
 ];
 
+/** Reihenfolge auf der Website: Schwerpunkte zuerst, Senkerodieren als Ergänzung zuletzt */
+const order = ['wire-edm', 'milling', 'flow-grinding', 'powder-coating', 'laser', 'cnc', 'turning', 'toolmaking', 'custom', 'sinker-edm'];
+export const services: Service[] = order.map((id) => all.find((s) => s.id === id)!);
 export const featuredServices = services.filter((s) => s.featured);

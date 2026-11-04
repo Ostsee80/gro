@@ -44,14 +44,14 @@ const copy = {
   de: {
     kicker: 'Lohnerodieren seit 2011 · für Deutschland & Europa',
     h1a: 'Präzision, die Funken schlägt.',
-    h1b: 'Drahterodieren, Senkerodieren, HSC-Fräsen und Werkzeugbau aus einer Hand.',
+    h1b: 'Drahterodieren bis 500 mm Schnitthöhe – dazu HSC-Fräsen, Strömungsschleifen, Pulverbeschichtung und Lasergravur aus einer Hand.',
     text: 'Wir fertigen, was mit klassischer Zerspanung nicht mehr geht: komplexe Konturen in gehärteten Werkstoffen – vom Prototyp bis zur Serie, dokumentiert und termintreu.',
     secondary: 'Leistungen ansehen',
   },
   en: {
     kicker: 'Contract EDM since 2011 · made in Germany for Europe',
     h1a: 'Precision that strikes sparks.',
-    h1b: 'Wire EDM, sinker EDM, HSC milling and tool making from a single source.',
+    h1b: 'Wire EDM up to 500 mm cutting height – plus HSC milling, abrasive flow machining, powder coating and laser engraving from a single source.',
     text: 'We manufacture what conventional machining can no longer achieve: complex contours in hardened materials – from prototype to series, documented and on time.',
     secondary: 'View services',
   },
@@ -112,7 +112,7 @@ const copy = {
           <line x1="586" y1="90" x2="586" y2="510" />
           <line x1="576" y1="90" x2="596" y2="90" />
           <line x1="576" y1="510" x2="596" y2="510" />
-          <text x="0" y="0" transform="translate(578 300) rotate(-90)" text-anchor="middle">Z = 14</text>
+          <text x="0" y="0" transform="translate(578 300) rotate(-90)" text-anchor="middle">Z ≤ 500</text>
           <line x1="300" y1="300" x2="374" y2="300" class="wire__leader" />
           <text x="392" y="268">SW 25.6</text>
           <text x="392" y="284" class="wire__tol">6 × 60°</text>
@@ -148,8 +148,8 @@ const copy = {
 
   <ul class="hero__facts wrap" role="list">
     <li><b>2011</b><span>{lang === 'de' ? 'gegründet' : 'founded'}</span></li>
-    <li><b>9</b><span>{lang === 'de' ? 'Fertigungsverfahren' : 'manufacturing processes'}</span></li>
-    <li><b>1</b><span>{lang === 'de' ? 'Ansprechpartner' : 'point of contact'}</span></li>
+    <li><b>500&nbsp;mm</b><span>{lang === 'de' ? 'Schnitthöhe beim Drahterodieren (Z)' : 'wire EDM cutting height (Z)'}</span></li>
+    <li><b>10</b><span>{lang === 'de' ? 'Fertigungsverfahren' : 'manufacturing processes'}</span></li>
     <li><b>1 → ∞</b><span>{lang === 'de' ? 'vom Einzelteil bis zur Serie' : 'from single part to series'}</span></li>
   </ul>
 </section>
@@ -185,8 +185,9 @@ const copy = {
         const pt = point as DOMPoint;
         spark.setAttribute('transform', `translate(${pt.x} ${pt.y})`);
         spark.style.opacity = '1';
-        xEl.textContent = ((pt.x - 300) / 5).toFixed(3).padStart(7, '0');
-        yEl.textContent = ((300 - pt.y) / 5).toFixed(3).padStart(7, '0');
+        const fmt = (v: number) => (v < 0 ? '−' : '+') + Math.abs(v).toFixed(3).padStart(6, '0');
+        xEl.textContent = fmt((pt.x - 300) / 5);
+        yEl.textContent = fmt((300 - pt.y) / 5);
       } else {
         spark.style.opacity = '0';
       }

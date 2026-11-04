@@ -14,14 +14,14 @@ const t = ui[lang];
 const c = {
   de: {
     title: 'Leistungen: Erodieren, Fräsen, CNC & Werkzeugbau | GRO',
-    description: 'Alle Leistungen der GRO-Erodiertechnik: Drahterodieren, Senkerodieren, HSC-Fräsen, CNC-Bearbeitung, Drehen, Formenbau, Pulverbeschichtung und Lasergravur.',
+    description: 'Alle Leistungen: Drahterodieren bis 500 mm Höhe, HSC-Fräsen, Strömungsschleifen, Pulverbeschichtung, Lasergravur, CNC, Drehen und Formenbau.',
     kicker: 'Leistungen',
     h1: 'Fertigung mit Fertigungstiefe.',
     lead: 'Ausgestattet mit modernstem Maschinenpark bieten wir jedem Kunden einen hochwertigen und effizienten Service – mit kurzen Durchlaufzeiten und gleichbleibend hervorragender Qualität.',
   },
   en: {
     title: 'Services: EDM, Milling, CNC & Tool Making | GRO',
-    description: 'All services of GRO-Erodiertechnik: wire EDM, sinker EDM, HSC milling, CNC machining, turning, mould making, powder coating and laser engraving.',
+    description: 'All services: wire EDM up to 500 mm height, HSC milling, abrasive flow machining, powder coating, laser engraving, CNC, turning and mould making.',
     kicker: 'Services',
     h1: 'Manufacturing with real depth.',
     lead: 'Equipped with state-of-the-art machinery, we provide every customer with high-quality, efficient service – with short lead times and consistently outstanding quality.',
@@ -42,7 +42,7 @@ const listLd = {
 ---
 
 <Base lang={lang} title={c.title} description={c.description} alternates={routes.services} breadcrumbs={crumbs} jsonLd={[listLd]} pageType="CollectionPage">
-  <PageHero lang={lang} kicker={c.kicker} title={c.h1} lead={c.lead} crumbs={crumbs} code="09" />
+  <PageHero lang={lang} kicker={c.kicker} title={c.h1} lead={c.lead} crumbs={crumbs} code="10" />
   <section class="section">
     <div class="wrap">
       <ServiceGrid lang={lang} items={services} headingLevel="h2" />

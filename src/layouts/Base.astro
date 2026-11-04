@@ -57,8 +57,8 @@ const organization = {
   image: ogImage,
   description:
     lang === 'de'
-      ? 'Lohnfertigung für Drahterodieren, Senkerodieren, HSC-Fräsen, CNC-Bearbeitung sowie Formen- und Werkzeugbau in Bad Schwartau bei Lübeck.'
-      : 'Contract manufacturing for wire EDM, sinker EDM, HSC milling, CNC machining and mould and tool making in Bad Schwartau near Lübeck, Germany.',
+      ? 'Lohnfertigung für Drahterodieren bis 500 mm Schnitthöhe, HSC-Fräsen, Strömungsschleifen, Pulverbeschichtung und Lasergravur – aus Bad Schwartau bei Lübeck für Deutschland und Europa.'
+      : 'Contract manufacturing for wire EDM up to 500 mm cutting height, HSC milling, abrasive flow machining, powder coating and laser engraving – from Bad Schwartau, Germany, for all of Europe.',
   foundingDate: site.founded,
   founder: { '@type': 'Person', name: site.ceo },
   employee: { '@type': 'Person', name: site.ceo, jobTitle: lang === 'de' ? 'Geschäftsführer' : 'Managing Director' },
@@ -76,7 +76,7 @@ const organization = {
   geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
   hasMap: mapsPlace,
   areaServed: site.areaServed.map((name) => ({ '@type': 'Place', name })),
-  knowsAbout: ['Lohnerodieren', 'Lohnfertigung', 'Contract EDM', 'Drahterodieren', 'Senkerodieren', 'Funkenerosion', 'Wire EDM', 'Sinker EDM', 'HSC-Fräsen', 'CNC-Bearbeitung', 'Formenbau', 'Werkzeugbau', 'Pulverbeschichtung', 'Lasergravur'],
+  knowsAbout: ['Lohnerodieren', 'Lohnfertigung', 'Contract EDM', 'Drahterodieren', 'Funkenerosion', 'Wire EDM', 'Strömungsschleifen', 'Abrasive Flow Machining', 'Senkerodieren', 'HSC-Fräsen', 'CNC-Bearbeitung', 'Formenbau', 'Werkzeugbau', 'Pulverbeschichtung', 'Lasergravur'],
   makesOffer: services.map((s) => ({
     '@type': 'Offer',
     itemOffered: { '@type': 'Service', name: s.title[lang], url: `${site.url}${lang === 'de' ? '/leistungen/' : '/en/services/'}${s.slug[lang]}/` },
