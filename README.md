@@ -34,6 +34,17 @@ Einmalig nötig: unter **GitHub → Settings → Secrets and variables → Actio
 
 Aktuell geht der Upload auf die **Testumgebung** `new.gro-erodiertechnik.com` (für Google gesperrt). Für den Livegang in `deploy.yml` `STAGING: '0'` setzen und `FTP_SERVER_DIR` auf das Verzeichnis der Hauptdomain ändern.
 
+## Farbvarianten
+
+Das Design nutzt Farb-Tokens (`src/styles/global.css`). Mit `PUBLIC_THEME=light` entsteht die helle Variante,
+mit `BASE_PATH=/ordner` lässt sich eine Variante in einem Unterordner bauen:
+
+```bash
+BASE_PATH=/entwurf-hell PUBLIC_THEME=light npx astro build --outDir dist/entwurf-hell
+```
+
+Auf der Testumgebung liegt die helle Variante unter `/entwurf-hell/`.
+
 ## SEO auf einen Blick
 
 - Eigene Unterseite je Leistung mit optimiertem Title, Description, FAQ

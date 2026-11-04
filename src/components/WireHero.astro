@@ -233,7 +233,7 @@ const copy = {
   @media (max-width: 900px) { .hero__in { grid-template-columns: 1fr; } }
 
   h1 { margin: 1.2rem 0 1.4rem; }
-  .hero__h1a { display: block; font-size: var(--step-5); line-height: 0.95; letter-spacing: -0.035em; color: #fff; }
+  .hero__h1a { display: block; font-size: var(--step-5); line-height: 0.95; letter-spacing: -0.035em; color: var(--on-dark); }
   .hero__h1b {
     display: block; margin-top: 1.2rem;
     font-size: var(--step-1); font-weight: 500; line-height: 1.35; letter-spacing: -0.005em;
@@ -244,18 +244,18 @@ const copy = {
     display: flex; align-items: center; gap: 0.6rem; margin-top: 1.6rem;
     font-family: var(--font-mono); font-size: 0.9rem; letter-spacing: 0.04em;
   }
-  .hero__phone a { color: rgb(255 255 255 / 0.85); text-decoration: none; }
+  .hero__phone a { color: rgb(var(--fg-rgb) / 0.85); text-decoration: none; }
   .hero__phone a:hover { color: var(--brass-2); }
   .hero__dot { width: 8px; height: 8px; border-radius: 50%; background: #5bd68a; box-shadow: 0 0 0 4px rgb(91 214 138 / 0.18); }
 
   .hero__art { position: relative; }
   .wire { width: 100%; max-width: 620px; margin-inline: auto; overflow: visible; }
-  .wire__axes line, .wire__axes circle { stroke: rgb(255 255 255 / 0.16); stroke-width: 1; fill: none; stroke-dasharray: 14 5 2 5; }
-  .wire__dims line { stroke: rgb(255 255 255 / 0.35); stroke-width: 1; }
+  .wire__axes line, .wire__axes circle { stroke: rgb(var(--fg-rgb) / 0.16); stroke-width: 1; fill: none; stroke-dasharray: 14 5 2 5; }
+  .wire__dims line { stroke: rgb(var(--fg-rgb) / 0.35); stroke-width: 1; }
   .wire__dims .wire__leader { stroke: var(--brass); }
-  .wire__dims text { fill: rgb(255 255 255 / 0.62); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; }
+  .wire__dims text { fill: rgb(var(--fg-rgb) / 0.62); font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; }
   .wire__dims .wire__tol { fill: var(--brass-2); font-size: 10.5px; }
-  .wire__ghost { fill: none; stroke: rgb(255 255 255 / 0.13); stroke-width: 1; stroke-dasharray: 3 5; }
+  .wire__ghost { fill: none; stroke: rgb(var(--fg-rgb) / 0.13); stroke-width: 1; stroke-dasharray: 3 5; }
   .wire__cut { fill: none; stroke: var(--brass-2); stroke-width: 2; stroke-linejoin: round; filter: drop-shadow(0 0 6px rgb(231 191 104 / 0.55)); }
   .wire__hole { fill: none; stroke: var(--brass-2); stroke-width: 1.5; }
   .wire__spark { transition: opacity 0.3s; }
@@ -268,10 +268,10 @@ const copy = {
     padding: 0.55rem 0.8rem;
     font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em;
     color: var(--muted-dark);
-    background: rgb(7 19 29 / 0.75); border: 1px solid var(--line-dark); border-radius: var(--radius);
+    background: rgb(var(--d-bg-rgb) / 0.75); border: 1px solid var(--line-dark); border-radius: var(--radius);
     backdrop-filter: blur(6px);
   }
-  .hero__readout b { color: #fff; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .hero__readout b { color: var(--on-dark); font-weight: 500; font-variant-numeric: tabular-nums; }
   .hero__status { display: flex; align-items: center; gap: 0.4rem; color: var(--brass-2); }
   .hero__status i { width: 6px; height: 6px; border-radius: 50%; background: var(--spark); box-shadow: 0 0 8px var(--spark); animation: blink 1.2s infinite; }
   @keyframes blink { 50% { opacity: 0.25; } }
@@ -285,7 +285,7 @@ const copy = {
   .hero__facts li { padding: 1.6rem 1.2rem 2rem 0; border-right: 1px solid var(--line-dark); }
   .hero__facts li + li { padding-left: 1.2rem; }
   .hero__facts li:last-child { border-right: 0; }
-  .hero__facts b { display: block; font-family: var(--font-display); font-size: var(--step-3); font-weight: 600; color: #fff; line-height: 1; letter-spacing: -0.03em; }
+  .hero__facts b { display: block; font-family: var(--font-display); font-size: var(--step-3); font-weight: 600; color: var(--on-dark); line-height: 1; letter-spacing: -0.03em; }
   .hero__facts span { display: block; margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted-dark); }
   @media (max-width: 720px) {
     .hero__facts { grid-template-columns: 1fr 1fr; }

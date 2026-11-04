@@ -12,9 +12,10 @@ const MAX_BYTES  = 10 * 1024 * 1024;                     // 10 MB
 const ALLOWED    = ['pdf', 'step', 'stp', 'dxf', 'dwg', 'igs', 'iges', 'jpg', 'jpeg', 'png', 'zip'];
 const MIN_SECONDS = 3;                                   // Bots füllen schneller aus
 
-$lang  = (($_POST['lang'] ?? 'de') === 'en') ? 'en' : 'de';
-$okUrl  = $lang === 'en' ? '/en/contact/thank-you/' : '/kontakt/danke/';
-$errUrl = $lang === 'en' ? '/en/contact/error/' : '/kontakt/fehler/';
+$base   = rtrim(str_replace('\\', '/', dirname($_SERVER['SCRIPT_NAME'] ?? '/')), '/'); // „“ live, „/entwurf-hell“ im Entwurf
+$lang   = (($_POST['lang'] ?? 'de') === 'en') ? 'en' : 'de';
+$okUrl  = $base . ($lang === 'en' ? '/en/contact/thank-you/' : '/kontakt/danke/');
+$errUrl = $base . ($lang === 'en' ? '/en/contact/error/' : '/kontakt/fehler/');
 
 function done(string $url): void {
     header('Location: ' . $url, true, 303);
@@ -30,7 +31,7 @@ function oneLine(string $v): string {
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
-    done('/kontakt/');
+    done($base . '/kontakt/');
 }
 
 // ---- Spam-Schutz -------------------------------------------------------

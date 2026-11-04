@@ -2,7 +2,7 @@
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import MapEmbed from '../components/MapEmbed.astro';
-import { routes, ui, type Lang } from '../i18n/ui';
+import { routes, ui, u, type Lang } from '../i18n/ui';
 import { site, mapsNavigate } from '../data/site';
 
 interface Props { lang: Lang }
@@ -21,7 +21,7 @@ const c = {
     messagePh: 'Werkstoff, Stückzahl, gewünschter Liefertermin …',
     file: 'Zeichnung / CAD-Datei (optional)',
     fileHint: 'PDF, STEP, DXF, DWG, IGES, JPG, PNG oder ZIP · max. 10 MB',
-    consent: 'Ich habe die <a href="/datenschutz/">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Beantwortung meiner Anfrage einverstanden.',
+    consent: `Ich habe die <a href="${routes.privacy.de}">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Beantwortung meiner Anfrage einverstanden.`,
     send: 'Anfrage absenden',
     required: 'Pflichtfeld',
     direct: 'Direkter Draht',
@@ -38,7 +38,7 @@ const c = {
     messagePh: 'Material, quantity, desired delivery date …',
     file: 'Drawing / CAD file (optional)',
     fileHint: 'PDF, STEP, DXF, DWG, IGES, JPG, PNG or ZIP · max. 10 MB',
-    consent: 'I have read the <a href="/en/privacy/">privacy policy</a> and agree to my details being processed in order to answer my enquiry.',
+    consent: `I have read the <a href="${routes.privacy.en}">privacy policy</a> and agree to my details being processed in order to answer my enquiry.`,
     send: 'Send enquiry',
     required: 'required',
     direct: 'Direct line',
@@ -54,7 +54,7 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
 
   <section class="section">
     <div class="wrap ct">
-      <form class="form" action="/kontakt.php" method="post" enctype="multipart/form-data" data-form>
+      <form class="form" action={u('/kontakt.php')} method="post" enctype="multipart/form-data" data-form>
         <h2>{c.formTitle}</h2>
         <input type="hidden" name="lang" value={lang} />
         <input type="hidden" name="ts" value="" data-ts />
@@ -161,12 +161,12 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
   .hp { position: absolute; left: -9999px; }
 
   .ct__side { padding: clamp(1.8rem, 4vw, 2.8rem); border-radius: var(--radius); position: sticky; top: calc(var(--header-h) + 1.5rem); }
-  .ct__big { display: block; margin-top: 1.2rem; font-family: var(--font-display); font-weight: 600; font-size: var(--step-3); line-height: 1; letter-spacing: -0.02em; color: #fff; text-decoration: none; }
+  .ct__big { display: block; margin-top: 1.2rem; font-family: var(--font-display); font-weight: 600; font-size: var(--step-3); line-height: 1; letter-spacing: -0.02em; color: var(--on-dark); text-decoration: none; }
   .ct__mail { display: block; margin-top: 0.8rem; color: var(--brass-2); text-decoration: none; word-break: break-all; }
   .ct__big:hover, .ct__mail:hover { color: var(--brass-2); text-decoration: underline; }
   hr { border: 0; border-top: 1px solid var(--line-dark); margin: 2rem 0; }
   dl { display: grid; gap: 0.3rem; margin: 0 0 2rem; }
   dt { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted-dark); margin-top: 0.8rem; }
-  dd { margin: 0; color: #fff; }
+  dd { margin: 0; color: var(--on-dark); }
   address { font-style: normal; }
 </style>

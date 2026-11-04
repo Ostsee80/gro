@@ -4,6 +4,8 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://gro-erodiertechnik.com',
+  // Für Design-Entwürfe im Unterordner, z. B. BASE_PATH=/entwurf-hell
+  base: process.env.BASE_PATH || '/',
   trailingSlash: 'always',
   build: { format: 'directory', inlineStylesheets: 'auto' },
   compressHTML: true,

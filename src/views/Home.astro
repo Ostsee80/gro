@@ -190,7 +190,7 @@ const faqLd = {
   .shead { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1.5rem 4rem; margin-bottom: clamp(2rem, 4vw, 3.5rem); }
   .shead h2 { margin: 0.9rem 0 0; max-width: 18ch; }
   .shead .lead { margin: 0; max-width: 42ch; }
-  .dark h2 { color: #fff; }
+  .dark h2 { color: var(--on-dark); }
 
   /* Intro */
   .intro__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2.5rem, 6vw, 6rem); align-items: center; }
@@ -204,21 +204,21 @@ const faqLd = {
   .intro__fig--a img { aspect-ratio: 4 / 4.4; }
   .intro__fig--b { position: absolute; right: 0; bottom: 0; width: 46%; border: 8px solid var(--paper); border-radius: calc(var(--radius) + 4px); }
   .intro__fig--b img { aspect-ratio: 1; }
-  figcaption { position: absolute; top: 0.8rem; left: 0.8rem; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em; padding: 0.25rem 0.5rem; background: var(--ink); color: var(--brass-2); }
+  figcaption { position: absolute; top: 0.8rem; left: 0.8rem; font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.14em; padding: 0.25rem 0.5rem; background: var(--ink); color: var(--brass-glow); }
 
   .services { background: var(--paper-2); }
 
   /* Prozess */
   .steps { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2rem; list-style: none; padding: 0; margin: 0; }
-  .steps::before { content: ''; position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: linear-gradient(90deg, var(--brass), var(--brass-2) 60%, rgb(255 255 255 / 0.15)); box-shadow: 0 0 10px rgb(231 191 104 / 0.6); }
+  .steps::before { content: ''; position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: linear-gradient(90deg, var(--brass), var(--brass-2) 60%, rgb(var(--fg-rgb) / 0.15)); box-shadow: 0 0 10px rgb(231 191 104 / 0.6); }
   .step { position: relative; padding-top: 2.4rem; }
-  .step__node { position: absolute; top: 0; left: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--ink); border: 2px solid var(--brass-2); box-shadow: 0 0 0 5px rgb(231 191 104 / 0.12); }
+  .step__node { position: absolute; top: 0; left: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--d-bg); border: 2px solid var(--brass-2); box-shadow: 0 0 0 5px rgb(231 191 104 / 0.12); }
   .step__no { font-family: var(--font-mono); font-size: 0.75rem; color: var(--brass-2); letter-spacing: 0.1em; }
-  .step h3 { color: #fff; margin: 0.5rem 0; }
+  .step h3 { color: var(--on-dark); margin: 0.5rem 0; }
   .step p { color: var(--muted-dark); font-size: 0.95rem; margin: 0; }
   @media (max-width: 1000px) {
     .steps { grid-template-columns: 1fr; gap: 0; padding-left: 2.2rem; }
-    .steps::before { left: 7px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; background: linear-gradient(180deg, var(--brass), rgb(255 255 255 / 0.15)); }
+    .steps::before { left: 7px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; background: linear-gradient(180deg, var(--brass), rgb(var(--fg-rgb) / 0.15)); }
     .step { padding: 0 0 2.2rem; }
     .step__node { left: -2.2rem; top: 0.2rem; }
   }
@@ -232,7 +232,7 @@ const faqLd = {
   .ind__item:hover img { transform: scale(1.06); filter: grayscale(0.2) brightness(0.8); }
   .ind__item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 40%, rgb(7 19 29 / 0.85)); }
   .ind__name { position: absolute; z-index: 1; left: 1.2rem; right: 1.2rem; bottom: 1.1rem; display: flex; align-items: baseline; gap: 0.7rem; color: #fff; font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); }
-  .ind__no { font-family: var(--font-mono); font-size: 0.7rem; color: var(--brass-2); }
+  .ind__no { font-family: var(--font-mono); font-size: 0.7rem; color: var(--brass-glow); }
 
   .faqsec__in { max-width: 900px; }
 </style>

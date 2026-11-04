@@ -7,7 +7,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site, mapsPlace } from '../data/site';
 import { services } from '../data/services';
-import { ui, type Lang } from '../i18n/ui';
+import { routes, ui, u, type Lang } from '../i18n/ui';
 
 export interface Crumb { name: string; href: string }
 
@@ -29,13 +29,14 @@ const {
   title,
   description,
   alternates,
-  image = '/og-image.jpg',
+  image = u('/og-image.jpg'),
   breadcrumbs = [],
   jsonLd = [],
   noindex = false,
   pageType = 'WebPage',
 } = Astro.props;
 const staging = import.meta.env.PUBLIC_STAGING === '1';
+const theme = import.meta.env.PUBLIC_THEME === 'light' ? 'light' : 'dark';
 
 const t = ui[lang];
 const path = alternates[lang];
@@ -108,7 +109,7 @@ const graph: Record<string, unknown>[] = [
 if (breadcrumbs.length) {
   graph.push({
     '@type': 'BreadcrumbList',
-    itemListElement: [{ name: t.breadcrumbHome, href: lang === 'de' ? '/' : '/en/' }, ...breadcrumbs].map((c, i) => ({
+    itemListElement: [{ name: t.breadcrumbHome, href: routes.home[lang] }, ...breadcrumbs].map((c, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: c.name,
@@ -122,7 +123,7 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
 ---
 
 <!doctype html>
-<html lang={lang} dir="ltr">
+<html lang={lang} dir="ltr" data-theme={theme}>
   <head>
     <meta charset="utf-8" />
     <script is:inline>document.documentElement.classList.add('js')</script>
@@ -154,13 +155,13 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
     <meta name="geo.position" content={`${site.geo.lat};${site.geo.lng}`} />
     <meta name="ICBM" content={`${site.geo.lat}, ${site.geo.lng}`} />
 
-    <meta name="theme-color" content="#07131d" />
+    <meta name="theme-color" content={theme === 'light' ? '#ffffff' : '#07131d'} />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={u('/favicon-32.png')} sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href={u('/apple-touch-icon.png')} />
+    <link rel="manifest" href={u('/site.webmanifest')} />
+    <link rel="sitemap" href={u('/sitemap-index.xml')} />
 
     <script type="application/ld+json" set:html={ld} />
   </head>

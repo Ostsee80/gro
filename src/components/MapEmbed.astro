@@ -93,16 +93,16 @@ const t = {
     min-height: 340px;
     border-radius: var(--radius);
     overflow: hidden;
-    background: var(--ink);
+    background: var(--d-bg);
     border: 1px solid var(--line);
   }
   .map__frame :global(iframe) { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-  .map__ph { position: absolute; inset: 0; background-color: var(--ink); }
+  .map__ph { position: absolute; inset: 0; background-color: var(--d-bg); }
   .map__svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .map__roads path { fill: none; stroke: rgb(255 255 255 / 0.22); stroke-width: 7; stroke-linecap: round; }
-  .map__roads path.thin { stroke-width: 3; stroke: rgb(255 255 255 / 0.14); }
+  .map__roads path { fill: none; stroke: rgb(var(--fg-rgb) / 0.22); stroke-width: 7; stroke-linecap: round; }
+  .map__roads path.thin { stroke-width: 3; stroke: rgb(var(--fg-rgb) / 0.14); }
   .map__ring circle { fill: none; stroke: rgb(231 191 104 / 0.35); stroke-dasharray: 4 6; }
-  .map__axis { stroke: rgb(255 255 255 / 0.08); stroke-dasharray: 14 5 2 5; }
+  .map__axis { stroke: rgb(var(--fg-rgb) / 0.08); stroke-dasharray: 14 5 2 5; }
   .map__pin { position: absolute; left: 50%; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%; background: var(--brass-2); box-shadow: 0 0 0 6px rgb(231 191 104 / 0.25), 0 0 24px var(--brass-2); }
   .map__pin span { position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--brass-2); animation: ping 2s var(--ease) infinite; }
   @keyframes ping { from { transform: scale(1); opacity: 0.8; } to { transform: scale(3.2); opacity: 0; } }
@@ -110,11 +110,11 @@ const t = {
     position: relative; z-index: 1;
     max-width: 340px;
     padding: 1.4rem 1.5rem;
-    background: rgb(7 19 29 / 0.86);
+    background: rgb(var(--d-bg-rgb) / 0.86);
     border: 1px solid var(--line-dark);
     border-radius: var(--radius);
     backdrop-filter: blur(6px);
-    color: #fff;
+    color: var(--on-dark);
     position: absolute; left: 1.2rem; top: 1.2rem;
     text-align: left;
   }
@@ -128,6 +128,6 @@ const t = {
   .map__addr { color: var(--muted-dark); margin-top: 0.2rem !important; }
   .map__geo { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; color: var(--brass-2); margin: 0.6rem 0 1rem !important; }
   .map__note { font-size: 0.78rem; color: var(--muted-dark); margin-top: 0.9rem !important; line-height: 1.45; }
-  .map__note a { color: #fff; }
+  .map__note a { color: var(--on-dark); }
   .map__actions { display: flex; flex-wrap: wrap; gap: 0.8rem; }
 </style>

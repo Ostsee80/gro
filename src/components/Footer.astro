@@ -66,20 +66,20 @@ const year = new Date().getFullYear();
   .ftr__big {
     font-family: var(--font-display); font-weight: 700;
     font-size: clamp(4rem, 17vw, 15rem); line-height: 0.8; letter-spacing: -0.05em;
-    color: transparent; -webkit-text-stroke: 1px rgb(255 255 255 / 0.16);
+    color: transparent; -webkit-text-stroke: 1px rgb(var(--fg-rgb) / 0.16);
     margin-bottom: clamp(2.5rem, 5vw, 4.5rem); white-space: nowrap;
   }
   .ftr__big span { -webkit-text-stroke-color: var(--brass); }
   .ftr__grid { display: grid; grid-template-columns: 1.4fr 1fr 0.8fr 1fr; gap: 2.5rem; }
   @media (max-width: 960px) { .ftr__grid { grid-template-columns: 1fr 1fr; } }
   @media (max-width: 560px) { .ftr__grid { grid-template-columns: 1fr; } }
-  .ftr__name { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: #fff; }
+  .ftr__name { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; color: var(--on-dark); }
   .ftr__about p:last-child { color: var(--muted-dark); max-width: 36ch; }
   .ftr__h { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brass-2); margin-bottom: 1rem; }
   .ftr ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; }
-  .ftr a { color: rgb(255 255 255 / 0.78); text-decoration: none; }
+  .ftr a { color: rgb(var(--fg-rgb) / 0.78); text-decoration: none; }
   .ftr a:hover { color: var(--brass-2); }
-  address { font-style: normal; color: rgb(255 255 255 / 0.78); line-height: 1.8; }
+  address { font-style: normal; color: rgb(var(--fg-rgb) / 0.78); line-height: 1.8; }
   .ftr__route { font-family: var(--font-mono); font-size: 0.8rem; }
   .ftr__bar {
     display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem;

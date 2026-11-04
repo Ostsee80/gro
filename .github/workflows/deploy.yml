@@ -35,6 +35,16 @@ jobs:
         env:
           PUBLIC_STAGING: ${{ env.STAGING }}
 
+      - name: Entwurf „hell“ bauen (Unterordner /entwurf-hell/)
+        if: env.STAGING == '1'
+        run: |
+          npx astro build --outDir dist/entwurf-hell
+          rm -f dist/entwurf-hell/robots.txt dist/entwurf-hell/sitemap-*.xml dist/entwurf-hell/llms.txt
+        env:
+          PUBLIC_STAGING: '1'
+          PUBLIC_THEME: light
+          BASE_PATH: /entwurf-hell
+
       - name: Testumgebung für Suchmaschinen sperren
         if: env.STAGING == '1'
         run: |

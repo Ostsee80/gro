@@ -20,6 +20,15 @@
   --brass-2: #e7bf68;
   --brass-ink: #8a6522; /* Messing für Text auf hellem Grund (Kontrast AA) */
   --spark: #9fe3ff;
+  --brass-glow: #e7bf68; /* fest: Beschriftungen auf Fotos */
+
+  /* Kontrastflächen („dunkle“ Sektionen, Header, Footer) */
+  --d-bg: var(--ink);
+  --d-bg-rgb: 7 19 29;
+  --d-fg: #e8eef3;
+  --on-dark: #ffffff;
+  --fg-rgb: 255 255 255;
+  --theme-color: #07131d;
 
   /* Typografie */
   --font-display: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
@@ -43,6 +52,31 @@
 
   --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
 }
+
+/* ==========================================================================
+   Helles Farbschema (Entwurf 2) – aktiviert über <html data-theme="light">
+   Leitbild: weißes Zeichenpapier, Navy-Tinte, Messing-Akzente
+   ========================================================================== */
+:root[data-theme='light'] {
+  --paper: #ffffff;
+  --paper-2: #f3f5f8;
+  --white: #ffffff;
+  --line: rgb(7 19 29 / 0.11);
+  --line-dark: rgb(7 19 29 / 0.09);
+  --muted-dark: #56626d;
+  --brass-2: #9a6d1c;
+  --brass-ink: #8a6522;
+
+  --d-bg: #e9eef3;
+  --d-bg-rgb: 255 255 255;
+  --d-fg: var(--text);
+  --on-dark: #07131d;
+  --fg-rgb: 7 19 29;
+  --theme-color: #ffffff;
+}
+:root[data-theme='light'] .hdr::before { box-shadow: 0 1px 0 rgb(7 19 29 / 0.06); }
+:root[data-theme='light'] .btn:hover { color: #fff; }
+:root[data-theme='light'] .hero__glow { opacity: 0.55; }
 
 *,
 *::before,
@@ -149,16 +183,16 @@ a:hover { color: var(--brass-ink); }
 
 /* ---------- Dunkle Flächen mit Blaupausen-Raster ---------- */
 .dark {
-  background-color: var(--ink);
-  color: #e8eef3;
+  background-color: var(--d-bg);
+  color: var(--d-fg);
   --line: var(--line-dark);
 }
 .blueprint {
   background-image:
     linear-gradient(var(--line-dark) 1px, transparent 1px),
     linear-gradient(90deg, var(--line-dark) 1px, transparent 1px),
-    linear-gradient(rgb(255 255 255 / 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(255 255 255 / 0.035) 1px, transparent 1px);
+    linear-gradient(rgb(var(--fg-rgb) / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--fg-rgb) / 0.035) 1px, transparent 1px);
   background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
   background-position: -1px -1px;
 }

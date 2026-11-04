@@ -1,15 +1,20 @@
 export type Lang = 'de' | 'en';
 
+/** Basis-Pfad der Seite („/“ live, z. B. „/entwurf-hell/“ für Entwürfe im Unterordner) */
+const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
+export const u = (path: string) => `${BASE}${path}`;
+const r = (de: string, en: string) => ({ de: u(de), en: u(en) });
+
 /** Seiten-IDs → Pfade je Sprache. Wird für Navigation, hreflang und Sprachumschalter genutzt. */
 export const routes = {
-  home: { de: '/', en: '/en/' },
-  services: { de: '/leistungen/', en: '/en/services/' },
-  contract: { de: '/lohnerodieren/', en: '/en/contract-edm/' },
-  company: { de: '/unternehmen/', en: '/en/company/' },
-  contact: { de: '/kontakt/', en: '/en/contact/' },
-  imprint: { de: '/impressum/', en: '/en/legal-notice/' },
-  privacy: { de: '/datenschutz/', en: '/en/privacy/' },
-  thanks: { de: '/kontakt/danke/', en: '/en/contact/thank-you/' },
+  home: r('/', '/en/'),
+  services: r('/leistungen/', '/en/services/'),
+  contract: r('/lohnerodieren/', '/en/contract-edm/'),
+  company: r('/unternehmen/', '/en/company/'),
+  contact: r('/kontakt/', '/en/contact/'),
+  imprint: r('/impressum/', '/en/legal-notice/'),
+  privacy: r('/datenschutz/', '/en/privacy/'),
+  thanks: r('/kontakt/danke/', '/en/contact/thank-you/'),
 } as const;
 export type RouteId = keyof typeof routes;
 
