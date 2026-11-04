@@ -15,6 +15,8 @@ export const site = {
   geo: { lat: 53.9185442, lng: 10.6675111 },
   register: { court: 'Amtsgericht Lübeck', number: 'HRB 11389' },
   vatId: 'DE 279228632',
+  /** Bestätigungscode der Google Search Console (Methode „HTML-Tag“), leer = nicht ausgeben */
+  googleSiteVerification: '',
   /** Regionen, die für lokale Suchanfragen relevant sind */
   areaServed: ['Deutschland', 'Europa', 'Weltweit', 'Schleswig-Holstein', 'Hamburg', 'Lübeck', 'Kiel', 'Bad Schwartau'],
 };

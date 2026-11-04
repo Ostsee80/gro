@@ -10,9 +10,9 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  # Testumgebung: new.gro-erodiertechnik.com (für Google gesperrt).
-  # Für den Livegang STAGING auf "0" und FTP_SERVER_DIR auf das Live-Verzeichnis setzen.
-  STAGING: '1'
+  # LIVE: gro-erodiertechnik.com (für Google freigegeben).
+  # Design-Entwürfe liegen unter /1/ (hell) und /2/ (Barth) und bleiben für Google gesperrt.
+  STAGING: '0'
   FTP_SERVER: ae939.netcup.net   # Name aus dem TLS-Zertifikat des netcup-Servers
   FTP_USERNAME: claude
   FTP_SERVER_DIR: /httpdocs/   # relativ zum Startordner des FTP-Kontos
@@ -35,31 +35,28 @@ jobs:
         env:
           PUBLIC_STAGING: ${{ env.STAGING }}
 
-      - name: Entwurf „hell“ bauen (Unterordner /entwurf-hell/)
-        if: env.STAGING == '1'
+      - name: Entwurf 1 „hell“ bauen (Unterordner /1/, noindex)
         run: |
-          npx astro build --outDir dist/entwurf-hell
-          rm -f dist/entwurf-hell/robots.txt dist/entwurf-hell/sitemap-*.xml dist/entwurf-hell/llms.txt
+          npx astro build --outDir dist/1
+          rm -f dist/1/robots.txt dist/1/sitemap-*.xml dist/1/llms.txt
           # Eigene Rewrite-Regeln entfernen, damit die der Hauptseite greifen
-          echo '# Entwurf: es gelten die Regeln der Hauptseite' > dist/entwurf-hell/.htaccess
+          echo '# Entwurf: es gelten die Regeln der Hauptseite' > dist/1/.htaccess
         env:
           PUBLIC_STAGING: '1'
           PUBLIC_THEME: light
-          BASE_PATH: /entwurf-hell
+          BASE_PATH: /1
 
-      - name: Entwurf „Barth“ bauen (Unterordner /barth/)
-        if: env.STAGING == '1'
+      - name: Entwurf 2 „Barth“ bauen (Unterordner /2/, noindex)
         run: |
-          npx astro build --outDir dist/barth
-          rm -f dist/barth/robots.txt dist/barth/sitemap-*.xml dist/barth/llms.txt
-          # Eigene Rewrite-Regeln entfernen, damit die der Hauptseite greifen
-          echo '# Entwurf: es gelten die Regeln der Hauptseite' > dist/barth/.htaccess
+          npx astro build --outDir dist/2
+          rm -f dist/2/robots.txt dist/2/sitemap-*.xml dist/2/llms.txt
+          echo '# Entwurf: es gelten die Regeln der Hauptseite' > dist/2/.htaccess
         env:
           PUBLIC_STAGING: '1'
           PUBLIC_THEME: barth
-          BASE_PATH: /barth
+          BASE_PATH: /2
 
-      - name: Testumgebung für Suchmaschinen sperren
+      - name: Komplette Seite für Suchmaschinen sperren (nur falls STAGING=1)
         if: env.STAGING == '1'
         run: |
           printf 'User-agent: *\nDisallow: /\n' > dist/robots.txt

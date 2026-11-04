@@ -156,6 +156,7 @@ const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph })
     <meta name="geo.position" content={`${site.geo.lat};${site.geo.lng}`} />
     <meta name="ICBM" content={`${site.geo.lat}, ${site.geo.lng}`} />
 
+    {site.googleSiteVerification && !staging && <meta name="google-site-verification" content={site.googleSiteVerification} />}
     <meta name="theme-color" content={theme === 'dark' ? '#07131d' : '#ffffff'} />
     <meta name="format-detection" content="telephone=no" />
     <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />

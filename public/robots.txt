@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
 Disallow: /kontakt.php
+Disallow: /altcha-challenge.php
+Disallow: /1/
+Disallow: /2/
 Disallow: /kontakt/danke/
 Disallow: /kontakt/fehler/
 Disallow: /en/contact/thank-you/

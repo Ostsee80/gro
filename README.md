@@ -32,7 +32,7 @@ Jeder Push auf `main` baut die Seite per GitHub Actions und lädt sie per FTPS z
 
 Einmalig nötig: unter **GitHub → Settings → Secrets and variables → Actions** ein Secret `FTP_PASSWORD` mit dem FTP-Passwort anlegen.
 
-Aktuell geht der Upload auf die **Testumgebung** `new.gro-erodiertechnik.com` (für Google gesperrt). Für den Livegang in `deploy.yml` `STAGING: '0'` setzen und `FTP_SERVER_DIR` auf das Verzeichnis der Hauptdomain ändern.
+Der Upload geht auf die Hauptdomain `gro-erodiertechnik.com` (live, indexierbar). Mit `STAGING: '1'` in `deploy.yml` lässt sich die komplette Seite wieder für Suchmaschinen sperren.
 
 ## Farbvarianten
 
@@ -40,10 +40,10 @@ Das Design nutzt Farb-Tokens (`src/styles/global.css`). Mit `PUBLIC_THEME=light`
 mit `BASE_PATH=/ordner` lässt sich eine Variante in einem Unterordner bauen:
 
 ```bash
-BASE_PATH=/entwurf-hell PUBLIC_THEME=light npx astro build --outDir dist/entwurf-hell
+BASE_PATH=/1 PUBLIC_THEME=light npx astro build --outDir dist/1
 ```
 
-Auf der Testumgebung liegen die helle Variante unter `/entwurf-hell/` und der Corporate-Entwurf unter `/barth/` (`PUBLIC_THEME=barth`).
+Live: dunkle Variante auf `gro-erodiertechnik.com`. Entwürfe (für Google gesperrt): hell unter `/1/`, Corporate-Stil „Barth“ unter `/2/` (`PUBLIC_THEME=barth`).
 
 ## SEO auf einen Blick
 
