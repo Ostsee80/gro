@@ -30,6 +30,9 @@ AddDefaultCharset utf-8
   RewriteRule ^legal-notice/?$ /en/legal-notice/ [L,R=301]
   RewriteRule ^privacy/?$ /en/privacy/ [L,R=301]
 
+  # --- Alte Sitemap-Adresse (Baukasten) auf die neue Sitemap leiten -----
+  RewriteRule ^sitemap\.xml$ /sitemap-index.xml [L,R=301]
+
   # --- Frühere Entwurfs-Adressen auf die neuen Unterordner leiten ---------
   RewriteRule ^entwurf-hell/(.*)$ /1/$1 [L,R=301]
   RewriteRule ^barth/(.*)$ /2/$1 [L,R=301]
