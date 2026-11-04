@@ -9,7 +9,7 @@
 
 ## Leistungen und Kapazitäten (ca.-Werte, X × Y × Z)
 - [Drahterodieren](https://gro-erodiertechnik.com/leistungen/drahterodieren/) – Verfahrweg ca. 800 × 600 × 500 mm
-- [CNC-Fräsen & 5-Achs-Bearbeitung](https://gro-erodiertechnik.com/leistungen/cnc-fraesen/) – Verfahrweg ca. 1.100 × 600 × 650 mm
+- [CNC-Fräsen & 5-Achs-Bearbeitung](https://gro-erodiertechnik.com/leistungen/cnc-fraesen/) – Verfahrweg ca. 1.100 × 650 × 600 mm
 - [Mikrobohr-Erodieren](https://gro-erodiertechnik.com/leistungen/mikrobohr-erodieren/) – ab Ø 0,1 mm
 - [Flachschleifen](https://gro-erodiertechnik.com/leistungen/flachschleifen/) – Verfahrweg ca. 300 × 500 × 300 mm
 - [Laserbeschriftung & Gravieren](https://gro-erodiertechnik.com/leistungen/laserbeschriftung-gravieren/)

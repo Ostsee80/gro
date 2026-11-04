@@ -73,8 +73,8 @@ export const services: Service[] = [
       ],
     },
     benefits: {
-      de: ['Werkstückhöhen bis 500 mm (Z)', 'Präzise Konturen und enge Toleranzen', 'Schwer zerspanbare und gehärtete Werkstoffe ohne Verzug', 'Gratfreie Schnittkanten'],
-      en: ['Workpiece heights up to 500 mm (Z)', 'Precise contours and tight tolerances', 'Hard-to-machine and hardened materials without distortion', 'Burr-free cutting edges'],
+      de: ['Werkstückhöhen bis 500 mm (Z)', '5-Achs-Drahterodieren für Konik- und Freiformschnitte', 'Präzise Konturen und enge Toleranzen', 'Schwer zerspanbare und gehärtete Werkstoffe ohne Verzug', 'Gratfreie Schnittkanten'],
+      en: ['Workpiece heights up to 500 mm (Z)', '5-axis wire EDM for taper and freeform cuts', 'Precise contours and tight tolerances', 'Hard-to-machine and hardened materials without distortion', 'Burr-free cutting edges'],
     },
     applications: {
       de: ['Stanz- und Schnittwerkzeuge', 'Stempel, Matrizen und Formplatten', 'Zahnräder und Profile', 'Bauteile für Medizintechnik und Luftfahrt'],
@@ -101,18 +101,18 @@ export const services: Service[] = [
     featured: true,
     slug: { de: 'cnc-fraesen', en: 'cnc-milling' },
     title: { de: 'CNC-Fräsen & 5-Achs-Bearbeitung', en: 'CNC Milling & 5-Axis Machining' },
-    spec: { label: travel, value: { de: 'ca. 1.100 × 600 × 650 mm', en: 'approx. 1,100 × 600 × 650 mm' } },
+    spec: { label: travel, value: { de: 'ca. 1.100 × 650 × 600 mm', en: 'approx. 1,100 × 650 × 600 mm' } },
     seoTitle: {
       de: 'CNC-Fräsen & 5-Achs-Bearbeitung – Lohnfertigung | GRO',
       en: 'CNC Milling & 5-Axis Machining – Contract Shop | GRO',
     },
     seoDescription: {
-      de: 'CNC-Fräsen mit Verfahrweg ca. 1.100 × 600 × 650 mm inkl. 5-Achs-Bearbeitung für komplexe Geometrien und Mehrseitenfertigung – Lohnfertigung deutschlandweit.',
-      en: 'CNC milling with approx. 1,100 × 600 × 650 mm travel incl. 5-axis machining for complex geometries and multi-sided parts – contract manufacturing in Germany.',
+      de: 'CNC-Fräsen mit Verfahrweg ca. 1.100 × 650 × 600 mm inkl. 5-Achs-Bearbeitung für komplexe Geometrien und Mehrseitenfertigung – Lohnfertigung deutschlandweit.',
+      en: 'CNC milling with approx. 1,100 × 650 × 600 mm travel incl. 5-axis machining for complex geometries and multi-sided parts – contract manufacturing in Germany.',
     },
     teaser: {
-      de: 'Verfahrweg ca. 1.100 × 600 × 650 mm – inklusive 5-Achs-Bearbeitung für komplexe Geometrien.',
-      en: 'Travel approx. 1,100 × 600 × 650 mm – including 5-axis machining for complex geometries.',
+      de: 'Verfahrweg ca. 1.100 × 650 × 600 mm – inklusive 5-Achs-Bearbeitung für komplexe Geometrien.',
+      en: 'Travel approx. 1,100 × 650 × 600 mm – including 5-axis machining for complex geometries.',
     },
     intro: {
       de: 'Beim CNC-Fräsen tragen rotierende Werkzeuge computergesteuert Material ab und bringen Rohteile in ihre exakte Form. Mit der 5-Achs-Bearbeitung erreichen wir dabei auch schräge Flächen, Hinterschnitte und Freiformen – in einer Aufspannung.',
@@ -120,17 +120,17 @@ export const services: Service[] = [
     },
     body: {
       de: [
-        'Unser Verfahrweg von ca. 1.100 × 600 × 650 mm (X × Y × Z) bietet Platz für große Bauteile, Formplatten und Vorrichtungen. Die 5-Achs-Bearbeitung ermöglicht komplexe Geometrien und eine effiziente Mehrseitenfertigung: Weniger Umspannen bedeutet höhere Genauigkeit und kürzere Durchlaufzeiten.',
+        'Unser Verfahrweg von ca. 1.100 × 650 × 600 mm (X × Y × Z) bietet Platz für große Bauteile, Formplatten und Vorrichtungen. Die 5-Achs-Bearbeitung ermöglicht komplexe Geometrien und eine effiziente Mehrseitenfertigung: Weniger Umspannen bedeutet höhere Genauigkeit und kürzere Durchlaufzeiten.',
         'Wir bearbeiten Stahl, Edelstahl, Aluminium, Buntmetalle und technische Kunststoffe – vom Prototyp bis zur Serie und in Kombination mit Drahterodieren, Schleifen und Oberflächenveredelung.',
       ],
       en: [
-        'Our travel of approx. 1,100 × 600 × 650 mm (X × Y × Z) accommodates large components, mould plates and fixtures. 5-axis machining enables complex geometries and efficient multi-sided production: fewer re-clamping operations mean higher accuracy and shorter lead times.',
+        'Our travel of approx. 1,100 × 650 × 600 mm (X × Y × Z) accommodates large components, mould plates and fixtures. 5-axis machining enables complex geometries and efficient multi-sided production: fewer re-clamping operations mean higher accuracy and shorter lead times.',
         'We machine steel, stainless steel, aluminium, non-ferrous metals and technical plastics – from prototype to series and in combination with wire EDM, grinding and surface finishing.',
       ],
     },
     benefits: {
-      de: ['Großer Arbeitsraum: ca. 1.100 × 600 × 650 mm', '5-Achs-Bearbeitung für komplexe Geometrien', 'Mehrseitenfertigung in einer Aufspannung', 'Vom Prototyp bis zur Serie'],
-      en: ['Large working envelope: approx. 1,100 × 600 × 650 mm', '5-axis machining for complex geometries', 'Multi-sided machining in a single setup', 'From prototype to series'],
+      de: ['Großer Arbeitsraum: ca. 1.100 × 650 × 600 mm', '5-Achs-Bearbeitung für komplexe Geometrien', 'Mehrseitenfertigung in einer Aufspannung', 'Vom Prototyp bis zur Serie'],
+      en: ['Large working envelope: approx. 1,100 × 650 × 600 mm', '5-axis machining for complex geometries', 'Multi-sided machining in a single setup', 'From prototype to series'],
     },
     applications: {
       de: ['Formplatten und Formeinsätze', 'Vorrichtungen und Maschinenteile', 'Komplexe 3D-Freiformflächen', 'Gehäuse und Baugruppen-Komponenten'],
@@ -138,11 +138,11 @@ export const services: Service[] = [
     },
     faq: {
       de: [
-        { q: 'Welche Bauteilgrößen können Sie fräsen?', a: 'Unser Verfahrweg beträgt ca. 1.100 × 600 × 650 mm (X × Y × Z). Für komplexe Geometrien steht die 5-Achs-Bearbeitung zur Verfügung.' },
+        { q: 'Welche Bauteilgrößen können Sie fräsen?', a: 'Unser Verfahrweg beträgt ca. 1.100 × 650 × 600 mm (X × Y × Z). Für komplexe Geometrien steht die 5-Achs-Bearbeitung zur Verfügung.' },
         { q: 'Welche Daten benötigen Sie für einen Fräsauftrag?', a: 'Idealerweise ein 3D-Modell (z. B. STEP oder IGES) und eine Zeichnung mit Toleranzangaben (PDF oder DXF), dazu Material und Stückzahl.' },
       ],
       en: [
-        { q: 'What component sizes can you mill?', a: 'Our travel is approx. 1,100 × 600 × 650 mm (X × Y × Z). 5-axis machining is available for complex geometries.' },
+        { q: 'What component sizes can you mill?', a: 'Our travel is approx. 1,100 × 650 × 600 mm (X × Y × Z). 5-axis machining is available for complex geometries.' },
         { q: 'What data do you need for a milling job?', a: 'Ideally a 3D model (e.g. STEP or IGES) and a drawing with tolerances (PDF or DXF), plus material and quantity.' },
       ],
     },

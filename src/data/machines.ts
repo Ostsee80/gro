@@ -27,8 +27,8 @@ export const machineGroups: MachineGroup[] = [
     serviceId: 'wire-edm',
     title: { de: 'Drahterodieren', en: 'Wire EDM' },
     intro: {
-      de: 'Drei Sodick-Drahterodiermaschinen – vom großformatigen Werkstück bis zur feinen Präzisionskontur.',
-      en: 'Three Sodick wire EDM machines – from large workpieces to fine precision contours.',
+      de: 'Drei Sodick-Drahterodiermaschinen – vom großformatigen Werkstück bis 500 mm Höhe bis zur feinen 5-Achs-Präzisionskontur.',
+      en: 'Three Sodick wire EDM machines – from large workpieces up to 500 mm tall to fine 5-axis precision contours.',
     },
     machines: [
       {
@@ -36,8 +36,8 @@ export const machineGroups: MachineGroup[] = [
         model: 'ALC 800 G',
         type: { de: 'CNC-Drahterodiermaschine', en: 'CNC wire EDM machine' },
         facts: {
-          de: ['Verfahrweg X × Y × Z: 800 × 600 × 500 mm', 'Für großformatige und hohe Werkstücke'],
-          en: ['Travel X × Y × Z: 800 × 600 × 500 mm', 'For large and tall workpieces'],
+          de: ['Verfahrweg X × Y × Z: 800 × 600 × 500 mm', 'Werkstückhöhen bis 500 mm', 'Für großformatige und hohe Werkstücke'],
+          en: ['Travel X × Y × Z: 800 × 600 × 500 mm', 'Workpiece heights up to 500 mm', 'For large and tall workpieces'],
         },
       },
       {
@@ -52,10 +52,10 @@ export const machineGroups: MachineGroup[] = [
       {
         maker: 'Sodick',
         model: 'AG 600 L',
-        type: { de: 'Linearmotor-Drahterodiermaschine', en: 'Linear-motor wire EDM machine' },
+        type: { de: '5-Achs-Drahterodiermaschine mit Linearantrieb', en: '5-axis wire EDM machine with linear drives' },
         facts: {
-          de: ['Linearantriebe für hohe Positioniergenauigkeit', 'Für Präzisionskonturen und feine Oberflächen'],
-          en: ['Linear drives for high positioning accuracy', 'For precision contours and fine surfaces'],
+          de: ['5 Achsen (X, Y, Z, U, V) für Konik- und Freiformschnitte', 'Linearantriebe für hohe Positioniergenauigkeit', 'Für Präzisionskonturen und feine Oberflächen'],
+          en: ['5 axes (X, Y, Z, U, V) for taper and freeform cuts', 'Linear drives for high positioning accuracy', 'For precision contours and fine surfaces'],
         },
       },
     ],
@@ -90,12 +90,12 @@ export const machineGroups: MachineGroup[] = [
     },
     machines: [
       {
-        maker: '',
+        maker: 'Kaast (Priminer)',
         model: 'VF-MILL ECO 1100',
-        type: { de: 'Vertikales Bearbeitungszentrum', en: 'Vertical machining centre' },
+        type: { de: 'CNC-Vertikalbearbeitungszentrum mit 4./5. Achse', en: 'CNC vertical machining centre with 4th/5th axis' },
         facts: {
-          de: ['Großer Arbeitsraum für Platten und lange Bauteile', 'Teil unseres Fräs-Verfahrwegs bis ca. 1.100 × 600 × 650 mm'],
-          en: ['Large working area for plates and long components', 'Part of our milling capacity up to approx. 1,100 × 600 × 650 mm'],
+          de: ['Verfahrweg X × Y × Z: 1.100 × 650 × 600 mm', 'Tisch 1.300 × 600 mm, Tischlast bis 800 kg', 'Spindel 12.000 min⁻¹, 24-fach-Werkzeugwechsler', 'Positioniergenauigkeit 0,010 mm, Wiederholgenauigkeit 0,006 mm', 'Siemens-828D-Steuerung'],
+          en: ['Travel X × Y × Z: 1,100 × 650 × 600 mm', 'Table 1,300 × 600 mm, load up to 800 kg', 'Spindle 12,000 rpm, 24-station tool changer', 'Positioning accuracy 0.010 mm, repeatability 0.006 mm', 'Siemens 828D control'],
         },
       },
       {
