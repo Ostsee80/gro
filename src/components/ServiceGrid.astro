@@ -19,6 +19,7 @@ const H = headingLevel;
         <div class="sg__body">
           <span class="sg__no">{String(i + 1).padStart(2, '0')}</span>
           <H class="sg__title">{s.title[lang]}</H>
+          {s.spec && <p class="sg__spec"><span>{s.spec.label[lang]}</span>{s.spec.value[lang]}</p>}
           <p>{s.teaser[lang]}</p>
           <span class="sg__more">
             {ui[lang].learnMore}
@@ -46,6 +47,8 @@ const H = headingLevel;
   .sg__card:hover .sg__body::before { width: 100%; }
   .sg__no { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); letter-spacing: 0.1em; }
   .sg__title { font-size: var(--step-1); margin: 0.5rem 0 0.6rem; }
+  .sg__spec { display: grid; gap: 0.1rem; margin: -0.1rem 0 0.8rem !important; font-family: var(--font-mono); font-size: 0.82rem !important; color: var(--text) !important; }
+  .sg__spec span { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass-ink); }
   .sg__body p { color: var(--muted); font-size: 0.97rem; margin-bottom: 1.2rem; }
   .sg__more { margin-top: auto; display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-display); font-weight: 600; font-size: 0.95rem; color: var(--brass-ink); }
   .sg__more svg { width: 1em; transition: transform 0.3s var(--ease); }

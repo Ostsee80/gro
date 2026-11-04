@@ -44,14 +44,14 @@ const copy = {
   de: {
     kicker: 'Lohnerodieren seit 2011 · für Deutschland & Europa',
     h1a: 'Präzision, die Funken schlägt.',
-    h1b: 'Drahterodieren bis 500 mm Schnitthöhe – dazu HSC-Fräsen, Strömungsschleifen, Pulverbeschichtung und Lasergravur aus einer Hand.',
+    h1b: 'Drahterodieren bis 500 mm Höhe, 5-Achs-CNC-Fräsen, Mikrobohr-Erodieren ab Ø 0,1 mm, Flachschleifen und Oberflächenveredelung – alles aus einer Hand.',
     text: 'Wir fertigen, was mit klassischer Zerspanung nicht mehr geht: komplexe Konturen in gehärteten Werkstoffen – vom Prototyp bis zur Serie, dokumentiert und termintreu.',
     secondary: 'Leistungen ansehen',
   },
   en: {
     kicker: 'Contract EDM since 2011 · made in Germany for Europe',
     h1a: 'Precision that strikes sparks.',
-    h1b: 'Wire EDM up to 500 mm cutting height – plus HSC milling, abrasive flow machining, powder coating and laser engraving from a single source.',
+    h1b: 'Wire EDM up to 500 mm height, 5-axis CNC milling, micro-hole EDM from Ø 0.1 mm, surface grinding and surface finishing – all from a single source.',
     text: 'We manufacture what conventional machining can no longer achieve: complex contours in hardened materials – from prototype to series, documented and on time.',
     secondary: 'View services',
   },
@@ -147,10 +147,10 @@ const copy = {
   </div>
 
   <ul class="hero__facts wrap" role="list">
-    <li><b>2011</b><span>{lang === 'de' ? 'gegründet' : 'founded'}</span></li>
-    <li><b>500&nbsp;mm</b><span>{lang === 'de' ? 'Schnitthöhe beim Drahterodieren (Z)' : 'wire EDM cutting height (Z)'}</span></li>
-    <li><b>10</b><span>{lang === 'de' ? 'Fertigungsverfahren' : 'manufacturing processes'}</span></li>
-    <li><b>1 → ∞</b><span>{lang === 'de' ? 'vom Einzelteil bis zur Serie' : 'from single part to series'}</span></li>
+    <li><b>500&nbsp;mm</b><span>{lang === 'de' ? 'Werkstückhöhe beim Drahterodieren (Z)' : 'workpiece height for wire EDM (Z)'}</span></li>
+    <li><b>5&nbsp;Achsen</b><span>{lang === 'de' ? 'CNC-Fräsen bis ca. 1.100 × 600 × 650 mm' : 'CNC milling up to approx. 1,100 × 600 × 650 mm'}</span></li>
+    <li><b>{lang === 'de' ? 'Ø 0,1 mm' : 'Ø 0.1 mm'}</b><span>{lang === 'de' ? 'kleinste Bohrung beim Mikrobohr-Erodieren' : 'smallest hole with micro-hole EDM'}</span></li>
+    <li><b>2011</b><span>{lang === 'de' ? 'gegründet in Bad Schwartau' : 'founded in Bad Schwartau'}</span></li>
   </ul>
 </section>
 
@@ -295,6 +295,6 @@ const copy = {
     .hero__facts { grid-template-columns: 1fr 1fr; }
     .hero__facts li { border-bottom: 1px solid var(--line-dark); }
     .hero__facts li:nth-child(2) { border-right: 0; }
-    .hero__facts li:nth-child(odd) { padding-left: 0; }
+    .hero__facts li + li:nth-child(odd) { padding-left: 0; }
   }
 </style>

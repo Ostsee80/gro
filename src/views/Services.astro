@@ -13,18 +13,34 @@ const t = ui[lang];
 
 const c = {
   de: {
-    title: 'Leistungen: Erodieren, Fräsen, CNC & Werkzeugbau | GRO',
-    description: 'Alle Leistungen: Drahterodieren bis 500 mm Höhe, HSC-Fräsen, Strömungsschleifen, Pulverbeschichtung, Lasergravur, CNC, Drehen und Formenbau.',
+    title: 'Leistungen: Drahterodieren, CNC-Fräsen, Schleifen | GRO',
+    description: 'Drahterodieren bis 500 mm Höhe, 5-Achs-CNC-Fräsen, Mikrobohren ab Ø 0,1 mm, Flachschleifen, Laser, Strahlen, Polieren & Pulver – aus einer Hand.',
     kicker: 'Leistungen',
     h1: 'Fertigung mit Fertigungstiefe.',
-    lead: 'Ausgestattet mit modernstem Maschinenpark bieten wir jedem Kunden einen hochwertigen und effizienten Service – mit kurzen Durchlaufzeiten und gleichbleibend hervorragender Qualität.',
+    lead: 'Von der mechanischen Bearbeitung bis zur Oberflächenveredelung: Drahterodieren, 5-Achs-CNC-Fräsen, Mikrobohr-Erodieren, Flachschleifen, Laserbeschriftung, Sandstrahlen, Strömungspolieren und Pulverbeschichten – aus einer Hand.',
+    capTitle: 'Kapazitäten auf einen Blick',
+    capProcess: 'Verfahren', capValue: 'Kapazität', capUse: 'Besonders geeignet für',
+    capNote: 'Alle Angaben ca.-Werte. Größere oder abweichende Bauteile? Sprechen Sie uns an – vieles ist auf Anfrage möglich.',
+    oneTitle: 'Besonders vorteilhaft: alles aus einer Hand.',
+    one: 'Sie erhalten bei uns nicht nur einzelne Fertigungsschritte, sondern können Prozesse von der mechanischen Bearbeitung bis zur Oberflächenveredelung aus einer Hand abwickeln. Das reduziert Schnittstellen, verkürzt Durchlaufzeiten und sichert eine gleichbleibende Qualität über den gesamten Fertigungsprozess.',
+    reqTitle: 'So kommen Sie zu Ihrem Angebot',
+    req: 'Für eine konkrete Prüfung senden Sie uns gerne Ihre technischen Zeichnungen oder CAD-Daten (z. B. PDF, DXF, STEP oder IGES) sowie – soweit vorhanden – Angaben zu Material, Stückzahl, Toleranzen und gewünschter Oberflächenbehandlung. Anschließend erstellen wir Ihnen zeitnah ein passgenaues Angebot mit Machbarkeitsprüfung und Liefertermin.',
+    reqHint: 'Keine fertige Zeichnung? Eine Skizze, ein Foto oder eine kurze Beschreibung genügt für den Anfang.',
   },
   en: {
-    title: 'Services: EDM, Milling, CNC & Tool Making | GRO',
-    description: 'All services: wire EDM up to 500 mm height, HSC milling, abrasive flow machining, powder coating, laser engraving, CNC, turning and mould making.',
+    title: 'Services: Wire EDM, CNC Milling, Grinding | GRO',
+    description: 'Wire EDM up to 500 mm height, 5-axis CNC milling, micro-hole EDM from Ø 0.1 mm, surface grinding, laser, blasting, flow polishing & powder coating.',
     kicker: 'Services',
     h1: 'Manufacturing with real depth.',
-    lead: 'Equipped with state-of-the-art machinery, we provide every customer with high-quality, efficient service – with short lead times and consistently outstanding quality.',
+    lead: 'From machining to surface finishing: wire EDM, 5-axis CNC milling, micro-hole EDM drilling, surface grinding, laser marking, sandblasting, abrasive flow polishing and powder coating – all from a single source.',
+    capTitle: 'Capacities at a glance',
+    capProcess: 'Process', capValue: 'Capacity', capUse: 'Particularly suited for',
+    capNote: 'All figures approximate. Larger or different components? Get in touch – much is possible on request.',
+    oneTitle: 'A real advantage: everything from one source.',
+    one: 'With us you get more than individual production steps – you can handle processes from machining to surface finishing with a single supplier. This reduces interfaces, shortens lead times and ensures consistent quality throughout the entire production process.',
+    reqTitle: 'How to get your quotation',
+    req: 'For a specific assessment, simply send us your technical drawings or CAD data (e.g. PDF, DXF, STEP or IGES) and – where available – details of material, quantity, tolerances and desired surface treatment. We will promptly prepare a tailored quotation including a feasibility check and delivery date.',
+    reqHint: 'No finished drawing? A sketch, a photo or a short description is enough to get started.',
   },
 }[lang];
 
@@ -42,11 +58,82 @@ const listLd = {
 ---
 
 <Base lang={lang} title={c.title} description={c.description} alternates={routes.services} breadcrumbs={crumbs} jsonLd={[listLd]} pageType="CollectionPage">
-  <PageHero lang={lang} kicker={c.kicker} title={c.h1} lead={c.lead} crumbs={crumbs} code="10" />
+  <PageHero lang={lang} kicker={c.kicker} title={c.h1} lead={c.lead} crumbs={crumbs} code={String(services.length).padStart(2, '0')} />
   <section class="section">
     <div class="wrap">
       <ServiceGrid lang={lang} items={services} headingLevel="h2" />
     </div>
   </section>
+
+  <section class="section cap" aria-labelledby="cap-title">
+    <div class="wrap">
+      <h2 id="cap-title" class="reveal">{c.capTitle}</h2>
+      <div class="cap__table reveal" role="region" aria-labelledby="cap-title" tabindex="0">
+        <table>
+          <thead><tr><th scope="col">{c.capProcess}</th><th scope="col">{c.capValue}</th><th scope="col">{c.capUse}</th></tr></thead>
+          <tbody>
+            {services.map((s) => (
+              <tr>
+                <th scope="row"><a href={servicePath(lang, s.slug[lang])}>{s.title[lang]}</a></th>
+                <td>{s.spec ? <><span class="cap__lbl">{s.spec.label[lang]}</span>{s.spec.value[lang]}</> : '–'}</td>
+                <td>{s.applications[lang].slice(0, 2).join(', ')}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="cap__note">{c.capNote}</p>
+    </div>
+  </section>
+
+  <section class="section one" aria-labelledby="one-title">
+    <div class="wrap one__grid">
+      <div class="reveal">
+        <h2 id="one-title">{c.oneTitle}</h2>
+        <p class="lead">{c.one}</p>
+      </div>
+      <div class="one__req reveal">
+        <h3>{c.reqTitle}</h3>
+        <p>{c.req}</p>
+        <p class="one__hint">{c.reqHint}</p>
+        <a class="btn" href={routes.contact[lang]}>{t.ctaLong}</a>
+      </div>
+    </div>
+  </section>
   <Cta lang={lang} />
 </Base>
+
+<style>
+  .cap { background: var(--paper-2); }
+  .cap h2 { margin-bottom: 1.5rem; }
+  .cap__table { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+  table { width: 100%; border-collapse: collapse; min-width: 640px; font-size: 0.97rem; }
+  th, td { text-align: left; padding: 1rem 1.2rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+  thead th { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); font-weight: 500; }
+  tbody tr:last-child > * { border-bottom: 0; }
+  tbody th { font-family: var(--font-display); font-weight: 600; }
+  tbody th a { text-decoration: none; }
+  tbody th a:hover { color: var(--brass-ink); text-decoration: underline; }
+  td { color: var(--muted); }
+  td:nth-child(2) { font-family: var(--font-mono); color: var(--text); white-space: nowrap; }
+  .cap__lbl { display: block; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--brass-ink); }
+  .cap__note { margin-top: 1rem; font-size: 0.92rem; color: var(--muted); }
+  .one__grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  @media (max-width: 900px) { .one__grid { grid-template-columns: 1fr; } }
+  .one__grid h2 { max-width: 18ch; }
+  .one__req { padding: clamp(1.5rem, 3vw, 2.2rem); border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+  .one__req p { color: var(--muted); }
+  .one__hint { font-weight: 600; color: var(--text) !important; }
+  /* Handy: Tabelle als gestapelte Karten */
+  @media (max-width: 640px) {
+    .cap__table { overflow: visible; border: 0; background: none; }
+    table { min-width: 0; }
+    thead { display: none; }
+    table, tbody, tr, th, td { display: block; }
+    tr { margin-bottom: 0.8rem; padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+    th, td { padding: 0.15rem 0; border: 0; }
+    tbody th { font-size: 1.05rem; margin-bottom: 0.4rem; }
+    td:nth-child(2) { white-space: normal; }
+    td:nth-child(2):empty, td:nth-child(2):not(:has(span)) { display: none; }
+  }
+</style>

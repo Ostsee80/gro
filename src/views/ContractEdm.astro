@@ -24,7 +24,7 @@ const c = {
     whyTitle: 'Warum Lohnerodieren bei GRO?',
     why: [
       { t: 'Bis 500 mm Schnitthöhe', d: 'Wir drahterodieren Werkstücke bis 500 mm Höhe in der Z-Achse – auch hohe Stempel, Matrizen und Formplatten, die viele Lohnfertiger nicht mehr bearbeiten können.' },
-      { t: 'Alles aus einer Hand', d: 'HSC-Fräsen, Strömungsschleifen, Drehen, Pulverbeschichtung und Lasergravur: Sie erhalten einbaufertige Teile statt Zwischenschritte.' },
+      { t: 'Alles aus einer Hand', d: '5-Achs-CNC-Fräsen, Mikrobohr-Erodieren, Flachschleifen, Sandstrahlen, Strömungspolieren, Pulverbeschichten und Laserbeschriftung: einbaufertige Teile statt Zwischenschritte.' },
       { t: 'Kurze Durchlaufzeiten', d: 'Unser digitalisierter, automatisierter Maschinenpark erlaubt flexible Planung und schnelle Reaktion – auch bei wiederkehrenden Aufträgen.' },
       { t: 'Dokumentierte Qualität', d: 'Auf Wunsch messen und dokumentieren wir die Ergebnisse mit moderner Messtechnik. Transparente Kommunikation ist für uns selbstverständlich.' },
     ],
@@ -62,7 +62,7 @@ const c = {
     whyTitle: 'Why choose GRO as your EDM supplier?',
     why: [
       { t: 'Up to 500 mm cutting height', d: 'We wire-cut workpieces up to 500 mm tall on the Z axis – including tall punches, dies and mould plates that many contract shops can no longer handle.' },
-      { t: 'Everything from one source', d: 'HSC milling, abrasive flow machining, turning, powder coating and laser engraving: you receive ready-to-install parts, not intermediate steps.' },
+      { t: 'Everything from one source', d: '5-axis CNC milling, micro-hole EDM, surface grinding, sandblasting, flow polishing, powder coating and laser marking: ready-to-install parts, not intermediate steps.' },
       { t: 'Short lead times', d: 'Our digitalised, automated machinery enables flexible scheduling and fast response – including for recurring orders.' },
       { t: 'Documented quality', d: 'On request, we measure and document results with modern measuring technology. Transparent communication is a matter of course.' },
     ],
@@ -107,7 +107,7 @@ const faqLd = {
   '@type': 'FAQPage',
   mainEntity: c.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
 };
-const edm = services.filter((s) => ['wire-edm', 'milling', 'flow-grinding', 'powder-coating'].includes(s.id));
+const edm = services.filter((s) => ['wire-edm', 'micro-hole-edm', 'milling', 'surface-grinding'].includes(s.id));
 ---
 
 <Base lang={lang} title={c.title} description={c.description} alternates={routes.contract} breadcrumbs={crumbs} jsonLd={[serviceLd, faqLd]}>

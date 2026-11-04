@@ -40,6 +40,8 @@ jobs:
         run: |
           npx astro build --outDir dist/entwurf-hell
           rm -f dist/entwurf-hell/robots.txt dist/entwurf-hell/sitemap-*.xml dist/entwurf-hell/llms.txt
+          # Eigene Rewrite-Regeln entfernen, damit die der Hauptseite greifen
+          echo '# Entwurf: es gelten die Regeln der Hauptseite' > dist/entwurf-hell/.htaccess
         env:
           PUBLIC_STAGING: '1'
           PUBLIC_THEME: light
@@ -50,6 +52,8 @@ jobs:
         run: |
           npx astro build --outDir dist/barth
           rm -f dist/barth/robots.txt dist/barth/sitemap-*.xml dist/barth/llms.txt
+          # Eigene Rewrite-Regeln entfernen, damit die der Hauptseite greifen
+          echo '# Entwurf: es gelten die Regeln der Hauptseite' > dist/barth/.htaccess
         env:
           PUBLIC_STAGING: '1'
           PUBLIC_THEME: barth

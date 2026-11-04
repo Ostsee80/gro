@@ -25,6 +25,22 @@ AddDefaultCharset utf-8
   RewriteRule ^legal-notice/?$ /en/legal-notice/ [L,R=301]
   RewriteRule ^privacy/?$ /en/privacy/ [L,R=301]
 
+  # --- Umbenannte / zusammengelegte Leistungsseiten (gilt auch für Entwürfe) ---
+  RewriteRule ^((?:barth/|entwurf-hell/)?)leistungen/hsc-fraesen/?$ /$1leistungen/cnc-fraesen/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)leistungen/cnc-bearbeitung/?$ /$1leistungen/cnc-fraesen/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)leistungen/drehen-schleifen-bohren/?$ /$1leistungen/flachschleifen/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)leistungen/formenbau-werkzeugbau/?$ /$1leistungen/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)leistungen/lasergravur/?$ /$1leistungen/laserbeschriftung-gravieren/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)leistungen/sonderloesungen/?$ /$1leistungen/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)leistungen/stroemungsschleifen/?$ /$1leistungen/stroemungspolieren/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)en/services/hsc-milling/?$ /$1en/services/cnc-milling/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)en/services/cnc-machining/?$ /$1en/services/cnc-milling/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)en/services/turning-grinding-drilling/?$ /$1en/services/surface-grinding/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)en/services/mould-tool-making/?$ /$1en/services/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)en/services/laser-engraving/?$ /$1en/services/laser-marking-engraving/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)en/services/custom-solutions/?$ /$1en/services/ [L,R=301]
+  RewriteRule ^((?:barth/|entwurf-hell/)?)en/services/abrasive-flow-machining/?$ /$1en/services/abrasive-flow-polishing/ [L,R=301]
+
   # --- Fehlenden Schrägstrich bei Verzeichnissen ergänzen ---------------
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_URI} !\.[a-zA-Z0-9]{2,5}$

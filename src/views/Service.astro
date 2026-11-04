@@ -39,7 +39,15 @@ const faqLd = {
 ---
 
 <Base lang={lang} title={s.seoTitle[lang]} description={s.seoDescription[lang]} alternates={alternates} breadcrumbs={crumbs} image={og.src} jsonLd={[serviceLd, faqLd]}>
-  <PageHero lang={lang} kicker={`${t.nav.services} · ${s.code}`} title={s.title[lang]} lead={s.intro[lang]} crumbs={crumbs} code={s.code} />
+  <PageHero lang={lang} kicker={`${t.nav.services} · ${s.code}`} title={s.title[lang]} lead={s.intro[lang]} crumbs={crumbs} code={s.code}>
+    {s.spec && (
+      <p class="spec">
+        <span class="spec__lbl">{s.spec.label[lang]}</span>
+        <span class="spec__val">{s.spec.value[lang]}</span>
+        <span class="spec__note">{lang === 'de' ? 'Größere oder abweichende Teile? Sprechen Sie uns an.' : 'Larger or different parts? Get in touch.'}</span>
+      </p>
+    )}
+  </PageHero>
 
   <section class="section">
     <div class="wrap sv">
@@ -126,4 +134,8 @@ const faqLd = {
     /* Kontaktkasten entfällt hier – der Anfrage-Block folgt am Seitenende */
     .sv__box { display: none; }
   }
+  .spec { display: inline-grid; gap: 0.2rem; margin: 1.8rem 0 0; padding: 1rem 1.3rem; border: 1px solid var(--line-dark); border-left: 3px solid var(--brass-2); border-radius: var(--radius); background: rgb(var(--d-bg-rgb) / 0.5); }
+  .spec__lbl { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass-2); }
+  .spec__val { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); color: var(--on-dark); letter-spacing: -0.01em; }
+  .spec__note { font-size: 0.85rem; color: var(--muted-dark); }
 </style>

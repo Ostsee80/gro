@@ -15,13 +15,21 @@ const c = {
     description: 'Jetzt anfragen: Zeichnung oder CAD-Datei senden und schnell ein Angebot für Erodieren, Fräsen oder CNC-Bearbeitung erhalten. Tel. +49 451 530 954 12.',
     kicker: 'Kontakt',
     h1: 'Lassen Sie uns über Ihr Bauteil sprechen.',
-    lead: 'Senden Sie uns Ihre Anfrage mit Zeichnung oder CAD-Modell – wir melden uns schnellstmöglich mit einem Angebot.',
+    lead: 'Senden Sie uns Ihre technischen Zeichnungen oder CAD-Daten – wir erstellen Ihnen zeitnah ein passgenaues Angebot mit Machbarkeitsprüfung und Liefertermin.',
     formTitle: 'Anfrage senden',
     name: 'Name', company: 'Firma', email: 'E-Mail', phone: 'Telefon', message: 'Ihre Nachricht',
-    messagePh: 'Werkstoff, Stückzahl, gewünschter Liefertermin …',
-    file: 'Zeichnung / CAD-Datei (optional)',
-    fileHint: 'PDF, STEP, DXF, DWG, IGES, JPG, PNG oder ZIP · max. 10 MB',
-    consent: `Ich habe die <a href="${routes.privacy.de}">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Angaben zur Beantwortung meiner Anfrage einverstanden.`,
+    messagePh: 'Worum geht es? Beschreiben Sie Ihr Bauteil oder Ihr Anliegen – gerne auch ganz formlos.',
+    detailsTitle: 'Angaben zum Bauteil',
+    detailsHint: 'Alles optional – jede Angabe hilft uns beim Angebot. Was Sie noch nicht wissen, klären wir gemeinsam.',
+    material: 'Material', materialPh: 'z. B. 1.2379 gehärtet',
+    qty: 'Stückzahl', qtyPh: 'z. B. 1 Prototyp, 50 Stk.',
+    tol: 'Toleranzen', tolPh: 'z. B. ± 0,01 mm',
+    surface: 'Oberflächenbehandlung', surfacePh: 'z. B. gestrahlt, pulverbeschichtet RAL 5010',
+    date: 'Wunschtermin', datePh: 'z. B. KW 12 oder „so schnell wie möglich“',
+    file: 'Zeichnungen, CAD-Daten oder Fotos (optional)',
+    fileHint: 'Mehrere Dateien möglich, z. B. PDF, DXF, DWG, STEP, IGES, STL, Fotos oder ZIP – zusammen bis 25 MB. Größere Daten? Schicken Sie uns einfach eine E-Mail oder einen Download-Link.',
+    noDrawing: 'Keine fertige Zeichnung? Kein Problem – eine Skizze, ein Foto oder eine kurze Beschreibung genügt für den Anfang.',
+    consent: `Ihre Angaben verwenden wir ausschließlich zur Bearbeitung Ihrer Anfrage. Zeichnungen und Daten behandeln wir vertraulich. Details in unserer <a href="${routes.privacy.de}">Datenschutzerklärung</a>.`,
     send: 'Anfrage absenden',
     required: 'Pflichtfeld',
     direct: 'Direkter Draht',
@@ -32,13 +40,21 @@ const c = {
     description: 'Request a quote now: send your drawing or CAD file and quickly receive an offer for EDM, milling or CNC machining. Phone +49 451 530 954 12.',
     kicker: 'Contact',
     h1: 'Let’s talk about your component.',
-    lead: 'Send us your enquiry with a drawing or CAD model – we will get back to you with a quotation as quickly as possible.',
+    lead: 'Send us your technical drawings or CAD data – we will promptly prepare a tailored quotation including a feasibility check and delivery date.',
     formTitle: 'Send an enquiry',
     name: 'Name', company: 'Company', email: 'Email', phone: 'Phone', message: 'Your message',
-    messagePh: 'Material, quantity, desired delivery date …',
-    file: 'Drawing / CAD file (optional)',
-    fileHint: 'PDF, STEP, DXF, DWG, IGES, JPG, PNG or ZIP · max. 10 MB',
-    consent: `I have read the <a href="${routes.privacy.en}">privacy policy</a> and agree to my details being processed in order to answer my enquiry.`,
+    messagePh: 'What is it about? Describe your component or request – informally is fine.',
+    detailsTitle: 'Component details',
+    detailsHint: 'All optional – every detail helps us quote. Anything you do not know yet, we will clarify together.',
+    material: 'Material', materialPh: 'e.g. 1.2379 hardened',
+    qty: 'Quantity', qtyPh: 'e.g. 1 prototype, 50 pcs',
+    tol: 'Tolerances', tolPh: 'e.g. ± 0.01 mm',
+    surface: 'Surface treatment', surfacePh: 'e.g. blasted, powder-coated RAL 5010',
+    date: 'Target date', datePh: 'e.g. week 12 or “as soon as possible”',
+    file: 'Drawings, CAD data or photos (optional)',
+    fileHint: 'Multiple files possible, e.g. PDF, DXF, DWG, STEP, IGES, STL, photos or ZIP – up to 25 MB in total. Larger data? Just send us an email or a download link.',
+    noDrawing: 'No finished drawing? No problem – a sketch, a photo or a short description is enough to get started.',
+    consent: `We use your details solely to handle your enquiry and treat drawings and data confidentially. See our <a href="${routes.privacy.en}">privacy policy</a>.`,
     send: 'Send enquiry',
     required: 'required',
     direct: 'Direct line',
@@ -83,18 +99,32 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
           </label>
         </div>
         <label class="field">
-          <span>{c.message} <abbr title={c.required}>*</abbr></span>
-          <textarea name="message" rows="6" required maxlength="8000" placeholder={c.messagePh}></textarea>
+          <span>{c.message}</span>
+          <textarea name="message" rows="5" maxlength="8000" placeholder={c.messagePh}></textarea>
         </label>
+
+        <fieldset class="details">
+          <legend>{c.detailsTitle}</legend>
+          <p class="details__hint">{c.detailsHint}</p>
+          <div class="form__row">
+            <label class="field"><span>{c.material}</span><input type="text" name="material" maxlength="200" placeholder={c.materialPh} /></label>
+            <label class="field"><span>{c.qty}</span><input type="text" name="quantity" maxlength="200" placeholder={c.qtyPh} /></label>
+          </div>
+          <div class="form__row">
+            <label class="field"><span>{c.tol}</span><input type="text" name="tolerances" maxlength="200" placeholder={c.tolPh} /></label>
+            <label class="field"><span>{c.surface}</span><input type="text" name="surface" maxlength="200" placeholder={c.surfacePh} /></label>
+          </div>
+          <label class="field"><span>{c.date}</span><input type="text" name="deadline" maxlength="200" placeholder={c.datePh} /></label>
+        </fieldset>
+
         <label class="field file">
           <span>{c.file}</span>
-          <input type="file" name="attachment" accept=".pdf,.step,.stp,.dxf,.dwg,.igs,.iges,.jpg,.jpeg,.png,.zip" />
+          <input type="file" name="attachment[]" multiple data-files />
           <small>{c.fileHint}</small>
+          <small class="file__err" data-file-err hidden>{lang === 'de' ? 'Die Dateien sind zusammen größer als 25 MB. Bitte senden Sie große Daten per E-Mail oder als Download-Link.' : 'The files exceed 25 MB in total. Please send large data by email or as a download link.'}</small>
         </label>
-        <label class="consent">
-          <input type="checkbox" name="consent" value="1" required />
-          <span set:html={c.consent} />
-        </label>
+        <p class="nodraw">{c.noDrawing}</p>
+        <p class="consent" set:html={c.consent} />
         <button class="btn" type="submit">
           {c.send}
           <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 10h13M11 4l6 6-6 6" stroke="currentColor" stroke-width="1.8" /></svg>
@@ -131,6 +161,15 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
 <script>
   const ts = document.querySelector<HTMLInputElement>('[data-ts]');
   if (ts) ts.value = String(Math.floor(Date.now() / 1000));
+  // Hinweis statt Blockade, wenn Dateien zu groß sind
+  const files = document.querySelector<HTMLInputElement>('[data-files]');
+  const err = document.querySelector<HTMLElement>('[data-file-err]');
+  files?.addEventListener('change', () => {
+    const total = [...(files.files ?? [])].reduce((sum, f) => sum + f.size, 0);
+    const tooBig = total > 25 * 1024 * 1024;
+    if (err) err.hidden = !tooBig;
+    files.setCustomValidity(tooBig ? (err?.textContent ?? '') : '');
+  });
 </script>
 
 <style>
@@ -155,8 +194,7 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
   textarea { resize: vertical; }
   .file input { font: inherit; font-size: 0.95rem; padding: 0.8rem; background: var(--white); border: 1px dashed rgb(7 19 29 / 0.3); border-radius: var(--radius); }
   .file small { color: var(--muted); font-size: 0.8rem; }
-  .consent { display: flex; gap: 0.8rem; align-items: flex-start; font-size: 0.92rem; color: var(--muted); }
-  .consent input { margin-top: 0.3rem; width: 18px; height: 18px; accent-color: var(--brass); flex: none; }
+  .consent { margin: 0; font-size: 0.88rem; color: var(--muted); }
   .form .btn { justify-self: start; }
   .hp { position: absolute; left: -9999px; }
 
@@ -170,4 +208,9 @@ const crumbs = [{ name: t.nav.contact, href: routes.contact[lang] }];
   dd { margin: 0; color: var(--on-dark); }
   address { font-style: normal; }
   @media (max-width: 900px) { .ct__side { position: static; } }
+  .details { border: 1px solid var(--line); border-radius: var(--radius); padding: 1.2rem 1.2rem 1.4rem; margin: 0; display: grid; gap: 1rem; }
+  .details legend { padding: 0 0.4rem; font-family: var(--font-display); font-weight: 600; }
+  .details__hint { margin: -0.4rem 0 0; font-size: 0.88rem; color: var(--muted); }
+  .file__err { color: #b3261e !important; font-weight: 600; }
+  .nodraw { margin: -0.4rem 0 0; font-size: 0.92rem; font-weight: 600; }
 </style>
