@@ -43,7 +43,8 @@ const listLd = {
   itemListElement: machineGroups.flatMap((g) => g.machines).map((m, i) => ({
     '@type': 'ListItem',
     position: i + 1,
-    item: { '@type': 'Product', name: `${m.maker} ${m.model}`.trim(), ...(m.maker ? { brand: { '@type': 'Brand', name: m.maker } } : {}), category: m.type[lang] },
+    // Bewusst kein "Product": Die Maschinen werden nicht verkauft, Google verlangt bei Product offers/review/aggregateRating.
+    item: { '@type': 'Thing', name: `${m.maker} ${m.model}`.trim(), description: m.type[lang] },
   })),
 };
 ---
